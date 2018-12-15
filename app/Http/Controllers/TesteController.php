@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Teste;
+use App\Http\Models\Teste;
 
 use Illuminate\Http\Request;
 
