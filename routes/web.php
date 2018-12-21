@@ -5,4 +5,5 @@ Route::get('/', function () {
 });
 
 Route::get('/teste', 'TesteController@index');
-Route::get('/artigos/{id}', 'ArticleController@index');
+Route::get('/artigos', 'ArticleController@index');
+Route::get('/menus', 'TypeArticleController@index');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Article;
 
 class ArticleController extends Controller
 {
@@ -11,9 +12,11 @@ class ArticleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id)
+    public function index()
     {
-        dd($id);
+        $articles = Article::all();
+        empty($articles) ? '' : $articles = 'vazio';
+        dd($articles);
     }
 
     /**

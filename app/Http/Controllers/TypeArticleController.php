@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\TypeArticle;
 
 class TypeArticleController extends Controller
 {
@@ -13,7 +14,12 @@ class TypeArticleController extends Controller
      */
     public function index()
     {
-        //
+        $typeArticles = TypeArticle::all();
+        // empty($typeArticles) ? '' : $typeArticles = 'vazio';
+        foreach ($typeArticles as $key => $value) {
+            var_dump($value->desc_type_article);
+        }
+        // dd($typeArticles);
     }
 
     /**
