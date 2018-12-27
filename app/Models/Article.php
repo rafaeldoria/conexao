@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Article extends Model
 {
     protected $fillable = [
-        'details_article', 'visibility', 'capa_article_link', 'type_article_id'
+        'details_article', 'visibility', 'capa_article_link', 'type_article_id', 'author_id'
     ];
 
     public function typeArticle()

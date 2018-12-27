@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Visitant extends Model
 {
     protected $fillable = [
-        'dt_birth', 'img_visitant_link'
+        'dt_birth', 'img_visitant_link', 'user_id'
     ];
 
     public function user()
