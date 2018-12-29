@@ -15,7 +15,7 @@ class ArticleController extends Controller
     public function index()
     {
         $articles = Article::all();
-        empty($articles) ? '' : $articles = 'vazio';
+        // empty($articles) ? $articles = $articles : $articles = 'vazio';
         dd($articles);
     }
 
@@ -26,7 +26,7 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        //
+        dd('create');
     }
 
     /**
@@ -48,7 +48,11 @@ class ArticleController extends Controller
      */
     public function show($id)
     {
-        //
+        $article = Article::find($id);
+        if(!$article){
+            dd('not found');
+        }
+        dd($article);
     }
 
     /**
