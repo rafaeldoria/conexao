@@ -11,6 +11,6 @@ Route::get('/teste', 'TesteController@index');
 Route::get('/menus', 'TypeArticleController@index');
 
 Route::middleware(['auth'])->prefix('admin')->group(function(){
-    Route::get('artigos', 'ArticleController@index');
+    Route::get('artigos', 'ArticleController@index')->middleware('can:administrator');
     Route::get('artigos/{id}', 'ArticleController@show');
 });
