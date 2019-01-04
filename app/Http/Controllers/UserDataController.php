@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\UserData;
+use Illuminate\Support\Facades\Auth;
 
-class AuthorController extends Controller
+class UserDataController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -45,7 +47,7 @@ class AuthorController extends Controller
      */
     public function show($id)
     {
-        //
+        dd(Auth::user());
     }
 
     /**

@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Session;
 
-class HomeController extends Controller
+class ConexaoController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -23,6 +25,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        Session::put('userData.login', Auth::user()->username);
+        dd(Session::get('userData'));
+        return view('conexao');
     }
 }
