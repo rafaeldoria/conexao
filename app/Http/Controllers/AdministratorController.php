@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Article;
 
-class ArticleController extends Controller
+class AdministratorController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +13,7 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $articles = Article::all();
-        // empty($articles) ? $articles = $articles : $articles = 'vazio';
-        dd($articles);
+        //
     }
 
     /**
@@ -26,7 +23,7 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        dd('create');
+        //
     }
 
     /**
@@ -48,11 +45,7 @@ class ArticleController extends Controller
      */
     public function show($id)
     {
-        $article = Article::find($id);
-        if(!$article){
-            dd('not found');
-        }
-        dd($article);
+        //
     }
 
     /**
