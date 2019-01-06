@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Session;
+use App\Models\UserData;
+use App\Http\Resources\UserTransformer;
+use App\Http\Resources\UserDataTransformer;
 
 class ConexaoController extends Controller
 {
@@ -24,9 +27,14 @@ class ConexaoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        Session::put('userData.login', Auth::user()->username);
-        dd(Session::get('userData'));
+    {   
+        $user = (new UserTransformer)->toArray(Auth::user());
+        Session::put('userData.login', $user);
+        $userData = UserData::where('user_id', Auth::user()->id)->first();
+        if(isset($userData)){
+            $userData = (new UserDataTransformer)->toArray($userData);
+            Session::put('userData.data', $userData);
+        }
         return view('conexao');
     }
 }

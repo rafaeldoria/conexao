@@ -13,7 +13,7 @@ class CreateAuthorsTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_data', function (Blueprint $table) {
+        Schema::create('user_datas', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->date('dt_birth')->nullable();
