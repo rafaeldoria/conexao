@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\UserData;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Resources\UserDataTransformer;
+use Session;
 
-class AuthorController extends Controller
+class UserDataController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -23,7 +27,19 @@ class AuthorController extends Controller
      */
     public function create()
     {
-        //
+        $userData = [
+            'user_id' => Auth::user()->id,
+            'name' => 'Rafael Dória',
+            'dt_birth' => '2019-01-06',
+            'desc_user' => 'teste',
+        ];
+        UserData::create($userData);
+        $userData = UserData::where('user_id', Auth::user()->id)->first();
+        if(isset($userData)){
+            $userData = (new UserDataTransformer)->toArray($userData);
+            Session::put('userData.data', $userData);
+        }
+        dd(Session::get('userData'));
     }
 
     /**
@@ -45,7 +61,7 @@ class AuthorController extends Controller
      */
     public function show($id)
     {
-        //
+        dd(Auth::user());
     }
 
     /**

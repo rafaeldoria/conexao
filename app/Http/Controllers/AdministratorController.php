@@ -45,7 +45,11 @@ class AdministratorController extends Controller
      */
     public function show($id)
     {
-        //
+        $Admin = Administrator::find($id);
+        if(!$Admin){
+            dd('not found');
+        }
+        dd($Admin);
     }
 
     /**

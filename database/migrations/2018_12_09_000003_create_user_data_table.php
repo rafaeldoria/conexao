@@ -13,13 +13,13 @@ class CreateAuthorsTable extends Migration
      */
     public function up()
     {
-        Schema::create('authors', function (Blueprint $table) {
+        Schema::create('user_datas', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->date('dt_birth')->nullable();
-            $table->text('desc_author');
-            $table->integer('total_articles');
-            $table->string('img_author_link')->nullable();
+            $table->text('desc_user')->nullable();
+            $table->integer('total_articles')->nullable();
+            $table->string('img_user_link')->nullable();
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')
                 ->references('id')->on('users')
