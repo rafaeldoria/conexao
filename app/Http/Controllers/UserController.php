@@ -1,11 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Http\Models\Teste;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 
-class TesteController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,10 +13,14 @@ class TesteController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        // dd('aki');
-        $teste = Teste::findOrFail(1);
-        dd($teste);
+    {   
+        $breadcrumb = [
+            ["title" => "Home", "route" => route('conexao')],
+            ["title" => "Lista de Usuários", "route" => ""]
+        ];
+
+        $users = User::all();
+        return view('user', compact('breadcrumb', 'users'));
     }
 
     /**
