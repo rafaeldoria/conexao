@@ -26,8 +26,14 @@
                     You are logged in!
                     conexaonerd.com.br
                 </div>
+				</div>
+					<div class="card-body">
+						<a href="{{route('usuarios')}}" class="btn btn-info"><i class="fas fa-users"></i>Usuários<a/>
+					<div>
+				<div>
             </div>
-        </div>
+
+		</div>
 	</div>
 </div>
 @endsection
