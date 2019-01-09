@@ -29,6 +29,6 @@ class User extends Authenticatable
 
     public function typeUser()
     {
-        return $this->hasOne('App\Models\TypeUser');
+        return $this->hasOne('App\Models\TypeUser', 'id', 'type_user_id');
     }
 }

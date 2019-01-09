@@ -14,12 +14,19 @@ Route::get('/teste', 'TesteController@index');
 Route::get('/menus', 'TypeArticleController@index');
 
 Route::middleware(['auth'])->prefix('admin')->group(function(){
-    Route::get('artigo', 'ArticleController@index')->middleware('can:administrator');
+    Route::get('artigos', 'ArticleController@index')->middleware('can:administrator');
     Route::get('artigo/novo', 'ArticleController@create')->middleware('can:author');
     Route::post('artigo/salvar', 'ArticleController@post')->middleware('can:author');
     Route::get('artigo/{id}/editar', 'ArticleController@edit')->middleware('can:author');
     Route::put('artigo/{id}/alterar', 'ArticleController@update')->middleware('can:author');
     Route::delete('artigo/{id}/excluir', 'ArticleController@delete')->middleware('can:administrator');
+    Route::get('usuarios', 'UserController@index')->middleware('can:administrator')->name('usuarios');
+    Route::get('usuario/novo', 'UserController@create')->middleware('can:administrator');
+    Route::post('usuario/salvar', 'UserController@post')->middleware('can:administrator');
+    Route::get('usuario/{id}', 'UserController@show')->middleware('can:administrator');
+    Route::get('usuario/{id}/editar', 'UserController@edit')->middleware('can:administrator');
+    Route::put('usuario/{id}/alterar', 'UserController@update')->middleware('can:administrator');
+    Route::delete('usuario/{id}/excluir', 'UserController@delete')->middleware('can:administrator');
 });
 
 Route::middleware(['auth'])->group(function(){
