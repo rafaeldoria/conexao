@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use App\Models\TypeUser;
 
 class UserController extends Controller
 {
@@ -20,7 +22,8 @@ class UserController extends Controller
         ];
 
         $users = User::all();
-        return view('user', compact('breadcrumb', 'users'));
+        $typeUser = TypeUser::all();
+        return view('user', compact('breadcrumb', 'users', 'typeUser'));
     }
 
     /**
@@ -41,7 +44,14 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        User::create([
+            'username' => $request['username'],
+            'email' => $request['email'],
+            'password' => Hash::make($request['password']),
+            'type_user_id' => $request->type_user,
+        ]);
+        $request->session()->flash('alert-success', 'Usuário adicionado');
+        return true;
     }
 
     /**
