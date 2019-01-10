@@ -18,18 +18,16 @@
 			</nav>
 		</div>
 	</div>
-	<div class="alert alert-info">
-                      
-    </div>
+	
     <div class="row offset-1">
 		@foreach (['danger', 'warning', 'success', 'info'] as $msg)
 		@if(Session::has('alert-' . $msg))
 			<div class="alert alert-{{ $msg }} col-md-4">
 
-			{{ Session::get('alert-' . $msg) }} <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+				{{ Session::get('alert-' . $msg) }} <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+			</div>
 			@endif
-			@endforeach
-		</div>
+		@endforeach
 	</div>
 	<div class="row justify-content-center">
         <div class="col-md-10">
@@ -58,8 +56,8 @@
 						<td>{{$user->created_at->format('d/m/Y')}}</td>
 						<td>
 							<button class="btn btn-success btn-xs"><i class="far fa-eye"></i></button>
-							<button class="btn btn-warning btn-xs"><i class="far fa-edit"></i></button>
-							<button class="btn btn-danger btn-xs"><i class="far fa-trash-alt"></i></button>
+							<button class="btn btn-warning btn-xs" id="{{$user->id}}"><i class="far fa-edit"></i></button>
+							<button class="btn btn-danger btn-xs" id="{{$user->id}}"><i class="far fa-trash-alt"></i></button>
 						</td>
 					</tr>
 				@endforeach
@@ -86,5 +84,6 @@
 </div>
 
 @include('layouts.modals.User.newUserModal')
+@include('layouts.modals.User.editUserModal')
 
 @endsection

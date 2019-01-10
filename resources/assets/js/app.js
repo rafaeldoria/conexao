@@ -20,3 +20,27 @@ Vue.component('example-component', require('./components/ExampleComponent.vue'))
 const app = new Vue({
     el: '#app'
 });
+
+$(document).ready(function () {
+    $('.btn-warning').click(function(){
+        id = this.id;
+        console.log(id);
+        // $.ajax({
+        //     url: '/usuario/'.id,
+        //     type: 'POST',
+        // },
+        $.ajax({
+            url: '/admin/usuario/'+id,
+            type: 'GET',
+            success: function (data) {
+                user = JSON.parse(data);
+                console.log(user.username);
+                $('.editUserModal').modal('show');
+                $('.editUserModal').find('#username').val(user.username);
+                $('.editUserModal').find('#email').val(user.email);
+                $('.editUserModal').find('#type_user').val(user.type_user_id);
+                $('.editUserModal').find("#editUser").attr('action', '/admin/usuario/' + user.id + '/alterar');
+            }
+        });
+    });
+});

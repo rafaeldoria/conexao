@@ -50,7 +50,7 @@ class UserController extends Controller
             'password' => Hash::make($request['password']),
             'type_user_id' => $request->type_user,
         ]);
-        $request->session()->flash('alert-success', 'Usuário adicionado');
+        $request->session()->flash('alert-primary', 'Usuário adicionado');
         return true;
     }
 
@@ -62,7 +62,8 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::find($id);
+        return $user->toJson();
     }
 
     /**
@@ -85,7 +86,14 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        User::where('id', $id)
+            ->update([
+                'username' => $request['username'],
+                'email' => $request['email'],
+                'type_user_id' => $request->type_user,
+            ]);
+        $request->session()->flash('alert-success', 'Alteração Efetuada.');
+        return redirect()->route('users');
     }
 
     /**
