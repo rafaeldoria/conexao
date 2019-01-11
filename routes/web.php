@@ -45,4 +45,5 @@ Route::middleware(['auth'])->group(function(){
     Route::get('dados/{id}/editar', 'UserDataController@edit');
     Route::put('dados/{id}/alterar', 'UserDataController@update');
     Route::delete('dados/{id}/excluir', 'UserDataController@delete')->middleware('can:administrator');
+    Route::get('dados/completos/{id}', 'UserController@showComplete');
 });

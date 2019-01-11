@@ -17,36 +17,36 @@
                                     @csrf
 
                                     <div class="form-group row">
-                                        <label for="username" class="col-md-4 col-form-label text-md-right">{{ __('Usuário') }}</label>
+                                        <label for="usernameEdit" class="col-md-4 col-form-label text-md-right">{{ __('Usuário') }}</label>
 
                                         <div class="col-md-6">
-                                            <input id="username" type="text" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" name="username" value="{{ old('username') }}" required autofocus>
+                                            <input id="usernameEdit" type="text" class="form-control{{ $errors->has('usernameEdit') ? ' is-invalid' : '' }}" name="usernameEdit" value="{{ old('usernameEdit') }}" required autofocus>
 
-                                            @if ($errors->has('username'))
+                                            @if ($errors->has('usernameEdit'))
                                                 <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $errors->first('username') }}</strong>
+                                                    <strong>{{ $errors->first('usernameEdit') }}</strong>
                                                 </span>
                                             @endif
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
-                                        <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail') }}</label>
+                                        <label for="emailEdit" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail') }}</label>
 
                                         <div class="col-md-6">
-                                            <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
+                                            <input id="emailEdit" type="emailEdit" class="form-control{{ $errors->has('emailEdit') ? ' is-invalid' : '' }}" name="emailEdit" value="{{ old('emailEdit') }}" required>
 
-                                            @if ($errors->has('email'))
+                                            @if ($errors->has('emailEdit'))
                                                 <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $errors->first('email') }}</strong>
+                                                    <strong>{{ $errors->first('emailEdit') }}</strong>
                                                 </span>
                                             @endif
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="type_user" class="col-md-4 col-form-label text-md-right">{{ __('Tipo Usuário') }}</label>
+                                        <label for="type_userEdit" class="col-md-4 col-form-label text-md-right">{{ __('Tipo Usuário') }}</label>
                                         <div class="col-md-6">
-                                            <select name="type_user" id="type_user" class="form-control">
+                                            <select name="type_userEdit" id="type_userEdit" class="form-control">
                                                 @foreach ($typeUser as $value)
                                                     <option value="{{$value->id}}">{{$value->desc_type_user}}</option>
                                                 @endforeach

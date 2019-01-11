@@ -88,9 +88,9 @@ class UserController extends Controller
     {
         User::where('id', $id)
             ->update([
-                'username' => $request['username'],
-                'email' => $request['email'],
-                'type_user_id' => $request->type_user,
+                'username' => $request['usernameEdit'],
+                'email' => $request['emailEdit'],
+                'type_user_id' => $request['type_userEdit'],
             ]);
         $request->session()->flash('alert-success', 'Alteração Efetuada.');
         return redirect()->route('users');
@@ -105,5 +105,19 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function showComplete($id)
+    {   
+        $user = User::select('users.id', 'users.username', 'users.email', 'users.created_at', 'users.type_user_id',
+                        'user_datas.name', 'user_datas.dt_birth', 'user_datas.desc_user', 'user_datas.img_user_link', 'user_datas.total_articles')
+                ->join('user_datas', 'users.id', '=', 'user_datas.user_id')
+                ->where('users.id', $id)
+                ->first()->getOriginal();
+        $typeUser = TypeUser::select('desc_type_user')
+                ->where('id', $user["type_user_id"])
+                ->first()->getOriginal();
+        $user["desc_type_user"] = $typeUser["desc_type_user"];
+        return $user;
     }
 }
