@@ -16,7 +16,7 @@
                                 <h5 class="widget-user-desc" id="type_user"></h5>
                             </div>
                             <div class="widget-user-image">
-                                <img class="img-circle" src="" alt="User Avatar">
+                                <img class="img-circle" src="" id="img_user" alt="User Avatar">
                             </div>
                             <div class="box-footer">
                                 <div class="row">
@@ -30,14 +30,14 @@
                                 <div class="row">
                                     <div class="col-sm-4 border-right">
                                         <div class="description-block">
-                                            <h5 class="description-header" id="total_articles"></h5>
+                                            <h5 class="description-header" id="total_articles">0</h5>
                                             <span class="description-text">Total Artigos</span>
                                         </div>
                                     </div>
                                     <div class="col-sm-4 border-right">
                                         <div class="description-block">
                                             <h5 class="description-header" id="email"></h5>
-                                            <span class="description-text">Data Nascimento</span>
+                                            <span class="description-text">E-mail</span>
                                         </div>
                                     </div>
                                     <div class="col-sm-4">

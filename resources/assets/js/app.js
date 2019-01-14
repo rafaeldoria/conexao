@@ -44,24 +44,15 @@ $(document).ready(function () {
             url: '/dados/completos/'+id,
             type: 'GET',
             success: function (data) {
-                // user = JSON.parse(data);
-                console.log(data.username);
-                // $('.viewUserModal').modal('show');
-                // $('.viewUserModal').find('#username').text(user.username);
-                // $('.viewUserModal').find('#email').text(user.email);
-                // $('.viewUserModal').find('#type_user').text(user.type_user.desc_type_user);
+                $('.viewUserModal').modal('show');
+                $('.viewUserModal').find('#username').text(data.username);
+                $('.viewUserModal').find('#email').text(data.email);
+                $('.viewUserModal').find('#type_user').text(data.desc_type_user);
+                $('.viewUserModal').find('#desc_user').text(data.desc_user);
+                $('.viewUserModal').find('#total_articles').text(data.total_articles);
+                $('.viewUserModal').find('#created_at').text(data.created_at);
+                $('.viewUserModal').find('#img_user').attr("src", "/storage/images/"+data.img_user_link);
             }
         });
-        // $.ajax({
-        //     url: '/dados/'+id,
-        //     type: 'GET',
-        //     success: function (data) {
-        //         user = JSON.parse(data);
-        //         $('.viewUserModal').find('#usernameview').val(user.username);
-        //         $('.viewUserModal').find('#emailview').val(user.email);
-        //         $('.viewUserModal').find('#type_userview').val(user.type_user_id);
-        //         $('.viewUserModal').find("#editUser").attr('action', '/admin/usuario/' + user.id + '/alterar');
-        //     }
-        // });
     });
 });
