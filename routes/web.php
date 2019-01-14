@@ -26,7 +26,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function(){
     Route::get('usuario/{id}', 'UserController@show')->middleware('can:administrator');
     Route::get('usuario/{id}/editar', 'UserController@edit')->middleware('can:administrator');
     Route::patch('usuario/{id}/alterar', 'UserController@update')->middleware('can:administrator')->name('editUsers');
-    Route::delete('usuario/{id}/excluir', 'UserController@delete')->middleware('can:administrator');
+    Route::delete('usuario/{id}/excluir', 'UserController@destroy')->middleware('can:administrator')->name('editUsers');
 });
 
 Route::middleware(['auth'])->group(function(){

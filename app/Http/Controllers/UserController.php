@@ -93,7 +93,7 @@ class UserController extends Controller
                 'email' => $request['emailEdit'],
                 'type_user_id' => $request['type_userEdit'],
             ]);
-        $request->session()->flash('alert-success', 'Alteração Efetuada.');
+        $request->session()->flash('alert-primary', 'Alteração Efetuada.');
         return redirect()->route('users');
     }
 
@@ -103,9 +103,12 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+        $user = User::find($id);
+        $user->delete();
+        $request->session()->flash('alert-warning', 'Usuário Deletado.');
+        return redirect()->route('users');
     }
 
     public function showComplete($id)

@@ -54,9 +54,9 @@
 						<td>{{$user->typeUser->desc_type_user}}</td>
 						<td>{{$user->created_at->format('d/m/Y')}}</td>
 						<td>
-							<button class="btn btn-success btn-xs" id="{{$user->id}}"><i class="far fa-eye"></i></button>
-							<button class="btn btn-warning btn-xs" id="{{$user->id}}"><i class="far fa-edit"></i></button>
-							<button class="btn btn-danger btn-xs" id="{{$user->id}}"><i class="far fa-trash-alt"></i></button>
+							<button class="btn btn-success btn-xs view_user" id="{{$user->id}}"><i class="far fa-eye"></i></button>
+							<button class="btn btn-warning btn-xs edit_user" id="{{$user->id}}"><i class="far fa-edit"></i></button>
+							<button class="btn btn-danger btn-xs delete_user" id="{{$user->id}}"><i class="far fa-trash-alt"></i></button>
 						</td>
 					</tr>
 				@endforeach
@@ -81,8 +81,9 @@
     </div>
 </div>	
 	
-@include('layouts.modals.User.viewUserModal')
 @include('layouts.modals.User.newUserModal')
+@include('layouts.modals.User.viewUserModal')
 @include('layouts.modals.User.editUserModal')
+@include('layouts.modals.User.deleteUserModal')
 
 @endsection

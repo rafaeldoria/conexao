@@ -13951,7 +13951,7 @@ var app = new Vue({
 });
 
 $(document).ready(function () {
-    $('.btn-warning').click(function () {
+    $('.edit_user').click(function () {
         id = this.id;
         $.ajax({
             url: '/admin/usuario/' + id,
@@ -13967,7 +13967,7 @@ $(document).ready(function () {
         });
     });
 
-    $('.btn-success').click(function () {
+    $('.view_user').click(function () {
         id = this.id;
         $.ajax({
             url: '/dados/completos/' + id,
@@ -13983,6 +13983,12 @@ $(document).ready(function () {
                 $('.viewUserModal').find('#img_user').attr("src", "/storage/images/" + data.img_user_link);
             }
         });
+    });
+
+    $('.delete_user').click(function () {
+        id = this.id;
+        $('.deleteUserModal').modal('show');
+        $('.deleteUserModal').find("#deleteUser").attr('action', '/admin/usuario/' + id + '/excluir');
     });
 });
 
