@@ -18,14 +18,24 @@
 			</nav>
 		</div>
 	</div>
-    <div class="row justify-content-center">
+	
+    <div class="row offset-1">
+		@foreach (['danger', 'warning', 'success', 'info'] as $msg)
+		@if(Session::has('alert-' . $msg))
+			<div class="alert alert-{{ $msg }} col-md-4">
+
+				{{ Session::get('alert-' . $msg) }} <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+			</div>
+			@endif
+		@endforeach
+	</div>
+	<div class="row justify-content-center">
         <div class="col-md-10">
           <div class="box">
             <div class="box-header with-border">
 				  <h3 class="box-title">Usuários</h3>
-				  <h5 class="float-right"><button class="btn btn-primary btn-xs"><i class="far fa-plus-square"></i></button></h5>
+				  <h5 class="float-right"><button class="btn btn-primary btn-xs" data-toggle="modal" data-target=".newUserModal"><i class="far fa-plus-square"></i></button></h5>
             </div>
-            <!-- /.box-header -->
             <div class="box-body">
               <table class="table table-bordered table-hover dataTable" role="grid">
                 <tr>
@@ -44,15 +54,14 @@
 						<td>{{$user->typeUser->desc_type_user}}</td>
 						<td>{{$user->created_at->format('d/m/Y')}}</td>
 						<td>
-							<button class="btn btn-success btn-xs"><i class="far fa-eye"></i></button>
-							<button class="btn btn-warning btn-xs"><i class="far fa-edit"></i></button>
-							<button class="btn btn-danger btn-xs"><i class="far fa-trash-alt"></i></button>
+							<button class="btn btn-success btn-xs view_user" id="{{$user->id}}"><i class="far fa-eye"></i></button>
+							<button class="btn btn-warning btn-xs edit_user" id="{{$user->id}}"><i class="far fa-edit"></i></button>
+							<button class="btn btn-danger btn-xs delete_user" id="{{$user->id}}"><i class="far fa-trash-alt"></i></button>
 						</td>
 					</tr>
 				@endforeach
               </table>
             </div>
-            <!-- /.box-body -->
             <div class="box-footer clearfix">
               	<nav aria-label="Page navigation example">
 					<ul class="pagination justify-content-end">
@@ -70,5 +79,11 @@
 			</div>
           <!-- /.box -->
     </div>
-</div>
+</div>	
+	
+@include('layouts.modals.User.newUserModal')
+@include('layouts.modals.User.viewUserModal')
+@include('layouts.modals.User.editUserModal')
+@include('layouts.modals.User.deleteUserModal')
+
 @endsection

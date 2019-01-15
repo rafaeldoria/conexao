@@ -28,7 +28,7 @@
                 </div>
 				</div>
 					<div class="card-body">
-						<a href="{{route('usuarios')}}" class="btn btn-info"><i class="fas fa-users"></i>Usuários<a/>
+						<a href="{{route('users')}}" class="btn btn-info"><i class="fas fa-users"></i>Usuários<a/>
 					<div>
 				<div>
             </div>
