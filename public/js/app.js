@@ -13990,6 +13990,28 @@ $(document).ready(function () {
         $('.deleteUserModal').modal('show');
         $('.deleteUserModal').find("#deleteUser").attr('action', '/admin/usuario/' + id + '/excluir');
     });
+
+    $('.edit_article').click(function () {
+        id = this.id;
+        $.ajax({
+            url: '/admin/artigo/' + id,
+            type: 'GET',
+            success: function success(data) {
+                article = JSON.parse(data);
+                $('.editArticleModal').modal('show');
+                $('.editArticleModal').find('#title').val(article.title);
+                $('.editArticleModal').find('#type_articleEdit').val(article.type_article_id);
+                $('.editArticleModal').find('#visibility').val(article.visibility);
+                $('.editArticleModal').find("#editArticle").attr('action', '/admin/artigo/' + article.id + '/alterar');
+            }
+        });
+    });
+
+    $('.delete_article').click(function () {
+        id = this.id;
+        $('.deleteArticleModal').modal('show');
+        $('.deleteArticleModal').find("#deleteArticle").attr('action', '/admin/artigo/' + id + '/excluir');
+    });
 });
 
 /***/ }),

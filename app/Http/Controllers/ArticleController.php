@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Article;
+use App\Models\TypeArticle;
+use App\Http\Resources\ArticleTransformer;
+use Session;
 
 class ArticleController extends Controller
 {
@@ -13,10 +16,15 @@ class ArticleController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {   
+        $breadcrumb = [
+            ["title" => "Home", "route" => route('conexao')],
+            ["title" => "Lista de Artigos", "route" => ""]
+        ];
+
         $articles = Article::all();
-        // empty($articles) ? $articles = $articles : $articles = 'vazio';
-        dd($articles);
+        $typeArticle = TypeArticle::all();
+        return view('article', compact('breadcrumb', 'articles', 'typeArticle'));
     }
 
     /**
@@ -36,8 +44,17 @@ class ArticleController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
+    {   
+        $user_data_id = Session::get('userData.data')["id"];
+        Article::create([
+            'title' => $request['title'],
+            'details_article' => '',
+            'type_article_id' => $request->type_article,
+            'user_data_id' => $user_data_id,
+            'visibility' => 'N'
+        ]);
+        $request->session()->flash('alert-primary', 'Artigo adicionado');
+        return redirect()->route('articles');
     }
 
     /**
@@ -49,10 +66,7 @@ class ArticleController extends Controller
     public function show($id)
     {
         $article = Article::find($id);
-        if(!$article){
-            dd('not found');
-        }
-        dd($article);
+        return $article->toJson();
     }
 
     /**
@@ -75,7 +89,14 @@ class ArticleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Article::where('id', $id)
+            ->update([
+                'title' => $request['title'],
+                'type_article_id' => $request["type_articleEdit"],
+                'visibility' => $request['visibility'],
+            ]);
+        $request->session()->flash('alert-primary', 'Alteração Efetuada.');
+        return redirect()->route('articles');
     }
 
     /**
@@ -84,8 +105,11 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+        $article = Article::find($id);
+        $article->delete();
+        $request->session()->flash('alert-warning', 'Artigo Deletado.');
+        return redirect()->route('articles');
     }
 }

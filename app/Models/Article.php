@@ -7,16 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 class Article extends Model
 {
     protected $fillable = [
-        'details_article', 'visibility', 'capa_article_link', 'type_article_id', 'author_id'
+        'title', 'details_article', 'visibility', 'capa_article_link', 'type_article_id', 'user_data_id'
     ];
 
     public function typeArticle()
     {
-        return $this->hasOne('App\Models\TypeArticle');
+        return $this->hasOne('App\Models\TypeArticle', 'id', 'type_article_id');
     }
 
-    public function author()
+    public function userData()
     {
-        return $this->hasOne('App\Models\Author');
+        return $this->hasOne('App\Models\UserData', 'id', 'user_data_id');
     }
 }
