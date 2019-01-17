@@ -24,7 +24,7 @@ class ArticleController extends Controller
 
         $articles = Article::all();
         $typeArticle = TypeArticle::all();
-        return view('article', compact('breadcrumb', 'articles', 'typeArticle'));
+        return view('admin.article', compact('breadcrumb', 'articles', 'typeArticle'));
     }
 
     /**

@@ -1,19 +1,19 @@
 <?php
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::get('comentarios', 'CommentController@index');
 Route::get('artigos/{id}', 'ArticleController@showBlog');
 
 Auth::routes();
 
-Route::get('/conexao', 'ConexaoController@index')->name('conexao');
-Route::get('/teste', 'TesteController@index');
+Route::get('/', 'HomeController@index');
 Route::get('/menus', 'TypeArticleController@index');
 
 Route::middleware(['auth'])->prefix('admin')->group(function(){
+    Route::get('/conexao', 'ConexaoController@index')->name('conexao');
     Route::get('artigos', 'ArticleController@index')->middleware('can:administrator')->name('articles');
     Route::get('artigo/novo', 'ArticleController@create')->middleware('can:author');
     Route::get('artigo/{id}', 'ArticleController@show')->middleware('can:author');
