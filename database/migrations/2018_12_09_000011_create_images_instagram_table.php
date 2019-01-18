@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTypesArticlesTable extends Migration
+class CreateInstagramImagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateTypesArticlesTable extends Migration
      */
     public function up()
     {
-        Schema::create('types_articles', function (Blueprint $table) {
+        Schema::create('instagram_images', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('desc_type_article');
-            $table->char('status_type_article');
-            $table->string('img_type_article');
+            $table->string('desc_image');
+            $table->char('visibility', 1);
+            $table->string('img_instagram');
+            $table->string('link_instagram');
             $table->softDeletes();
             $table->timestamps();
         });
@@ -30,6 +31,6 @@ class CreateTypesArticlesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('type_articles');
+        Schema::dropIfExists('instagram_images');
     }
 }

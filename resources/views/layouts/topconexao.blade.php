@@ -3,11 +3,9 @@
         <div class="row">
             <div class="col-5 col-sm-6">
                 <div class="top_social_bar">
-                    {{-- <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a> --}}
-                    <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i>Siga-nos</a>
-                    {{-- <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a> --}}
-                    {{-- <a href="#"><i class="fa fa-skype" aria-hidden="true"></i></a> --}}
-                    {{-- <a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a> --}}
+                    <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                    <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                    <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
                 </div>
             </div>
 

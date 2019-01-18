@@ -10,7 +10,7 @@
 
     <title>{{ config('app.name', 'Conexão') }}</title>
 
-    <link rel="icon" href="img/core-img/favicon.ico">
+    {{--  <link rel="icon" href="img/core-img/favicon.ico">  --}}
 
     <!-- Scripts -->
     <script src="{{ asset('js/jquery/jquery-2.2.4.min.js') }}" defer></script>
@@ -26,13 +26,6 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/animate.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/magnific-popup.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/meanmenu.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/owl.carousel.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/pe-icon-7-stroke.css') }}" rel="stylesheet">
     <link href="{{ asset('css/responsive.css') }}" rel="stylesheet">
 </head>
 <body>
@@ -44,5 +37,9 @@
     @show
     
     @yield('content')
+
+    @section('footer')
+        @include('layouts.footerconexao')
+    @show
 </body>
 </html>

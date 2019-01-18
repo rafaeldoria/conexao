@@ -10,6 +10,7 @@ Route::get('artigos/{id}', 'ArticleController@showBlog');
 Auth::routes();
 
 Route::get('/', 'HomeController@index');
+Route::get('/artigos_menu/{id}', 'ArtiogosController@showForType')->name('articlesForType');
 Route::get('/menus', 'TypeArticleController@index');
 
 Route::middleware(['auth'])->prefix('admin')->group(function(){

@@ -2,12 +2,9 @@
 
 namespace App\Http\Controllers;
 
-// use Illuminate\Http\Request;
-// use Illuminate\Support\Facades\Auth;
-// use Session;
 use App\Models\Article;
-// use App\Http\Resources\UserTransformer;
-// use App\Http\Resources\UserDataTransformer;
+use App\Models\TypeArticle;
+use App\Models\InstagramImage;
 
 class HomeController extends Controller
 {
@@ -29,6 +26,9 @@ class HomeController extends Controller
     public function index()
     {   
         $articles = Article::where('visibility', 'S')->get();
-        return view('index', compact('articles'));
+        $typeArticles = TypeArticle::where('status_type_article', 'A')->get();
+        $fourArticles = Article::where('visibility', 'S')->orderBy('created_at', 'desc')->limit(2)->get();
+        $imagesInstagram = InstagramImage::where('visibility', 'S')->get();
+        return view('index', compact('articles', 'typeArticles', 'fourArticles', 'imagesInstagram'));
     }
 }
