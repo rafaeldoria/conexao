@@ -51,7 +51,7 @@ $(document).ready(function () {
                 $('.viewUserModal').find('#desc_user').text(data.desc_user);
                 $('.viewUserModal').find('#total_articles').text(data.total_articles);
                 $('.viewUserModal').find('#created_at').text(data.created_at);
-                $('.viewUserModal').find('#img_user').attr("src", "/storage/images/"+data.img_user_link);
+                $('.viewUserModal').find('#img_user').attr("src", "/storage/images/profiles/"+data.img_user_link);
             }
         });
     });

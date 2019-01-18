@@ -24,7 +24,7 @@ class UserController extends Controller
 
         $users = User::all();
         $typeUser = TypeUser::all();
-        return view('user', compact('breadcrumb', 'users', 'typeUser'));
+        return view('admin.user', compact('breadcrumb', 'users', 'typeUser'));
     }
 
     /**
