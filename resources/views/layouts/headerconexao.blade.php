@@ -15,7 +15,7 @@
                     <div class="collapse navbar-collapse justify-content-center" id="yummyfood-nav">
                         <ul class="navbar-nav" id="yummy-nav">
                             <li class="nav-item active">
-                                <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                                <a class="nav-link" href="{{route('home')}}">Home <span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="yummyDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Páginas</a>

@@ -37,7 +37,7 @@
             <div class="col-12">
                 <!-- Copywrite Text -->
                 <div class="copy_right_text text-center">
-                    <p>Copyright @2018 All rights reserved | </p>
+                    <p>Copyright @2018 All rights reserved </p>
                 </div>
             </div>
         </div>

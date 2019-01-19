@@ -28,18 +28,4 @@
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('css/responsive.css') }}" rel="stylesheet">
 </head>
-<body>
-    @section('sidebar')
-        @include('layouts.topconexao')
-    @show
-    @section('header')
-        @include('layouts.headerconexao')
-    @show
-    
-    @yield('content')
-
-    @section('footer')
-        @include('layouts.footerconexao')
-    @show
-</body>
-</html>
+@yield('body')
