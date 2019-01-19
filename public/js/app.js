@@ -14012,6 +14012,15 @@ $(document).ready(function () {
         $('.deleteArticleModal').modal('show');
         $('.deleteArticleModal').find("#deleteArticle").attr('action', '/admin/artigo/' + id + '/excluir');
     });
+
+    $('.write_article').click(function () {
+        id = this.id;
+        window.location.href = '/admin/artigo/' + id + '/escrever';
+    });
+
+    $(function () {
+        $('textarea#froala-editor').froalaEditor();
+    });
 });
 
 /***/ }),

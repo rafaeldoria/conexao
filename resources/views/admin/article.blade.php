@@ -46,7 +46,7 @@
 					<th style="width: 40px">Menu</th>
 					<th style="width: 40px">Visibilidade</th>
 					<th style="width: 40px">Desde</th>
-					<th style="width: 40px">Ações</th>
+					<th style="width: 90px">Ações</th>
                 </tr>
 				@foreach ($articles as $article)
 					<tr>
@@ -61,6 +61,7 @@
 							<button class="btn btn-success btn-xs view_article" id="{{$article->id}}"><i class="far fa-eye"></i></button>
 							<button class="btn btn-warning btn-xs edit_article" id="{{$article->id}}"><i class="far fa-edit"></i></button>
 							<button class="btn btn-danger btn-xs delete_article" id="{{$article->id}}"><i class="far fa-trash-alt"></i></button>
+							<button class="btn btn-info btn-xs write_article" id="{{$article->id}}"><i class="fas fa-pencil-alt"></i></button>
 						</td>
 					</tr>
 				@endforeach

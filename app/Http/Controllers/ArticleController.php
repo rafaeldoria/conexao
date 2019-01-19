@@ -112,4 +112,16 @@ class ArticleController extends Controller
         $request->session()->flash('alert-warning', 'Artigo Deletado.');
         return redirect()->route('articles');
     }
+
+    public function write($id)
+    {   
+        $breadcrumb = [
+            ["title" => "Home", "route" => route('conexao')],
+            ["title" => "Lista de Artigos", "route" => route('articles')],
+            ["title" => "Escrever Artigo", "route" => ""]
+        ];
+        $article = Article::find($id);
+        $typeArticle = TypeArticle::all();
+        return view('admin.writeArticle', compact('breadcrumb', 'article', 'typeArticle'));
+    }
 }
