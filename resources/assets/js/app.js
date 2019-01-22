@@ -89,7 +89,5 @@ $(document).ready(function () {
         window.location.href = '/admin/artigo/'+id+'/escrever';
     });
 
-    $(function () {
-        $('textarea#froala-editor').froalaEditor()
-    });
+    CKEDITOR.replace('editor1');
 });

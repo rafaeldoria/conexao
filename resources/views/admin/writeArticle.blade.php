@@ -46,7 +46,7 @@
 
 					<div class="md-form">
 						<i class="fas fa-pencil-alt prefix grey-text"></i>
-							<textarea id="froala-editor">Initialize the Froala WYSIWYG HTML Editor on a textarea.</textarea>
+							<textarea id="editor1" name="editor1">&lt;p&gt;Valor inicial.&lt;/p&gt;</textarea>
 						<label for="form107">Your message</label>
 					</div>
 				</div>
