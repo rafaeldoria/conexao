@@ -29,13 +29,13 @@
 
 /* ***** Import CSS ***** */
 
-@import 'bootstrap.min.css';
-@import 'animate.css';
-@import 'magnific-popup.css';
-@import 'meanmenu.min.css';
-@import 'owl.carousel.min.css';
-@import 'font-awesome.min.css';
-@import 'pe-icon-7-stroke.css';
+@import 'bootstrap/bootstrap.min.css';
+@import 'others/animate.css';
+@import 'others/magnific-popup.css';
+@import 'others/meanmenu.min.css';
+@import 'others/owl.carousel.min.css';
+@import 'others/font-awesome.min.css';
+@import 'others/pe-icon-7-stroke.css';
 
 /* --------------------
 :: 1.0 Base CSS

@@ -1,9 +1,19 @@
 {
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
-    "/js/layout.js": "/js/layout.js",
+    "/js/plugins.js": "/js/plugins.js",
+    "/js/active.js": "/js/active.js",
+    "/js/bootstrap.min.js": "/js/bootstrap.min.js",
+    "/resources/assets/css/adminLte.min.css": "/resources/assets/css/adminLte.min.css",
     "/css/adminLte.min.css": "/css/adminLte.min.css",
-    "/resources/assets/css/style.min.css": "/resources/assets/css/style.min.css",
-    "/css/style.min.css": "/css/style.min.css",
-    "/css/responsive.css": "/css/responsive.css"
+    "/css/style.css": "/css/style.css",
+    "/css/responsive.css": "/css/responsive.css",
+    "/css/bootstrap/bootstrap.min.css": "/css/bootstrap/bootstrap.min.css",
+    "/css/others/animate.css": "/css/others/animate.css",
+    "/css/others/font-awesome.min.css": "/css/others/font-awesome.min.css",
+    "/css/others/magnific-popup.css": "/css/others/magnific-popup.css",
+    "/css/others/meanmenu.min.css": "/css/others/meanmenu.min.css",
+    "/css/others/owl.carousel.min.css": "/css/others/owl.carousel.min.css",
+    "/css/others/pe-icon-7-stroke.css": "/css/others/pe-icon-7-stroke.css",
+    "/js/popper.min.js": "/js/popper.min.js"
 }

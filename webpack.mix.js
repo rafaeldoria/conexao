@@ -23,16 +23,21 @@ mix.webpackConfig({
 
 mix.js('resources/assets/js/app.js', 'public/js/app.js')
     .sass('resources/assets/sass/app.scss', 'public/css')
+    mix.minify('resources/assets/css/adminLte.css')
     .styles('resources/assets/css/adminLte.min.css', 'public/css/adminLte.min.css')
-    .minify('resources/assets/css/style.css')
-    .styles('resources/assets/css/style.min.css', 'public/css/style.min.css')
+    .styles('resources/assets/css/style.css', 'public/css/style.css')
     .styles('resources/assets/css/responsive.css', 'public/css/responsive.css')
-    .js([
-        'resources/assets/js/bootstrap/popper.min.js',
-        'resources/assets/js/bootstrap/bootstrap.min.js',
-        'resources/assets/js/others/plugins.js',
-        'resources/assets/js/others/active.js',
-    ], 'public/js/layout.js');
+    .styles('resources/assets/css/bootstrap/bootstrap.min.css', 'public/css/bootstrap/bootstrap.min.css')
+    .styles('resources/assets/css/others/animate.css', 'public/css/others/animate.css')
+    .styles('resources/assets/css/others/font-awesome.min.css', 'public/css/others/font-awesome.min.css')
+    .styles('resources/assets/css/others/magnific-popup.css', 'public/css/others/magnific-popup.css')
+    .styles('resources/assets/css/others/meanmenu.min.css', 'public/css/others/meanmenu.min.css')
+    .styles('resources/assets/css/others/owl.carousel.min.css', 'public/css/others/owl.carousel.min.css')
+    .styles('resources/assets/css/others/pe-icon-7-stroke.css', 'public/css/others/pe-icon-7-stroke.css')
+    .copyDirectory('resources/assets/js/bootstrap/popper.min.js', 'public/js/popper.min.js')
+    .js('resources/assets/js/bootstrap/bootstrap.min.js', 'public/js/bootstrap.min.js')
+    .js('resources/assets/js/others/plugins.js', 'public/js/plugins.js')
+    .js('resources/assets/js/others/active.js', 'public/js/active.js');
 
 
 
