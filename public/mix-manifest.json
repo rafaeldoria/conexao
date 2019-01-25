@@ -1,5 +1,9 @@
 {
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
-    "/css/adminLte.css": "/css/adminLte.css"
+    "/js/layout.js": "/js/layout.js",
+    "/css/adminLte.min.css": "/css/adminLte.min.css",
+    "/resources/assets/css/style.min.css": "/resources/assets/css/style.min.css",
+    "/css/style.min.css": "/css/style.min.css",
+    "/css/responsive.css": "/css/responsive.css"
 }
