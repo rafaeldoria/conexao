@@ -1,8 +1,8 @@
 <?php
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/summer', function () {
+    return view('summer');
+});
 
 Route::get('comentarios', 'CommentController@index');
 Route::get('artigos/{id}', 'ArticleController@showBlog');

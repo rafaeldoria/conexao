@@ -159,7 +159,7 @@
             </div>
         </div>
     </div>
-    
+
     @section('footer')
         @parent
 

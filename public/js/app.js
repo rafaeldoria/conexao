@@ -14017,8 +14017,6 @@ $(document).ready(function () {
         id = this.id;
         window.location.href = '/admin/artigo/' + id + '/escrever';
     });
-
-    CKEDITOR.replace('editor1');
 });
 
 /***/ }),

@@ -44,12 +44,12 @@
 						</div>
 					</div>	
 
-					<div class="md-form">
-						<i class="fas fa-pencil-alt prefix grey-text"></i>
-							<textarea id="editor1" name="editor1">&lt;p&gt;Valor inicial.&lt;/p&gt;</textarea>
-						<label for="form107">Your message</label>
+					<div id="editor-container">
+						<p>Hello World!</p>
+						<p>Some initial <strong>bold</strong> text</p>
+						<p><br></p>
+						</div>
 					</div>
-				</div>
 			</section>
 		</div>
 	</div>

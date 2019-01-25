@@ -89,5 +89,6 @@ $(document).ready(function () {
         window.location.href = '/admin/artigo/'+id+'/escrever';
     });
 
-    CKEDITOR.replace('editor1');
+    
+
 });
