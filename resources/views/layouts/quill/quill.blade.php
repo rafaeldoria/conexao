@@ -1,21 +1,13 @@
-<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+<script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
     <script>
-        var quill = new Quill('#editor-container', {
-            modules: {
-                toolbar: [
-                ['bold', 'italic'],
-                ['link', 'blockquote', 'code-block', 'image'],
-                [{ list: 'ordered' }, { list: 'bullet' }]
-                ]
-            },
-             ImageResize : {
-             // ... 
-                toolbarStyles : {
-                    backgroundColor :  ' preto ' ,
-                    border :  ' none ' ,
-                },
-            },
-            placeholder: 'Compose an epic...',
-            theme: 'snow'
+        var options = {
+            filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
+            filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token={{csrf_token()}}',
+            filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
+            filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token={{csrf_token()}}'
+        };
+        CKEDITOR.replace( 'editor1',{
+            filebrowserUploadUrl: '{{ route('upload',['_token' => csrf_token() ]) }}'
         });
     </script>
+    

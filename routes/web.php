@@ -1,7 +1,9 @@
 <?php
 
-Route::get('/summer', function () {
-    return view('summer');
+Route::post('upload_image','CkeditorController@uploadImage')->name('upload');
+
+Route::get('/cke', function () {
+    return view('cke');
 });
 
 Route::get('comentarios', 'CommentController@index');

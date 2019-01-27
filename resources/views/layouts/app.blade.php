@@ -11,17 +11,9 @@
     <title>{{ config('app.name', 'Conexão') }}</title>
 
     <!-- Scripts -->
+    
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script> 
-    <script src="//cdn.quilljs.com/1.3.6/quill.min.js"></script>
-    <script src="//cdn.quilljs.com/1.3.6/quill.core.js"></script>
-    
-    
-    <!-- Core build with no theme, formatting, non-essential modules -->
-    <link href="//cdn.quilljs.com/1.3.6/quill.core.css" rel="stylesheet">
-    
-    {{-- <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.js"></script> --}}
     
     <!-- Fonts -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
@@ -31,11 +23,6 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     
-    <link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
-    <link href="//cdn.quilljs.com/1.3.6/quill.bubble.css" rel="stylesheet">
-    
-    {{-- <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
-    <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.css" rel="stylesheet"> --}}
 </head>
 <body>
     <div id="app">
@@ -92,6 +79,5 @@
             @yield('content')
         </main>
     </div>
-    
 </body>
 </html>
