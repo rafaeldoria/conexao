@@ -1,8 +1,8 @@
 <?php
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/cke', function () {
+    return view('cke');
+});
 
 Route::get('comentarios', 'CommentController@index');
 Route::get('artigos/{id}', 'ArticleController@showBlog');
@@ -18,10 +18,12 @@ Route::middleware(['auth'])->prefix('admin')->group(function(){
     Route::get('artigos', 'ArticleController@index')->middleware('can:administrator')->name('articles');
     Route::get('artigo/novo', 'ArticleController@create')->middleware('can:author');
     Route::get('artigo/{id}', 'ArticleController@show')->middleware('can:author');
-    Route::post('artigo/salvar', 'ArticleController@store')->middleware('can:author')->name('newArticles');
+    Route::post('artigo/salvar', 'ArticleController@store')->middleware('can:author')->name('newArticles'); 
+    Route::post('artigo/guardar/{id}', 'ArticleController@save')->middleware('can:author')->name('saveArticle'); 
     Route::get('artigo/{id}/editar', 'ArticleController@edit')->middleware('can:author');
     Route::patch('artigo/{id}/alterar', 'ArticleController@update')->middleware('can:author');
     Route::delete('artigo/{id}/excluir', 'ArticleController@destroy')->middleware('can:administrator')->name('deleteArticles');
+    Route::get('artigo/{id}/escrever', 'ArticleController@write');
     Route::get('usuarios', 'UserController@index')->middleware('can:administrator')->name('users');
     Route::get('usuario/novo', 'UserController@create')->middleware('can:administrator');
     Route::post('usuario/salvar', 'UserController@store')->middleware('can:administrator')->name('newUsers');
@@ -37,6 +39,7 @@ Route::middleware(['auth'])->group(function(){
     Route::get('comentario/{id}/editar', 'CommentController@edit');
     Route::put('comentario/{id}/alterar', 'CommentController@update');
     Route::delete('comentario/{id}/excluir', 'CommentController@destroy');
+    Route::post('upload_image','ImageController@uploadImage')->name('upload');
 });
 
 Route::middleware(['auth'])->group(function(){

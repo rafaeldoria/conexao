@@ -13,7 +13,7 @@
     {{--  <link rel="icon" href="img/core-img/favicon.ico">  --}}
 
     <!-- Scripts -->
-    <script src="{{ asset('js/jquery/jquery-2.2.4.min.js') }}" defer></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script> 
     <script src="{{ asset('js/popper.min.js') }}" defer></script>
     <script src="{{ asset('js/bootstrap.min.js') }}" defer></script>
     <script src="{{ asset('js/plugins.js') }}" defer></script>

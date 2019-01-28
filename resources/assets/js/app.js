@@ -7,7 +7,7 @@
 
 require('./bootstrap');
 
-window.Vue = require('vue');
+// window.Vue = require('vue');
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -15,11 +15,11 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
+// Vue.component('example-component', require('./components/ExampleComponent.vue'));
 
-const app = new Vue({
-    el: '#app'
-});
+// const app = new Vue({
+//     el: '#app'
+// });
 
 $(document).ready(function () {
     $('.edit_user').click(function () {
@@ -83,4 +83,12 @@ $(document).ready(function () {
         $('.deleteArticleModal').modal('show');
         $('.deleteArticleModal').find("#deleteArticle").attr('action', '/admin/artigo/' + id + '/excluir');
     });
+
+    $('.write_article').click(function (){
+        id = this.id;
+        window.location.href = '/admin/artigo/'+id+'/escrever';
+    });
+
+    
+
 });
