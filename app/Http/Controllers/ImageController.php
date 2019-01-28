@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 
-class CkeditorController extends Controller
+class ImageController extends Controller
 {
     public function uploadImage(Request $request) {
 	$CKEditor = $request->input('CKEditor');

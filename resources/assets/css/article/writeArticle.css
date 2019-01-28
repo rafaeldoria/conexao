@@ -156,3 +156,30 @@ main textarea:focus {
 .subtitle-text{
   color: #585857;
 }
+
+.save_article{
+  margin-top: 10px;
+  background-color: #40aF43;
+  border-color: #2f9e32;
+  width: 150px;
+  font-size: 18px;
+  margin-bottom: 10px;
+  float: right;
+}
+.save_article:hover,
+.save_article:active,
+.save_article:visited,
+.save_article:link,
+.save_article:focus{
+  background-color: #1d8c21;
+  border-color: #259428;
+}
+
+.btn-primary:not(:disabled):not(.disabled):active {
+  background-color: #1d8c21;
+  border-color: #259428;
+}
+
+.no-padding-right {
+    padding-right: 0px;
+}

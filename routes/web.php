@@ -1,7 +1,5 @@
 <?php
 
-Route::post('upload_image','CkeditorController@uploadImage')->name('upload');
-
 Route::get('/cke', function () {
     return view('cke');
 });
@@ -40,6 +38,7 @@ Route::middleware(['auth'])->group(function(){
     Route::get('comentario/{id}/editar', 'CommentController@edit');
     Route::put('comentario/{id}/alterar', 'CommentController@update');
     Route::delete('comentario/{id}/excluir', 'CommentController@destroy');
+    Route::post('upload_image','ImageController@uploadImage')->name('upload');
 });
 
 Route::middleware(['auth'])->group(function(){

@@ -52,12 +52,26 @@
 						</div>
 					</div>	
 
-					<textarea name="editor1" id="editor1" rows="10" cols="80">
-						This is my textarea to be replaced with CKEditor.
-					</textarea>
+					<div class="class-body mx-4">
+						<textarea name="details_article" id="details_article" rows="10" cols="80">
+							@if($article->details_article)
+								{{$article->details_article}}
+							@else
+								Comece aqui a digitar seu artigo...
+							@endif
+						</textarea>
+					</div>
+
+					<div class="class-body mx-4">
+						<div class="col-md-3 offset-md-9 no-padding-right">
+							<button type="submit" class="btn btn-primary save_article">
+								{{ __('Salvar') }}
+							</button>
+						</div>
+					</div>
 			</section>
 		</div>
 	</div>
 </div>
-@include('layouts.quill.quill')
+@include('layouts.ckeditor.ckeditor')
 @endsection
