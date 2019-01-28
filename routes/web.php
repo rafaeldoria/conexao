@@ -18,7 +18,8 @@ Route::middleware(['auth'])->prefix('admin')->group(function(){
     Route::get('artigos', 'ArticleController@index')->middleware('can:administrator')->name('articles');
     Route::get('artigo/novo', 'ArticleController@create')->middleware('can:author');
     Route::get('artigo/{id}', 'ArticleController@show')->middleware('can:author');
-    Route::post('artigo/salvar', 'ArticleController@store')->middleware('can:author')->name('newArticles');
+    Route::post('artigo/salvar', 'ArticleController@store')->middleware('can:author')->name('newArticles'); 
+    Route::post('artigo/guardar/{id}', 'ArticleController@save')->middleware('can:author')->name('saveArticle'); 
     Route::get('artigo/{id}/editar', 'ArticleController@edit')->middleware('can:author');
     Route::patch('artigo/{id}/alterar', 'ArticleController@update')->middleware('can:author');
     Route::delete('artigo/{id}/excluir', 'ArticleController@destroy')->middleware('can:administrator')->name('deleteArticles');

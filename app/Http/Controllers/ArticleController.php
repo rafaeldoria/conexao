@@ -124,4 +124,17 @@ class ArticleController extends Controller
         $typeArticle = TypeArticle::all();
         return view('admin.writeArticle', compact('breadcrumb', 'article', 'typeArticle'));
     }
+
+    public function Save(Request $request, $id)
+    {   
+        Article::where('id', $id)
+            ->update([
+                'title' => $request['title'],
+                'summary' => $request['summary'],
+                'details_article' => $request['details_article'],
+                'type_article_id' => $request["type_articleEdit"],
+            ]);
+        $request->session()->flash('alert-primary', 'Detalhes Artigo guardado.');
+        return redirect()->route('articles');
+    }
 }
