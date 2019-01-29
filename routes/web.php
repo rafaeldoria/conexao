@@ -4,7 +4,6 @@ Route::get('/cke', function () {
     return view('cke');
 });
 
-Route::get('comentarios', 'CommentController@index');
 Route::get('artigos/{id}', 'ArticleController@showBlog');
 
 Auth::routes();
@@ -31,14 +30,15 @@ Route::middleware(['auth'])->prefix('admin')->group(function(){
     Route::get('usuario/{id}/editar', 'UserController@edit')->middleware('can:administrator');
     Route::patch('usuario/{id}/alterar', 'UserController@update')->middleware('can:administrator')->name('editUsers');
     Route::delete('usuario/{id}/excluir', 'UserController@destroy')->middleware('can:administrator')->name('deleteUsers');
-});
-
-Route::middleware(['auth'])->group(function(){
+    Route::get('comentarios', 'CommentController@index')->name('comments');
     Route::get('comentario/novo', 'CommentController@create');
     Route::post('comentario/salvar', 'CommentController@store');
     Route::get('comentario/{id}/editar', 'CommentController@edit');
     Route::put('comentario/{id}/alterar', 'CommentController@update');
     Route::delete('comentario/{id}/excluir', 'CommentController@destroy');
+});
+
+Route::middleware(['auth'])->group(function(){
     Route::post('upload_image','ImageController@uploadImage')->name('upload');
 });
 

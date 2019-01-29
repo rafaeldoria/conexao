@@ -31,6 +31,7 @@
 					<div class="card-body col-md-6">
 						<a href="{{route('users')}}" class="btn btn-primary"><i class="fas fa-users"></i>Usuários</a>
 						<a href="{{route('articles')}}" class="btn btn-warning"><i class="fas fa-book-reader"></i>Artigos</a>
+						<a href="{{route('comments')}}" class="btn btn-warning"><i class="fas fa-book-reader"></i>Comentários</a>
 					</div>
 				</div>
             </div>

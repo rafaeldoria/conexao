@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Comment;
 
 class CommentController extends Controller
 {
@@ -13,7 +14,13 @@ class CommentController extends Controller
      */
     public function index()
     {
-        //
+        $breadcrumb = [
+            ["title" => "Home", "route" => route('conexao')],
+            ["title" => "Comentários", "route" => ""]
+        ];
+
+        $comments = Comment::all();
+        return view('admin.comment', compact('breadcrumb', 'comments'));
     }
 
     /**
