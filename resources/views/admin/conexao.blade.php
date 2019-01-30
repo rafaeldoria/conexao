@@ -28,9 +28,16 @@
 					</div>
 				</div>
 				<div class="col-md-12">
-					<div class="card-body col-md-6">
-						<a href="{{route('users')}}" class="btn btn-primary"><i class="fas fa-users"></i>Usuários</a>
-						<a href="{{route('articles')}}" class="btn btn-warning"><i class="fas fa-book-reader"></i>Artigos</a>
+					<div class="row">
+						<div class="card-body col-md-3">
+							<a href="{{route('users')}}" class="btn btn-primary"><i class="fas fa-users"></i>Usuários</a>
+						</div>
+						<div class="card-body col-md-3">
+							<a href="{{route('articles')}}" class="btn btn-warning"><i class="fas fa-book-reader"></i>Artigos</a>
+						</div>
+						<div class="card-body col-md-3">
+							<a href="{{route('comments')}}" class="btn btn-info"><i class="fas fa-comments"></i>Comentários</a>
+						</div>
 					</div>
 				</div>
             </div>

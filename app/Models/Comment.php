@@ -10,13 +10,13 @@ class Comment extends Model
         'txt_message', 'article_id', 'user_id'
     ];
 
-    public function typeUser()
+    public function user()
     {
-        return $this->hasOne('App\Models\TypeUser');
+        return $this->hasOne('App\Models\user', 'id', 'user_id');
     }
 
     public function article()
     {
-        return $this->hasOne('App\Models\Article');
+        return $this->hasOne('App\Models\Article', 'id', 'article_id');
     }
 }

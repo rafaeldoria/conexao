@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Comment;
 
 class CommentController extends Controller
 {
@@ -13,7 +14,13 @@ class CommentController extends Controller
      */
     public function index()
     {
-        //
+        $breadcrumb = [
+            ["title" => "Home", "route" => route('conexao')],
+            ["title" => "Comentários", "route" => ""]
+        ];
+
+        $comments = Comment::all();
+        return view('admin.comment', compact('breadcrumb', 'comments'));
     }
 
     /**
@@ -45,7 +52,8 @@ class CommentController extends Controller
      */
     public function show($id)
     {
-        //
+        $comment = Comment::find($id);
+        return $comment->toJson();
     }
 
     /**
@@ -68,7 +76,12 @@ class CommentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Comment::where('id', $id)
+            ->update([
+                'txt_message' => $request['txt_mensagemEdit'],
+            ]);
+        $request->session()->flash('alert-primary', 'Alteração Efetuada.');
+        return redirect()->route('comments');
     }
 
     /**
@@ -77,8 +90,20 @@ class CommentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+        $comment = Comment::find($id);
+        $comment->delete();
+        $request->session()->flash('alert-warning', 'Comentário Deletado.');
+        return redirect()->route('comments');
+    }
+
+    public function view($id)
+    {
+        $comment = Comment::find($id);
+        $comment->article_title = $comment->article->title;
+        $comment->username = $comment->user->username;
+        $comment->data_created = formatDateAndTime($comment->created_at, 'd/m/Y');
+        return $comment->toJson();
     }
 }

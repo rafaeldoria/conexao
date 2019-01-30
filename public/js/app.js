@@ -13826,6 +13826,43 @@ $(document).ready(function () {
         id = this.id;
         window.location.href = '/admin/artigo/' + id + '/escrever';
     });
+
+    $('.edit_comment').click(function () {
+        id = this.id;
+        $.ajax({
+            url: '/admin/comentario/' + id,
+            type: 'GET',
+            success: function success(data) {
+                comment = JSON.parse(data);
+                $('.editCommentModal').modal('show');
+                $('.editCommentModal').find('#txt_mensagemEdit').val(comment.txt_message);
+                $('.editCommentModal').find("#editComment").attr('action', '/admin/comentario/' + comment.id + '/alterar');
+            }
+        });
+    });
+
+    $('.view_comment').click(function () {
+        id = this.id;
+        $.ajax({
+            url: '/admin/comentario/' + id,
+            type: 'GET',
+            success: function success(data) {
+                console.log(data);
+                comment = JSON.parse(data);
+                $('.viewCommentModal').modal('show');
+                $('.viewCommentModal').find('#title').text(comment.article_title);
+                $('.viewCommentModal').find('#username').text(comment.username);
+                $('.viewCommentModal').find('#txt_mensagem').text(comment.txt_message);
+                $('.viewCommentModal').find('#created_at').text(comment.data_created);
+            }
+        });
+    });
+
+    $('.delete_comment').click(function () {
+        id = this.id;
+        $('.deleteCommentModal').modal('show');
+        $('.deleteCommentModal').find("#deleteComment").attr('action', '/admin/comentario/' + id + '/excluir');
+    });
 });
 
 /***/ }),

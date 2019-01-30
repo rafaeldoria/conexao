@@ -51,7 +51,7 @@
 						<td>{{$user->id}}</td>
 						<td>{{$user->username}}</td>
 						<td>{{$user->email}}</td>
-						<td>{{$user->typeUser->desc_type_user}}</td>
+						<td>{{$user->typeUser->desc_type_user}}</td> 
 						<td>{{$user->created_at->format('d/m/Y')}}</td>
 						<td>
 							<button class="btn btn-success btn-xs view_user" id="{{$user->id}}"><i class="far fa-eye"></i></button>
