@@ -78,7 +78,7 @@ class CommentController extends Controller
     {
         Comment::where('id', $id)
             ->update([
-                'txt_mensagem' => $request['txt_mensagemEdit'],
+                'txt_message' => $request['txt_mensagemEdit'],
             ]);
         $request->session()->flash('alert-primary', 'Alteração Efetuada.');
         return redirect()->route('comments');
@@ -90,8 +90,20 @@ class CommentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+        $comment = Comment::find($id);
+        $comment->delete();
+        $request->session()->flash('alert-warning', 'Comentário Deletado.');
+        return redirect()->route('comments');
+    }
+
+    public function view($id)
+    {
+        $comment = Comment::find($id);
+        $comment->article_title = $comment->article->title;
+        $comment->username = $comment->user->username;
+        $comment->data_created = formatDateAndTime($comment->created_at, 'd/m/Y');
+        return $comment->toJson();
     }
 }

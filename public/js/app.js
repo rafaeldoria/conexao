@@ -13835,8 +13835,8 @@ $(document).ready(function () {
             success: function success(data) {
                 comment = JSON.parse(data);
                 $('.editCommentModal').modal('show');
-                $('.editCommentModal').find('#txt_mensagemEdit').val(comment.txt_mensagem);
-                $('.editCommentModal').find("#editComment").attr('action', '/admin/comment/' + comment.id + '/alterar');
+                $('.editCommentModal').find('#txt_mensagemEdit').val(comment.txt_message);
+                $('.editCommentModal').find("#editComment").attr('action', '/admin/comentario/' + comment.id + '/alterar');
             }
         });
     });
@@ -13847,13 +13847,21 @@ $(document).ready(function () {
             url: '/admin/comentario/' + id,
             type: 'GET',
             success: function success(data) {
+                console.log(data);
+                comment = JSON.parse(data);
                 $('.viewCommentModal').modal('show');
-                $('.viewCommentModal').find('#title').text(data.title);
-                $('.viewCommentModal').find('#username').text(data.user_id);
-                $('.viewCommentModal').find('#txt_mensagem').text(data.txt_mensagem);
-                $('.viewCommentModal').find('#created_at').text(data.created_at);
+                $('.viewCommentModal').find('#title').text(comment.article_title);
+                $('.viewCommentModal').find('#username').text(comment.username);
+                $('.viewCommentModal').find('#txt_mensagem').text(comment.txt_message);
+                $('.viewCommentModal').find('#created_at').text(comment.data_created);
             }
         });
+    });
+
+    $('.delete_comment').click(function () {
+        id = this.id;
+        $('.deleteCommentModal').modal('show');
+        $('.deleteCommentModal').find("#deleteComment").attr('action', '/admin/comentario/' + id + '/excluir');
     });
 });
 
