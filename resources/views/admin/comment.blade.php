@@ -2,7 +2,6 @@
 
 @section('content')
 <link href="{{ asset('css/adminLte.min.css') }}" rel="stylesheet">
-
 <div class="container">
 	<div class="row justify-content-center">
 		<div class="col-md-10">
@@ -33,8 +32,7 @@
         <div class="col-md-10">
           <div class="box">
             <div class="box-header with-border">
-				  <h3 class="box-title">Usuários</h3>
-				  <!-- <h5 class="float-right"><button class="btn btn-primary btn-xs" data-toggle="modal" data-target=".newCommentModal"><i class="far fa-plus-square"></i></button></h5> -->
+				  <h3 class="box-title">Comentários</h3>
             </div>
             <div class="box-body">
               <table class="table table-bordered table-hover dataTable" role="grid">
@@ -42,16 +40,16 @@
 					<th style="width: 10px">#</th>
 					<th style="width: 40px">Mensagem</th>
 					<th style="width: 40px">Artigo</th>
-					<th style="width: 40px">usuário</th>
+					<th style="width: 40px">Usuário</th>
 					<th style="width: 40px">Desde</th>
 					<th style="width: 40px">Açoes</th>
                 </tr>
 				@foreach ($comments as $comment)
 					<tr>
 						<td>{{$comment->id}}</td>
-						<td style="width:50px;height:349px; overflow:hidden;">{{$comment->txt_mensagem}}</td>
+						<td style=overflow:hidden">{{$comment->txt_message}}</td>
 						<td>{{$comment->article->title}}</td>
-						<td>{{$comment->typeUser->desc_type_user}}</td>
+						<td>{{$comment->user->username}}</td>
 						<td>{{$comment->created_at->format('d/m/Y')}}</td>
 						<td>
 							<button class="btn btn-success btn-xs view_comment" id="{{$comment->id}}"><i class="far fa-eye"></i></button>
@@ -81,6 +79,7 @@
     </div>
 </div>	
 	
-
+@include('layouts.modals.Comment.viewCommentModal')
+@include('layouts.modals.Comment.editCommentModal')
 
 @endsection

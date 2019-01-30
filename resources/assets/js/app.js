@@ -114,7 +114,6 @@ $(document).ready(function () {
                 $('.viewCommentModal').find('#username').text(data.user_id);
                 $('.viewCommentModal').find('#txt_mensagem').text(data.txt_mensagem);
                 $('.viewCommentModal').find('#created_at').text(data.created_at);
-                $('.viewUserModal').find('#img_user').attr("src", "/storage/images/profiles/"+data.img_user_link);
             }
         });
     });
