@@ -89,6 +89,34 @@ $(document).ready(function () {
         window.location.href = '/admin/artigo/'+id+'/escrever';
     });
 
-    
+    $('.edit_comment').click(function () {
+        id = this.id;
+        $.ajax({
+            url: '/admin/comentario/'+id,
+            type: 'GET',
+            success: function (data) {
+                comment = JSON.parse(data);
+                $('.editCommentModal').modal('show');
+                $('.editCommentModal').find('#txt_mensagemEdit').val(comment.txt_mensagem);
+                $('.editCommentModal').find("#editComment").attr('action', '/admin/comment/' + comment.id + '/alterar');
+            }
+        });
+    });
+
+    $('.view_comment').click(function () {
+        id = this.id;
+        $.ajax({
+            url: '/admin/comentario/'+id,
+            type: 'GET',
+            success: function (data) {
+                $('.viewCommentModal').modal('show');
+                $('.viewCommentModal').find('#title').text(data.title);
+                $('.viewCommentModal').find('#username').text(data.user_id);
+                $('.viewCommentModal').find('#txt_mensagem').text(data.txt_mensagem);
+                $('.viewCommentModal').find('#created_at').text(data.created_at);
+                $('.viewUserModal').find('#img_user').attr("src", "/storage/images/profiles/"+data.img_user_link);
+            }
+        });
+    });
 
 });

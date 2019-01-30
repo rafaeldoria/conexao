@@ -49,7 +49,7 @@
 				@foreach ($comments as $comment)
 					<tr>
 						<td>{{$comment->id}}</td>
-						<td>{{$comment->txt_mensagem}}</td>
+						<td style="width:50px;height:349px; overflow:hidden;">{{$comment->txt_mensagem}}</td>
 						<td>{{$comment->article->title}}</td>
 						<td>{{$comment->typeUser->desc_type_user}}</td>
 						<td>{{$comment->created_at->format('d/m/Y')}}</td>

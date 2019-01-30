@@ -52,7 +52,8 @@ class CommentController extends Controller
      */
     public function show($id)
     {
-        //
+        $comment = Comment::find($id);
+        return $comment->toJson();
     }
 
     /**
@@ -75,7 +76,12 @@ class CommentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Comment::where('id', $id)
+            ->update([
+                'txt_mensagem' => $request['txt_mensagemEdit'],
+            ]);
+        $request->session()->flash('alert-primary', 'Alteração Efetuada.');
+        return redirect()->route('comments');
     }
 
     /**

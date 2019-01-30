@@ -1,8 +1,8 @@
 <?php
 
-Route::get('/cke', function () {
-    return view('cke');
-});
+// Route::get('/cke', function () {
+//     return view('cke');
+// });
 
 Route::get('artigos/{id}', 'ArticleController@showBlog');
 
@@ -30,11 +30,12 @@ Route::middleware(['auth'])->prefix('admin')->group(function(){
     Route::get('usuario/{id}/editar', 'UserController@edit')->middleware('can:administrator');
     Route::patch('usuario/{id}/alterar', 'UserController@update')->middleware('can:administrator')->name('editUsers');
     Route::delete('usuario/{id}/excluir', 'UserController@destroy')->middleware('can:administrator')->name('deleteUsers');
+    Route::get('comentario/{id}', 'UserController@show')->middleware('can:administrator');
     Route::get('comentarios', 'CommentController@index')->name('comments');
     Route::get('comentario/novo', 'CommentController@create');
     Route::post('comentario/salvar', 'CommentController@store');
     Route::get('comentario/{id}/editar', 'CommentController@edit');
-    Route::put('comentario/{id}/alterar', 'CommentController@update');
+    Route::patch('comentario/{id}/alterar', 'CommentController@update')->middleware('can:administrator')->name('EditComments');
     Route::delete('comentario/{id}/excluir', 'CommentController@destroy');
 });
 
