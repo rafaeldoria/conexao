@@ -6,8 +6,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Session;
 use App\Models\UserData;
+use App\Models\User;
 use App\Http\Resources\UserTransformer;
 use App\Http\Resources\UserDataTransformer;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\SendMailUser;
 
 class ConexaoController extends Controller
 {
@@ -36,5 +39,12 @@ class ConexaoController extends Controller
             Session::put('userData.data', $userData);
         }
         return view('admin.conexao');
+    }
+
+    public function sendEmailTest(Request $request)
+    {   
+        $id = 1;
+        $user = User::where('id', $id)->first();
+        Mail::to($user->email)->send(new SendMailUser($user));
     }
 }
