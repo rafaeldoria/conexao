@@ -6,6 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
+use App\Models\User;
 
 class ResetPassword extends Notification
 {
@@ -40,12 +41,14 @@ class ResetPassword extends Notification
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
     public function toMail($notifiable)
-    {
+    {   
+        $url = url(config('app.url').route('password.reset', $this->token, false));
         return (new MailMessage)
-            ->subject('Alterar Senha - ConexãoNerd')
-            ->line('Você está recebendo este e-mail porque recebemos um pedido de redefinição de senha para sua conta.')
-            ->action('Resetar Senha', url(config('app.url').route('password.reset', $this->token, false)))
-            ->line('Se você não solicitou uma alteração da senha, nenhuma ação adicional é necessária.');
+                ->subject('Alterar Senha - ConexãoNerd')
+                ->markdown('mail.password.resetPassword', [
+                    'url' => $url,
+                    'user' => $notifiable
+                ]);
     }
 
     /**
