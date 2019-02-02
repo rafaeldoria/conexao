@@ -41,10 +41,4 @@ class ConexaoController extends Controller
         return view('admin.conexao');
     }
 
-    public function sendEmailTest(Request $request)
-    {   
-        $id = 1;
-        $user = User::where('id', $id)->first();
-        Mail::to($user->email)->send(new SendMailUser($user));
-    }
 }
