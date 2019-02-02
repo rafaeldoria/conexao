@@ -15,3 +15,4 @@ yarn-error.log
 /public/*
 /storage/*
 storage/public/*
+public/*

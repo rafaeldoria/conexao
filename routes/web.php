@@ -53,5 +53,3 @@ Route::middleware(['auth'])->group(function(){
     Route::delete('dados/{id}/excluir', 'UserDataController@destroy')->middleware('can:administrator');
     Route::get('dados/completos/{id}', 'UserController@showComplete');
 });
-
-Route::get('email/dados_usuario', 'ConexaoController@sendEmailTest')->name('emailTest');
