@@ -1571,4 +1571,9 @@ li {
 .btn-link-conexao:disabled:hover {
     text-decoration: none
 }
+
+.alert-login{
+    padding: 0px;
+    margin-top: 1rem;
+}
 /* #fc6c3f */

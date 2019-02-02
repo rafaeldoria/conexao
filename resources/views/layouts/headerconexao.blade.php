@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="logo_area text-center">
-                    <a href="index.html" class="yummy-logo">ConexaoNerd</a>
+                    <a href="{{route('home')}}" class="yummy-logo">ConexaoNerd</a>
                 </div>
             </div>
         </div>
@@ -20,7 +20,7 @@
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="yummyDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Páginas</a>
                                 <div class="dropdown-menu" aria-labelledby="yummyDropdown">
-                                    <a class="dropdown-item" href="index.html">Home</a>
+                                    <a class="dropdown-item" href="{{route('home')}}">Home</a>
                                     <a class="dropdown-item" href="archive.html">Posts</a>
                                     <a class="dropdown-item" href="contact.html">Contato</a>
                                 </div>

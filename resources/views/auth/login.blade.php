@@ -17,7 +17,16 @@
                 <div class="col-md-8">
                     <div class="card">
                         <div class="card-header">{{ __('Login') }}</div>
+                        <div class="row offset-2">
+                            @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+                            @if(Session::has('alert-' . $msg))
+                                <div class="alert alert-{{ $msg }} col-md-10">
 
+                                    {{ Session::get('alert-' . $msg) }} <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                </div>
+                                @endif
+                            @endforeach
+                        </div>
                         <div class="card-body">
                             <form method="POST" action="{{ route('login') }}" aria-label="{{ __('Login') }}">
                                 @csrf

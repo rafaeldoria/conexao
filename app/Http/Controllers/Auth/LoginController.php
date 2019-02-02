@@ -27,7 +27,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/admin/conexao';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -62,9 +62,14 @@ class LoginController extends Controller
         );
     }
 
+    protected function authenticated(Request $request, $user)
+    {
+        $request->session()->flash('alert-success', trans('auth.login-success'));
+    }
+
     protected function sendFailedLoginResponse(Request $request)
     {
-        $request->session()->put('login_error', trans('auth.failed'));
+        $request->session()->flash('alert-danger', trans('auth.failed'));
         throw ValidationException::withMessages(
             [
                 'error' => [trans('auth.failed')],

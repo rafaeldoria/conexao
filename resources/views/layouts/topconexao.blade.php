@@ -20,6 +20,16 @@
                                 <a href="{{ route('register') }}">{{ __('Cadastrar') }}</a>
                             </div>
                         @else
+                            <div class="">
+                                @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+                                @if(Session::has('alert-' . $msg))
+                                    <div class="alert alert-{{ $msg }} alert-login col-md-12">
+
+                                        {{ Session::get('alert-' . $msg) }} <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                    </div>
+                                    @endif
+                                @endforeach
+                            </div>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} 
