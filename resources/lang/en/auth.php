@@ -13,7 +13,9 @@ return [
     |
     */
 
-    'failed' => 'These credentials do not match our records.',
-    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
+    'failed' => 'Hum, erro ao realizar login, dados inválidos.',
+    'throttle' => 'Muitas tentativas de login. Por favor, tente novamente em :segundos segundos.',
+    'login-succes' => 'Bem vindo! Login realizado com sucesso.',
+    'register-succes' => 'Ótimo! Cadastro efetuado com sucesso.'
 
 ];
