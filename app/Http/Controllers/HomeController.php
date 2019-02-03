@@ -29,6 +29,21 @@ class HomeController extends Controller
         $typeArticles = TypeArticle::where('status_type_article', 'A')->get();
         $fourArticles = Article::where('visibility', 'S')->orderBy('created_at', 'desc')->limit(2)->get();
         $imagesInstagram = InstagramImage::where('visibility', 'S')->get();
-        return view('index', compact('articles', 'typeArticles', 'fourArticles', 'imagesInstagram'));
+        $active = 'home';
+        return view('index', compact('articles', 'typeArticles', 'fourArticles', 'imagesInstagram', 'active'));
+    }
+
+    public function contact()
+    {
+        $typeArticles = TypeArticle::where('status_type_article', 'A')->get();
+        $active = 'contact';
+        return view('contact', compact('typeArticles', 'active'));
+    }
+
+    public function about()
+    {
+        $typeArticles = TypeArticle::where('status_type_article', 'A')->get();
+        $active = 'about';
+        return view('about', compact('typeArticles', 'active'));
     }
 }

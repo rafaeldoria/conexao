@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
+use App\Models\TypeArticle;
 
 class LoginController extends Controller
 {
@@ -37,6 +38,13 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    public function showLoginForm()
+    {
+        $typeArticles = TypeArticle::where('status_type_article', 'A')->get();
+        $active = 'home';
+        return view('auth.login', compact('typeArticles', 'active'));
     }
 
     public function username()
