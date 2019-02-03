@@ -31,4 +31,16 @@ class HomeController extends Controller
         $imagesInstagram = InstagramImage::where('visibility', 'S')->get();
         return view('index', compact('articles', 'typeArticles', 'fourArticles', 'imagesInstagram'));
     }
+
+    public function contact()
+    {
+        $typeArticles = TypeArticle::where('status_type_article', 'A')->get();
+        return view('contact', compact('typeArticles'));
+    }
+
+    public function about()
+    {
+        $typeArticles = TypeArticle::where('status_type_article', 'A')->get();
+        return view('about', compact('typeArticles'));
+    }
 }

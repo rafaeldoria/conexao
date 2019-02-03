@@ -27,6 +27,19 @@ class ArticleController extends Controller
         return view('admin.article', compact('breadcrumb', 'articles', 'typeArticle'));
     }
 
+    public function view()
+    {   
+        $breadcrumb = [
+            ["title" => "Home", "route" => route('conexao')],
+            ["title" => "Lista de Artigos", "route" => ""]
+        ];
+
+        $articles = Article::all();
+        $typeArticle = TypeArticle::all();
+        dd($articles);
+        return view('articles', compact('breadcrumb', 'articles', 'typeArticle'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *

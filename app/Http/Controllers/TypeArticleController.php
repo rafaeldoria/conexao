@@ -14,11 +14,11 @@ class TypeArticleController extends Controller
      */
     public function index()
     {
-        $typeArticles = TypeArticle::all();
+        return TypeArticle::all();
         // empty($typeArticles) ? '' : $typeArticles = 'vazio';
-        foreach ($typeArticles as $key => $value) {
-            var_dump($value->desc_type_article);
-        }
+        // foreach ($typeArticles as $key => $value) {
+        //     var_dump($value->desc_type_article);
+        // }
         // dd($typeArticles);
     }
 
@@ -51,7 +51,8 @@ class TypeArticleController extends Controller
      */
     public function show($id)
     {
-        //
+        $typeArticle = TypeArticle::find($id);
+        dd($typeArticle);
     }
 
     /**

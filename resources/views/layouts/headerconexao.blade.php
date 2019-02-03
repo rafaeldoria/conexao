@@ -7,7 +7,6 @@
                 </div>
             </div>
         </div>
-
         <div class="row">
             <div class="col-12">
                 <nav class="navbar navbar-expand-lg">
@@ -18,21 +17,21 @@
                                 <a class="nav-link" href="{{route('home')}}">Home <span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="yummyDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Páginas</a>
+                                <a class="nav-link dropdown-toggle" href="#" id="yummyDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Menus</a>
                                 <div class="dropdown-menu" aria-labelledby="yummyDropdown">
-                                    <a class="dropdown-item" href="{{route('home')}}">Home</a>
-                                    <a class="dropdown-item" href="archive.html">Posts</a>
-                                    <a class="dropdown-item" href="contact.html">Contato</a>
+                                @foreach ($typeArticles as $value)
+                                    <a class="dropdown-item" href="{{route('getTypeArticle', ['id' => $value->id])}}">{{$value->desc_type_article}}</a>
+                                @endforeach
                                 </div>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Menu</a>
+                                <a class="nav-link" href="{{route('allArticles')}}">Geral</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Sobre</a>
+                                <a class="nav-link" href="{{route('contact')}}">Contato</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="contact.html">Contato</a>
+                                <a class="nav-link" href="{{route('about')}}">O ConexãoNerd</a>
                             </li>
                         </ul>
                     </div>
