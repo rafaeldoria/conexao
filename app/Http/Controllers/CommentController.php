@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use App\Models\Comment;
 
 class CommentController extends Controller
@@ -41,7 +42,7 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validator($request->all())->validate();
     }
 
     /**
@@ -76,6 +77,7 @@ class CommentController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validator($request->all())->validate();
         Comment::where('id', $id)
             ->update([
                 'txt_message' => $request['txt_mensagemEdit'],
@@ -105,5 +107,12 @@ class CommentController extends Controller
         $comment->username = $comment->user->username;
         $comment->data_created = formatDateAndTime($comment->created_at, 'd/m/Y');
         return $comment->toJson();
+    }
+
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'txt_message' => 'required|string|max:255',
+        ]);
     }
 }
