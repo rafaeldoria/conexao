@@ -13,7 +13,7 @@
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#yummyfood-nav" aria-controls="yummyfood-nav" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars" aria-hidden="true"></i> Menu</button>
                     <div class="collapse navbar-collapse justify-content-center" id="yummyfood-nav">
                         <ul class="navbar-nav" id="yummy-nav">
-                            <li class="nav-item active">
+                            <li @if ($active == 'home') class="nav-item active" @else class="nav-item"  @endif>
                                 <a class="nav-link" href="{{route('home')}}">Home <span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item dropdown">
@@ -24,13 +24,13 @@
                                 @endforeach
                                 </div>
                             </li>
-                            <li class="nav-item">
+                            <li @if ($active == 'allArticles') class="nav-item active" @else class="nav-item"  @endif>
                                 <a class="nav-link" href="{{route('allArticles')}}">Geral</a>
                             </li>
-                            <li class="nav-item">
+                            <li @if ($active == 'contact') class="nav-item active" @else class="nav-item"  @endif>
                                 <a class="nav-link" href="{{route('contact')}}">Contato</a>
                             </li>
-                            <li class="nav-item">
+                            <li @if ($active == 'about') class="nav-item active" @else class="nav-item"  @endif>
                                 <a class="nav-link" href="{{route('about')}}">O ConexãoNerd</a>
                             </li>
                         </ul>
