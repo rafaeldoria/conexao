@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use App\Models\UserData;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Resources\UserDataTransformer;
@@ -50,7 +51,7 @@ class UserDataController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validator($request->all())->validate();        
     }
 
     /**
@@ -96,5 +97,13 @@ class UserDataController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'user_id' => 'required|int',
+            'name' => 'required|string|max:255',
+        ]);
     }
 }

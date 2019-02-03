@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use App\Models\Article;
 use App\Models\TypeArticle;
 use App\Http\Resources\ArticleTransformer;
@@ -58,10 +59,12 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {   
+        $this->validator($request->all())->validate();
         $user_data_id = Session::get('userData.data')["id"];
         Article::create([
             'title' => $request['title'],
             'details_article' => '',
+            'summary' => 'Insira detalhes',
             'type_article_id' => $request->type_article,
             'user_data_id' => $user_data_id,
             'visibility' => 'N'
@@ -102,6 +105,7 @@ class ArticleController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validator($request->all())->validate();
         Article::where('id', $id)
             ->update([
                 'title' => $request['title'],
@@ -140,6 +144,7 @@ class ArticleController extends Controller
 
     public function Save(Request $request, $id)
     {   
+        $this->validator($request->all())->validate();        
         Article::where('id', $id)
             ->update([
                 'title' => $request['title'],
@@ -150,4 +155,14 @@ class ArticleController extends Controller
         $request->session()->flash('alert-primary', 'Detalhes Artigo guardado.');
         return redirect()->route('articles');
     }
+
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'title' => 'required|string|max:255',
+            'summary' => 'string|max:255',
+            'visibility' => 'string|max:1',
+        ]);
+    }
+
 }
