@@ -13863,6 +13863,17 @@ $(document).ready(function () {
         $('.deleteCommentModal').modal('show');
         $('.deleteCommentModal').find("#deleteComment").attr('action', '/admin/comentario/' + id + '/excluir');
     });
+
+    $('.alter_visibility').click(function () {
+        id = this.id;
+        $.ajax({
+            url: '/admin/article/alterarVisibilidade/' + id,
+            type: 'GET',
+            success: function success() {
+                location.reload();
+            }
+        });
+    });
 });
 
 /***/ }),

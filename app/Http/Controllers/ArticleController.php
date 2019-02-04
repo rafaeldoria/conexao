@@ -144,7 +144,7 @@ class ArticleController extends Controller
 
     public function Save(Request $request, $id)
     {   
-        $this->validator($request->all())->validate();        
+        $this->validator($request->all())->validate();
         Article::where('id', $id)
             ->update([
                 'title' => $request['title'],
@@ -154,6 +154,17 @@ class ArticleController extends Controller
             ]);
         $request->session()->flash('alert-primary', 'Detalhes Artigo guardado.');
         return redirect()->route('articles');
+    }
+
+    public function alterVisibility(Request $request, $id)
+    {
+        $article = Article::find($id);
+        $visibility = $article->visibility == 'S' ? 'N' : 'S';
+        Article::where('id', $id)
+            ->update([
+                'visibility' => $visibility,
+            ]);
+        $request->session()->flash('alert-primary', 'Visualização Alterada.');
     }
 
     protected function validator(array $data)

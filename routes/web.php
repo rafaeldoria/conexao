@@ -25,6 +25,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function(){
     Route::patch('artigo/{id}/alterar', 'ArticleController@update')->middleware('can:author');
     Route::delete('artigo/{id}/excluir', 'ArticleController@destroy')->middleware('can:administrator')->name('deleteArticles');
     Route::get('artigo/{id}/escrever', 'ArticleController@write');
+    Route::get('article/alterarVisibilidade/{id}', 'ArticleController@alterVisibility');
     Route::get('usuarios', 'UserController@index')->middleware('can:administrator')->name('users');
     Route::get('usuario/novo', 'UserController@create')->middleware('can:administrator');
     Route::post('usuario/salvar', 'UserController@store')->middleware('can:administrator')->name('newUsers');
