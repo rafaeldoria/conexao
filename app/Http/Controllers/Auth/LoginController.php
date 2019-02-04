@@ -7,6 +7,11 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 use App\Models\TypeArticle;
+use App\Models\UserData;
+use App\Models\User;
+use App\Http\Resources\UserTransformer;
+use App\Http\Resources\UserDataTransformer;
+use Session;
 
 class LoginController extends Controller
 {
@@ -73,6 +78,13 @@ class LoginController extends Controller
     protected function authenticated(Request $request, $user)
     {
         $request->session()->flash('alert-success', trans('auth.login-success'));
+        $user = (new UserTransformer)->toArray($user);
+        Session::put('userData.login', $user);
+        $userData = UserData::where('user_id', $user['id'])->first();
+        if(isset($userData)){
+            $userData = (new UserDataTransformer)->toArray($userData);
+            Session::put('userData.data', $userData);
+        }
     }
 
     protected function sendFailedLoginResponse(Request $request)
