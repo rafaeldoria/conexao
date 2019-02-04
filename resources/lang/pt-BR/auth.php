@@ -15,7 +15,7 @@ return [
 
     'failed' => 'Hum, erro ao realizar login, dados inválidos.',
     'throttle' => 'Muitas tentativas de login. Por favor, tente novamente em :segundos segundos.',
-    'login-succes' => 'Bem vindo! Login realizado com sucesso.',
+    'login-success' => 'Bem vindo! Login realizado com sucesso.',
     'register-success' => 'Ótimo! Cadastro efetuado com sucesso.'
 
 ];
