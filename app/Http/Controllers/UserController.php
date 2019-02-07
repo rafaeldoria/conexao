@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\TypeUser;
+use App\Models\TypeArticle;
 use App\Http\Resources\UserTransformer;
 
 class UserController extends Controller
@@ -137,6 +139,20 @@ class UserController extends Controller
                 ->first()->getOriginal();
         $user["desc_type_user"] = $typeUser["desc_type_user"];
         $user["created_at"] = formatDateAndTime($user["created_at"], 'd/m/Y');
+        $user["dt_birth"] = formatDateAndTime($user["dt_birth"], 'd/m/Y');
+        
         return $user; 
+    }
+
+    public function view()
+    {
+        $breadcrumb = [
+            ["title" => "Home", "route" => route('conexao')],
+            ["title" => "Perfil de Usuário", "route" => ""]
+        ];
+        $user = $this->showComplete(Auth::user()->id);
+        $typeArticles = TypeArticle::where('status_type_article', 'A')->get();
+        $active = '';
+        return view('profile', compact('breadcrumb','user','typeArticles','active'));
     }
 }

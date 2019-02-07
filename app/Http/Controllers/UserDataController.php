@@ -60,9 +60,9 @@ class UserDataController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        dd(Auth::user());
+        dd('oi');
     }
 
     /**
