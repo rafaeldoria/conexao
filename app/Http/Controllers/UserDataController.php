@@ -85,7 +85,20 @@ class UserDataController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $date_birth = date('Y-m-d'. strtotime($request['dt_birthDataEdit']));
+        UserData::where('id', $id)
+            ->update([
+                'name' => $request['nameDataEdit'],
+                'dt_birth' => $date_birth,
+                'desc_user' => $request['desc_userDataEdit'],
+            ]);
+        $user = UserData::find($id)->user();
+        $user->update([
+            'username' => $request['usernameDataEdit'],
+            'email' => $request['emailDataEdit'],
+        ]);
+        $request->session()->flash('alert-primary', 'Alteração Efetuada.');
+        return redirect()->route('profile');
     }
 
     /**

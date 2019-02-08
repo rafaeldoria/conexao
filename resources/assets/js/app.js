@@ -137,4 +137,22 @@ $(document).ready(function () {
         });
     });
 
+    $('.edit_data_user').click(function () {
+        id = this.id;
+        $.ajax({
+            url: 'dados/completos/'+ id,
+            type: 'GET',
+            success: function (data) {
+                console.log(data);
+                $('.editUserDataModal').modal('show');
+                $('.editUserDataModal').find('#usernameDataEdit').val(data.username);
+                $('.editUserDataModal').find('#nameDataEdit').val(data.name);
+                $('.editUserDataModal').find('#emailDataEdit').val(data.email);
+                $('.editUserDataModal').find('#dt_birthDataEdit').val(data.dt_birth);
+                $('.editUserDataModal').find('#desc_userDataEdit').val(data.desc_user);
+                $('.editUserDataModal').find("#editDataUser").attr('action', 'dados/' + id + '/alterar');
+            }
+        });
+    });
+
 });

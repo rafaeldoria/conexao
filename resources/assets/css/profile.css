@@ -41,7 +41,7 @@ small {
 }
 
 .box-primary {
-    border-top-color: #3c8dbc;
+    border-top-color: #217927;
     margin-top: 10px;
     float: right;
 }
@@ -53,13 +53,13 @@ small {
     position: relative;
 }
 
-.box-header.with-border {
-    border-bottom: 1px solid #f4f4f4;
-}
-
 .box-header .box-title {
     display: inline-block;
     font-size: 18px;
     margin: 0;
     line-height: 1;
+}
+
+.right {
+    float: right;
 }
