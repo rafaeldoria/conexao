@@ -145,6 +145,7 @@ $(document).ready(function () {
             success: function (data) {
                 console.log(data);
                 $('.editUserDataModal').modal('show');
+                // $('.editUserDataModal').find('#imageDataEdit').val(data.img_user_link);
                 $('.editUserDataModal').find('#usernameDataEdit').val(data.username);
                 $('.editUserDataModal').find('#nameDataEdit').val(data.name);
                 $('.editUserDataModal').find('#emailDataEdit').val(data.email);

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use App\Repositories\ImageRepository;
 use App\Models\UserData;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Resources\UserDataTransformer;
@@ -84,8 +85,20 @@ class UserDataController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
-        $date_birth = date('Y-m-d'. strtotime($request['dt_birthDataEdit']));
+    {   
+        if($request->hasFile('imageDataEdit') && $request->file('imageDataEdit')->isValid()){
+            $file = $request->file('imageDataEdit');
+            $name = ($id);
+            $extension = $request->file('imageDataEdit')->extension();
+            $nameFile = "{$name}.{$extension}";
+            $request->file('imageDataEdit')->storeAs('public/storage/images/profiles', $nameFile);
+            UserData::where('id', $id)
+                ->update([
+                    'img_user_link' => $nameFile
+                ]);
+        }
+ 
+        $date_birth= formatDateMysql($request['dt_birthDataEdit']);
         UserData::where('id', $id)
             ->update([
                 'name' => $request['nameDataEdit'],
@@ -119,4 +132,5 @@ class UserDataController extends Controller
             'name' => 'required|string|max:255',
         ]);
     }
+    
 }

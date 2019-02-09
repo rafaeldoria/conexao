@@ -12,9 +12,17 @@
                     <div class="col-md-8">
                         <div class="card">
                             <div class="card-body">
-                                <form id="editDataUser" method="POST" action="" aria-label="{{ __('EditDataUsers') }}">
+                                <form id="editDataUser" method="POST" action="" enctype="multipart/form-data" aria-label="{{ __('EditDataUsers') }}">
                                     @method('PATCH')
                                     @csrf
+
+                                    <div class="form-group row">
+                                        <label for="imageDataEdit" class="col-md-4 col-form-label text-md-right">{{ __('Imagem') }}</label>
+
+                                        <div class="col-md-6">
+                                            <input id="imageDataEdit" type="file" class="form-control{{ $errors->has('imageDataEdit') ? ' is-invalid' : '' }}" name="imageDataEdit" value="{{ old('imageDataEdit') }}" autofocus>
+                                        </div>
+                                    </div>
 
                                     <div class="form-group row">
                                         <label for="usernameDataEdit" class="col-md-4 col-form-label text-md-right">{{ __('Usuário') }}</label>
