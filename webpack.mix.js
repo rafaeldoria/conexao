@@ -39,5 +39,6 @@ mix.js('resources/assets/js/app.js', 'public/js/app.js')
     .copyDirectory('resources/assets/js/bootstrap/popper.min.js', 'public/js/popper.min.js')
     .js('resources/assets/js/bootstrap/bootstrap.min.js', 'public/js/bootstrap.min.js')
     .js('resources/assets/js/others/plugins.js', 'public/js/plugins.js')
+    .js('resources/assets/js/bootstrap-filestyle.min.js', 'public/js/bootstrap-filestyle.min.js')
     .js('resources/assets/js/others/active.js', 'public/js/active.js');
 

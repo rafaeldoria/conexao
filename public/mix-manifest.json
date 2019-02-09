@@ -4,6 +4,7 @@
     "/js/plugins.js": "/js/plugins.js",
     "/js/active.js": "/js/active.js",
     "/js/bootstrap.min.js": "/js/bootstrap.min.js",
+    "/js/bootstrap-filestyle.min.js": "/js/bootstrap-filestyle.min.js",
     "/resources/assets/css/adminLte.min.css": "/resources/assets/css/adminLte.min.css",
     "/css/adminLte.min.css": "/css/adminLte.min.css",
     "/css/style.css": "/css/style.css",

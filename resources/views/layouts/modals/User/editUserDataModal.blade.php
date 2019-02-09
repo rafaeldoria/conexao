@@ -20,7 +20,7 @@
                                         <label for="imageDataEdit" class="col-md-4 col-form-label text-md-right">{{ __('Imagem') }}</label>
 
                                         <div class="col-md-6">
-                                            <input id="imageDataEdit" type="file" class="form-control{{ $errors->has('imageDataEdit') ? ' is-invalid' : '' }}" name="imageDataEdit" value="{{ old('imageDataEdit') }}" autofocus>
+                                            <input id="imageDataEdit" type="file" class="form-control{{ $errors->has('imageDataEdit') ? ' is-invalid' : '' }} filestyle" data-input="false" name="imageDataEdit" value="{{ old('imageDataEdit') }}" data-text="Adicionar Imagem" data-btnClass="btn-success" autofocus>
                                         </div>
                                     </div>
 
@@ -96,7 +96,7 @@
 
                                     <div class="form-group row mb-0">
                                         <div class="col-md-6 offset-4">
-                                            <button type="submit" class="btn btn-primary">
+                                            <button type="submit" id="refresh" class="btn btn-primary">
                                                 {{ __('Salvar') }}
                                             </button>
                                         </div>
@@ -110,4 +110,5 @@
         </div>
     </div>
 </div>
+<script type="text/javascript" src="js/bootstrap-filestyle.min.js"> </script>
 
