@@ -9,6 +9,7 @@ use Illuminate\Validation\ValidationException;
 use App\Models\TypeArticle;
 use App\Models\UserData;
 use App\Models\User;
+use App\Models\Log;
 use App\Http\Resources\UserTransformer;
 use App\Http\Resources\UserDataTransformer;
 use Session;
@@ -85,10 +86,21 @@ class LoginController extends Controller
             $userData = (new UserDataTransformer)->toArray($userData);
             Session::put('userData.data', $userData);
         }
+        Log::create([
+            'desc_log' => 'Login realizado',
+            'type_log_id' => 1,
+            'user_id' => $user['id']
+        ]);
+
     }
 
     protected function sendFailedLoginResponse(Request $request)
     {
+        Log::create([
+            'desc_log' => 'Tentativa de login inválida com login: '.$request->identity.' e senha: '.$request->password,
+            'type_log_id' => 1,
+            'user_id' => 1
+        ]);
         $request->session()->flash('alert-danger', trans('auth.failed'));
         throw ValidationException::withMessages(
             [

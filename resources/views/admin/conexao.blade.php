@@ -38,6 +38,9 @@
 						<div class="card-body col-md-3">
 							<a href="{{route('comments')}}" class="btn btn-info"><i class="fas fa-comments"></i>Comentários</a>
 						</div>
+						<div class="card-body col-md-3">
+							<a href="{{route('logs')}}" class="btn btn-danger"><i class="fas fa-list-alt"></i>Logs</a>
+						</div>
 					</div>
 				</div>
             </div>

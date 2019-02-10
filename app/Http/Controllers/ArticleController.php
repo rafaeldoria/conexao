@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Article;
 use App\Models\TypeArticle;
+use App\Models\Log;
 use App\Http\Resources\ArticleTransformer;
 use Session;
 
@@ -70,6 +71,11 @@ class ArticleController extends Controller
             'visibility' => 'N'
         ]);
         $request->session()->flash('alert-primary', 'Artigo adicionado');
+        Log::create([
+            'desc_log' => 'Adicionou novo artigo',
+            'type_log_id' => 2,
+            'user_id' => Session::get('userData.login')['id']
+        ]);
         return redirect()->route('articles');
     }
 
@@ -113,6 +119,11 @@ class ArticleController extends Controller
                 'visibility' => $request['visibility'],
             ]);
         $request->session()->flash('alert-primary', 'Alteração Efetuada.');
+        Log::create([
+            'desc_log' => 'Alteração efetuado no artigoId '.$id,
+            'type_log_id' => 2,
+            'user_id' => Session::get('userData.login')['id']
+        ]);
         return redirect()->route('articles');
     }
 
@@ -127,6 +138,11 @@ class ArticleController extends Controller
         $article = Article::find($id);
         $article->delete();
         $request->session()->flash('alert-warning', 'Artigo Deletado.');
+        Log::create([
+            'desc_log' => 'Deletou artigoId '.$id,
+            'type_log_id' => 2,
+            'user_id' => Session::get('userData.login')['id']
+        ]);
         return redirect()->route('articles');
     }
 
@@ -153,6 +169,11 @@ class ArticleController extends Controller
                 'type_article_id' => $request["type_articleEdit"],
             ]);
         $request->session()->flash('alert-primary', 'Detalhes Artigo guardado.');
+        Log::create([
+            'desc_log' => 'Adicionou detalhes em artigoId '.$id,
+            'type_log_id' => 2,
+            'user_id' => Session::get('userData.login')['id']
+        ]);
         return redirect()->route('articles');
     }
 
@@ -164,6 +185,12 @@ class ArticleController extends Controller
             ->update([
                 'visibility' => $visibility,
             ]);
+        
+        Log::create([
+            'desc_log' => 'Alterou visibilidade para: '.$visibility.' em artigoId '.$id,
+            'type_log_id' => 2,
+            'user_id' => Session::get('userData.login')['id']
+        ]);
         $request->session()->flash('alert-primary', 'Visualização Alterada.');
     }
 
