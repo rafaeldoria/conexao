@@ -12,6 +12,6 @@ class Log extends Model
 
     public function typeLog()
     {
-        return $this->hasOne('App\Models\TypeLog');
+        return $this->hasOne('App\Models\TypeLog', 'id', 'type_log_id');
     }
 }

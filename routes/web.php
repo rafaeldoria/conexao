@@ -40,6 +40,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function(){
     Route::get('comentario/{id}/editar', 'CommentController@edit');
     Route::patch('comentario/{id}/alterar', 'CommentController@update')->middleware('can:administrator')->name('EditComments');
     Route::delete('comentario/{id}/excluir', 'CommentController@destroy');
+    Route::get('logs', 'LogController@index')->middleware('can:administrator')->name('logs');
 });
 
 Route::middleware(['auth'])->group(function(){

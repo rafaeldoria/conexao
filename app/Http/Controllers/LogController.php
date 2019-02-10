@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Log;
+use App\Models\TypeLog;
 
 class LogController extends Controller
 {
@@ -13,7 +15,14 @@ class LogController extends Controller
      */
     public function index()
     {
-        //
+        $breadcrumb = [
+            ["title" => "Home", "route" => route('conexao')],
+            ["title" => "Logs", "route" => ""]
+        ];
+
+        $logs = Log::all();
+        $typeLog = TypeLog::all();
+        return view('admin.log', compact('breadcrumb', 'logs', 'typeLog'));
     }
 
     /**
