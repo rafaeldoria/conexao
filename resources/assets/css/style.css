@@ -1576,4 +1576,11 @@ li {
     padding: 0px;
     margin-top: 1rem;
 }
-/* #fc6c3f */
+
+.topo-img{
+    width: 10%;
+    height: 10%;
+    max-width: 100%;
+    vertical-align: middle;
+    border-style: none;
+}

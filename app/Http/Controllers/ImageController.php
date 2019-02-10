@@ -15,8 +15,8 @@ class ImageController extends Controller
 		$file = Input::file('upload');
 		if ($file->isValid()) {
 			$filename =rand(1000,9999).$file->getClientOriginalName();
-			$file->move(public_path().'/wysiwyg/', $filename);
-			$url = url('wysiwyg/' . $filename);
+			$file->move(public_path().'/storage/images/articles/details/', $filename);
+			$url = url('storage/images/articles/details/' . $filename);
 		} else {
 			$message = 'An error occurred while uploading the file.';
 		}

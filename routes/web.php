@@ -52,7 +52,8 @@ Route::middleware(['auth'])->group(function(){
     Route::post('dados/salvar', 'UserDataController@store');
     Route::get('dados/{id}', 'UserDataController@show');
     Route::get('dados/{id}/editar', 'UserDataController@edit');
-    Route::put('dados/{id}/alterar', 'UserDataController@update');
+    Route::patch('dados/{id}/alterar', 'UserDataController@update');
     Route::delete('dados/{id}/excluir', 'UserDataController@destroy')->middleware('can:administrator');
     Route::get('dados/completos/{id}', 'UserController@showComplete');
+    Route::get('dados_usuario', 'UserController@view')->name('profile');
 });

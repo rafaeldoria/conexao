@@ -35,8 +35,10 @@ mix.js('resources/assets/js/app.js', 'public/js/app.js')
     .styles('resources/assets/css/others/owl.carousel.min.css', 'public/css/others/owl.carousel.min.css')
     .styles('resources/assets/css/others/pe-icon-7-stroke.css', 'public/css/others/pe-icon-7-stroke.css')
     .styles('resources/assets/css/article/writeArticle.css', 'public/css/writeArticle.css')
+    .styles('resources/assets/css/profile.css', 'public/css/profile.css')
     .copyDirectory('resources/assets/js/bootstrap/popper.min.js', 'public/js/popper.min.js')
     .js('resources/assets/js/bootstrap/bootstrap.min.js', 'public/js/bootstrap.min.js')
     .js('resources/assets/js/others/plugins.js', 'public/js/plugins.js')
+    .js('resources/assets/js/bootstrap-filestyle.min.js', 'public/js/bootstrap-filestyle.min.js')
     .js('resources/assets/js/others/active.js', 'public/js/active.js');
 

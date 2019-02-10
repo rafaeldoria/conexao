@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use App\Models\UserData;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\File;
+use App\Models\UserData;
 use App\Http\Resources\UserDataTransformer;
 use Session;
 
@@ -60,9 +62,9 @@ class UserDataController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        dd(Auth::user());
+        dd('oi');
     }
 
     /**
@@ -84,8 +86,39 @@ class UserDataController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
-        //
+    {   
+        if($request->hasFile('imageDataEdit') && $request->file('imageDataEdit')->isValid()){
+            if(Session::get('userData.data')['img_user_link']){
+                $filename = Session::get('userData.data')['img_user_link'];
+            }else{
+                $filename = 'perfil-'.kebab_case($request->name).'-'.$id;
+                $extension = $request->imageDataEdit->extension();
+                $filename = "{$filename}.{$extension}";
+            }
+            $upload = $request->imageDataEdit->storeAs('/images/profiles/', $filename);
+            if(!$upload){
+                redirect()->back->with('error', 'Falha ao realizar upload de imagem.');
+            }
+            UserData::where('id', $id)
+                ->update([
+                    'img_user_link' => $filename
+                ]);
+        }
+ 
+        $date_birth= formatDateMysql($request->dt_birthDataEdit);
+        UserData::where('id', $id)
+            ->update([
+                'name' => $request->nameDataEdit,
+                'dt_birth' => $date_birth,
+                'desc_user' => $request->desc_userDataEdit,
+            ]);
+        $user = UserData::find($id)->user();
+        $user->update([
+            'username' => $request->usernameDataEdit,
+            'email' => $request->emailDataEdit,
+        ]);
+        $request->session()->flash('alert-primary', 'Alteração Efetuada.');
+        return redirect()->route('profile');
     }
 
     /**
@@ -106,4 +139,5 @@ class UserDataController extends Controller
             'name' => 'required|string|max:255',
         ]);
     }
+    
 }
