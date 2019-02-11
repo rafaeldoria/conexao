@@ -143,9 +143,7 @@ $(document).ready(function () {
             url: 'dados/completos/'+ id,
             type: 'GET',
             success: function (data) {
-                console.log(data);
                 $('.editUserDataModal').modal('show');
-                // $('.editUserDataModal').find('#imageDataEdit').val(data.img_user_link);
                 $('.editUserDataModal').find('#usernameDataEdit').val(data.username);
                 $('.editUserDataModal').find('#nameDataEdit').val(data.name);
                 $('.editUserDataModal').find('#emailDataEdit').val(data.email);
@@ -158,6 +156,28 @@ $(document).ready(function () {
 
     $('#refresh').click(function (){
         location.reload();
+    });
+
+    $('.edit_type_user').click(function () {
+        id = this.id;
+        $.ajax({
+            url: '/admin/tipo/usuario/'+id,
+            type: 'GET',
+            success: function (data) {
+                typeuser = JSON.parse(data);
+                console.log(typeuser);
+                $('.editTypeUserModal').modal('show');
+                $('.editTypeUserModal').find('#desc_type').val(typeuser.desc_type_user);
+                $('.editTypeUserModal').find('#status_type').val(typeuser.status_type_user);
+                $('.editTypeUserModal').find("#editTypeUser").attr('action', '/admin/tipo/usuario/' + typeuser.id + '/alterar');
+            }
+        });
+    });
+
+    $('.delete_type_user').click(function () {
+        id = this.id;
+        $('.deleteTypeUserModal').modal('show');
+        $('.deleteTypeUserModal').find("#deleteTypeUser").attr('action', '/admin/tipo/usuario/' + id + '/excluir');
     });
 
 });

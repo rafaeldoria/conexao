@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\TypeUser;
 
 class TypeUserController extends Controller
 {
@@ -13,7 +14,13 @@ class TypeUserController extends Controller
      */
     public function index()
     {
-        //
+        $breadcrumb = [
+            ["title" => "Home", "route" => route('conexao')],
+            ["title" => "Tipos de Usuários", "route" => ""]
+        ];
+
+        $typeUser = TypeUser::all();
+        return view('admin.typesuser', compact('breadcrumb', 'typeUser'));
     }
 
     /**
@@ -34,7 +41,12 @@ class TypeUserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        TypeUser::create([
+            'desc_type_user' => $request->desc_type,
+            'status_type_user' => $request->status_type,
+        ]);
+        $request->session()->flash('alert-primary', 'Novo tipo adicionado');
+        return redirect()->route('typesusers');
     }
 
     /**
@@ -45,7 +57,8 @@ class TypeUserController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = TypeUser::find($id);
+        return $user->toJson();
     }
 
     /**
@@ -68,7 +81,13 @@ class TypeUserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        TypeUser::where('id', $id)
+            ->update([
+                'desc_type_user' => $request->desc_type,
+                'status_type_user' => $request->status_type,
+            ]);
+        $request->session()->flash('alert-primary', 'Alteração Efetuada.');
+        return redirect()->route('typesusers');
     }
 
     /**
@@ -77,8 +96,11 @@ class TypeUserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+        $user = TypeUser::find($id);
+        $user->delete();
+        $request->session()->flash('alert-warning', 'Tipo Deletado.');
+        return redirect()->route('typesusers');
     }
 }
