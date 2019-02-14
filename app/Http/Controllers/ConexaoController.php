@@ -10,7 +10,6 @@ use App\Models\User;
 use App\Http\Resources\UserTransformer;
 use App\Http\Resources\UserDataTransformer;
 use Illuminate\Support\Facades\Mail;
-use App\Mail\SendMailUser;
 
 class ConexaoController extends Controller
 {
