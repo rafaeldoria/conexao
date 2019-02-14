@@ -1247,7 +1247,7 @@ li {
     text-align: center;
     color: #fff;
     font-size: 14px;
-    margin-bottom: 20px;
+    ;;
 }
 
 .single-post-share-info a i {
@@ -1583,4 +1583,16 @@ li {
     max-width: 100%;
     vertical-align: middle;
     border-style: none;
+}
+
+.mb20{
+    margin-bottom: 20px;
+}
+
+.about_conexao{
+    font-size: 36px;
+    font-family: lxjw-n4,
+    adobe-notdef;
+    font-weight: 400;
+    font-style: normal;
 }
