@@ -41,6 +41,11 @@ Route::middleware(['auth'])->prefix('admin')->group(function(){
     Route::patch('comentario/{id}/alterar', 'CommentController@update')->middleware('can:administrator')->name('EditComments');
     Route::delete('comentario/{id}/excluir', 'CommentController@destroy');
     Route::get('logs', 'LogController@index')->middleware('can:administrator')->name('logs');
+    Route::get('tipos/usuarios', 'TypeUserController@index')->middleware('can:administrator')->name('typesusers');
+    Route::post('tipo/usuario/salvar', 'TypeUserController@store')->middleware('can:administrator')->name('newTypeUser');
+    Route::get('tipo/usuario/{id}', 'TypeUserController@show')->middleware('can:administrator');
+    Route::patch('tipo/usuario/{id}/alterar', 'TypeUserController@update')->middleware('can:administrator')->name('editTypeUser');
+    Route::delete('tipo/usuario/{id}/excluir', 'TypeUserController@destroy')->middleware('can:administrator')->name('deleteUsers');
 });
 
 Route::middleware(['auth'])->group(function(){
