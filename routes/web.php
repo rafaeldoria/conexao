@@ -12,6 +12,7 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('/menus', 'TypeArticleController@index')->name('typesArticle');
 Route::get('/menus/{id}', 'TypeArticleController@show')->name('getTypeArticle');
 Route::get('/contato', 'HomeController@contact')->name('contact');
+Route::post('/enviarMensagem', 'HomeController@sendContactNotification')->name('sendContact');
 Route::get('/sobre', 'HomeController@about')->name('about');
 
 Route::middleware(['auth'])->prefix('admin')->group(function(){

@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Http\Request;
 use App\Models\Article;
 use App\Models\TypeArticle;
 use App\Models\InstagramImage;
+use App\Mail\SendMailContact;
+use Session;
 
 class HomeController extends Controller
 {
@@ -45,5 +49,12 @@ class HomeController extends Controller
         $typeArticles = TypeArticle::where('status_type_article', 'A')->get();
         $active = 'about';
         return view('about', compact('typeArticles', 'active'));
+    }
+
+    public function sendContactNotification(Request $request)
+    {   
+        Mail::to('conexa@conexaonerd.com.br')->send(new SendMailContact($request));
+        $request->session()->flash('email-success', 'Email enviado com sucesso');
+        return redirect()->route('contact');
     }
 }
