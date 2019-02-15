@@ -941,7 +941,7 @@ li {
 }
 
 .widget-title > h6 {
-    background: #fee2d9;
+    background: #d9fedc;
     height: 40px;
     width: 100%;
     line-height: 40px;
@@ -1595,4 +1595,10 @@ li {
     adobe-notdef;
     font-weight: 400;
     font-style: normal;
+}
+
+.details-article{
+    color: #51545f;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
 }
