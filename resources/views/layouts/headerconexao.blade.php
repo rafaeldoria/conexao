@@ -16,11 +16,11 @@
                             <li @if ($active == 'home') class="nav-item active" @else class="nav-item"  @endif>
                                 <a class="nav-link" href="{{route('home')}}">Home <span class="sr-only">(current)</span></a>
                             </li>
-                            <li class="nav-item dropdown">
+                            <li @if ($active == 'articleForMenu') class="nav-item dropdown active" @else class="nav-item dropdown"  @endif>
                                 <a class="nav-link dropdown-toggle" href="#" id="yummyDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Menus</a>
                                 <div class="dropdown-menu" aria-labelledby="yummyDropdown">
                                 @foreach ($typeArticles as $value)
-                                    <a class="dropdown-item" href="{{route('getTypeArticle', ['id' => $value->id])}}">{{$value->desc_type_article}}</a>
+                                    <a class="dropdown-item" href="{{route('articlesForType', $value->id) }}">{{$value->desc_type_article}}</a>
                                 @endforeach
                                 </div>
                             </li>
