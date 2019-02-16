@@ -18,7 +18,7 @@
     <section class="welcome-post-sliders owl-carousel">
         @foreach ($articles as $article)
         <div class="welcome-single-slide">
-            <img src="{{Storage::url('images/articles/'.$article->img_carousel_article)}}" alt="">
+            <img src="{{Storage::url('images/articles/carousel/'.$article->img_carousel_article)}}" alt="">
             <div class="project_title">
                 <div class="post-date-commnents d-flex">
                     <a href="{{route('readArticle', ['id' => $article->id]) }}">{{$article->created_at->format('d/m/Y')}}</a>
@@ -61,7 +61,7 @@
                             <div class="list-blog single-post d-sm-flex wow fadeInUpBig" data-wow-delay=".2s">
                                 <!-- Post Thumb -->
                                 <div class="post-thumb">
-                                    <img src="{{Storage::url('images/articles/'.$article->img_capa_article)}}" alt="">
+                                    <img src="{{Storage::url('images/articles/capes/'.$article->img_capa_article)}}" alt="">
                                 </div>
                                 <div class="post-content">
                                     <div class="post-meta d-flex">
