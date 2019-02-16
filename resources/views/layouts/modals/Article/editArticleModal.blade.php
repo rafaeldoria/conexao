@@ -2,7 +2,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="editArticleModal">Editar Usuário</h4>
+                <h4 class="modal-title" id="editArticleModal">Editar Artigo</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
@@ -12,7 +12,7 @@
                     <div class="col-md-8">
                         <div class="card">
                             <div class="card-body">
-                                <form id="editArticle" method="POST" action="" aria-label="{{ __('EditArticles') }}">
+                                <form id="editArticle" method="POST" action="" enctype="multipart/form-data" aria-label="{{ __('EditArticles') }}">
                                     @method('PATCH')
                                     @csrf
 
@@ -51,6 +51,22 @@
                                         </div>
                                     </div>
 
+                                    <div class="form-group row">
+                                        <label for="imageCape" class="col-md-4 col-form-label text-md-right">{{ __('Imagem Capa') }}</label>
+
+                                        <div class="col-md-6">
+                                            <input id="imageCape" type="file" class="form-control{{ $errors->has('imageCape') ? ' is-invalid' : '' }} filestyle" data-input="false" name="imageCape" value="{{ old('imageCape') }}" data-text="Adicionar Imagem (1100x733)" data-btnClass="btn-success" autofocus>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="imageCarousel" class="col-md-4 col-form-label text-md-right">{{ __('Imagem Carousel') }}</label>
+
+                                        <div class="col-md-6">
+                                            <input id="imageCarousel" type="file" class="form-control{{ $errors->has('imageCarousel') ? ' is-invalid' : '' }} filestyle" data-input="false" name="imageCarousel" value="{{ old('imageCarousel') }}" data-text="Adicionar Imagem (405x600)" data-btnClass="btn-success" autofocus>
+                                        </div>
+                                    </div>
+
                                     <div class="form-group row mb-0">
                                         <div class="col-md-6 offset-md-4">
                                             <button type="submit" class="btn btn-primary">
@@ -67,4 +83,4 @@
         </div>
     </div>
 </div>
-
+<script type="text/javascript" src="../js/bootstrap-filestyle.min.js"> </script>

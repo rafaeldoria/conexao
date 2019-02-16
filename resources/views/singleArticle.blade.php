@@ -57,7 +57,7 @@
                             <div class="single-post">
 
                                 <div class="post-thumb">
-                                    <img src="{{Storage::url('images/articles/'.$article->img_capa_article)}}" alt="">
+                                    <img src="{{Storage::url('images/articles/capes/'.$article->img_capa_article)}}" alt="">
                                 </div>
 
                                 <div class="post-content">

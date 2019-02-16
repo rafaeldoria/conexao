@@ -31,7 +31,7 @@ class HomeController extends Controller
     {   
         $articles = Article::where('visibility', 'S')->get();
         $typeArticles = TypeArticle::where('status_type_article', 'A')->get();
-        $fourArticles = Article::where('visibility', 'S')->orderBy('created_at', 'desc')->limit(2)->get();
+        $fourArticles = Article::where('visibility', 'S')->orderBy('created_at', 'desc')->limit(3)->get();
         $imagesInstagram = InstagramImage::where('visibility', 'S')->get();
         $active = 'home';
         return view('index', compact('articles', 'typeArticles', 'fourArticles', 'imagesInstagram', 'active'));

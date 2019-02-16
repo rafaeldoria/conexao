@@ -114,6 +114,8 @@ class ArticleController extends Controller
     public function update(Request $request, $id)
     {
         $this->validator($request->all())->validate();
+        $this->saveCape($request, $id);
+        $this->saveCarousel($request, $id);
         Article::where('id', $id)
             ->update([
                 'title' => $request['title'],
@@ -127,6 +129,50 @@ class ArticleController extends Controller
             'user_id' => Session::get('userData.login')['id']
         ]);
         return redirect()->route('articles');
+    }
+
+    private function saveCape($request, $id)
+    {
+        if($request->hasFile('imageCape') && $request->file('imageCape')->isValid()){
+            $article = Article::find($id);
+            if($article->img_capa_article){
+                $filename = $article->img_capa_article;
+            }else{
+                $filename = 'cape-'.kebab_case($request->title).'-'.$id;
+                $extension = $request->imageCape->extension();
+                $filename = "{$filename}.{$extension}";
+            }
+            $upload = $request->imageCape->storeAs('images/articles/capes/', $filename);
+            if(!$upload){
+                redirect()->back->with('error', 'Falha ao realizar upload de imagem.');
+            }
+            Article::where('id', $id)
+                ->update([
+                    'img_capa_article' => $filename
+                ]);
+        }
+    }
+
+    private function saveCarousel($request, $id)
+    {
+        if($request->hasFile('imageCarousel') && $request->file('imageCarousel')->isValid()){
+            $article = Article::find($id);
+            if($article->img_carousel_article){
+                $filename = $article->img_carousel_article;
+            }else{
+                $filename = 'carousel-'.kebab_case($request->title).'-'.$id;
+                $extension = $request->imageCarousel->extension();
+                $filename = "{$filename}.{$extension}";
+            }
+            $upload = $request->imageCarousel->storeAs('images/articles/carousel/', $filename);
+            if(!$upload){
+                redirect()->back->with('error', 'Falha ao realizar upload de imagem.');
+            }
+            Article::where('id', $id)
+                ->update([
+                    'img_carousel_article' => $filename
+                ]);
+        }
     }
 
     /**
