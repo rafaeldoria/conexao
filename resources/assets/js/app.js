@@ -109,7 +109,6 @@ $(document).ready(function () {
             url: '/admin/comentario/'+id,
             type: 'GET',
             success: function (data) {
-                console.log(data);
                 comment = JSON.parse(data);
                 $('.viewCommentModal').modal('show');
                 $('.viewCommentModal').find('#title').text(comment.article_title);
@@ -165,7 +164,6 @@ $(document).ready(function () {
             type: 'GET',
             success: function (data) {
                 typeuser = JSON.parse(data);
-                console.log(typeuser);
                 $('.editTypeUserModal').modal('show');
                 $('.editTypeUserModal').find('#desc_type').val(typeuser.desc_type_user);
                 $('.editTypeUserModal').find('#status_type').val(typeuser.status_type_user);
@@ -178,6 +176,27 @@ $(document).ready(function () {
         id = this.id;
         $('.deleteTypeUserModal').modal('show');
         $('.deleteTypeUserModal').find("#deleteTypeUser").attr('action', '/admin/tipo/usuario/' + id + '/excluir');
+    });
+
+    $('.edit_type_article').click(function () {
+        id = this.id;
+        $.ajax({
+            url: '/admin/menu/artigo/' + id,
+            type: 'GET',
+            success: function (data) {
+                typearticle = JSON.parse(data);
+                $('.editTypeArticleModal').modal('show');
+                $('.editTypeArticleModal').find('#desc_type').val(typearticle.desc_type_article);
+                $('.editTypeArticleModal').find('#status_type').val(typearticle.status_type_article);
+                $('.editTypeArticleModal').find("#editTypeArticle").attr('action', '/admin/menu/artigo/' + typearticle.id + '/alterar');
+            }
+        });
+    });
+
+    $('.delete_type_article').click(function () {
+        id = this.id;
+        $('.deleteTypeArticleModal').modal('show');
+        $('.deleteTypeArticleModal').find("#deleteTypeArticle").attr('action', '/admin/menu/artigo/' + id + '/excluir');
     });
 
 });

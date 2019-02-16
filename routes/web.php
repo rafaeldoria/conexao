@@ -47,6 +47,11 @@ Route::middleware(['auth'])->prefix('admin')->group(function(){
     Route::get('tipo/usuario/{id}', 'TypeUserController@show')->middleware('can:administrator');
     Route::patch('tipo/usuario/{id}/alterar', 'TypeUserController@update')->middleware('can:administrator')->name('editTypeUser');
     Route::delete('tipo/usuario/{id}/excluir', 'TypeUserController@destroy')->middleware('can:administrator')->name('deleteUsers');
+    Route::get('menus/artigos', 'TypeArticleController@index')->middleware('can:author')->name('typesarticles');
+    Route::post('menu/artigo/salvar', 'TypeArticleController@store')->middleware('can:author')->name('newTypeArticle');
+    Route::get('menu/artigo/{id}', 'TypeArticleController@show')->middleware('can:author');
+    Route::patch('menu/artigo/{id}/alterar', 'TypeArticleController@update')->middleware('can:author')->name('editTypeArticle');
+    Route::delete('menu/artigo/{id}/excluir', 'TypeArticleController@destroy')->middleware('can:author')->name('deleteArticles');
 });
 
 Route::middleware(['auth'])->group(function(){

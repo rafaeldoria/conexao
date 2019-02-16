@@ -48,7 +48,11 @@
 					<tr>
 						<td>{{$type->id}}</td>
 						<td>{{$type->desc_type_user}}</td>
-						<td>{{$type->status_type_user}}</td>
+						<td>
+							@if($type->status_type_user=='A')Ativo
+                            @else Desativado
+							@endif
+						</td>
 						<td>
 							<button class="btn btn-warning btn-xs edit_type_user" id="{{$type->id}}"><i class="far fa-edit"></i></button>
 							<button class="btn btn-danger btn-xs delete_type_user" id="{{$type->id}}"><i class="far fa-trash-alt"></i></button>

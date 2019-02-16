@@ -39,6 +39,9 @@
 							<a href="{{route('articles')}}" class="btn btn-warning"><i class="fas fa-book-reader"></i>Artigos</a>
 						</div>
 						<div class="card-body col-md-3">
+							<a href="{{route('typesarticles')}}" class="btn btn-warning"><i class="fas fa-book-reader"></i>Menus</a>
+						</div>
+						<div class="card-body col-md-3">
 							<a href="{{route('comments')}}" class="btn btn-info"><i class="fas fa-comments"></i>Comentários</a>
 						</div>
 						<div class="card-body col-md-3">

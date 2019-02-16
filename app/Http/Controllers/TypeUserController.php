@@ -57,8 +57,8 @@ class TypeUserController extends Controller
      */
     public function show($id)
     {
-        $user = TypeUser::find($id);
-        return $user->toJson();
+        $typeUser = TypeUser::find($id);
+        return $typeUser->toJson();
     }
 
     /**
@@ -98,9 +98,9 @@ class TypeUserController extends Controller
      */
     public function destroy(Request $request, $id)
     {
-        $user = TypeUser::find($id);
-        $user->delete();
-        $request->session()->flash('alert-warning', 'Tipo Deletado.');
+        $typeuser = TypeUser::find($id);
+        $typeuser->delete();
+        $request->session()->flash('alert-danger', 'Tipo Deletado.');
         return redirect()->route('typesusers');
     }
 }
