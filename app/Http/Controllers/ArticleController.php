@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Article;
 use App\Models\TypeArticle;
+use App\Models\InstagramImage;
 use App\Models\Log;
+use App\Models\UserData;
 use App\Http\Resources\ArticleTransformer;
 use Session;
 
@@ -192,6 +194,22 @@ class ArticleController extends Controller
             'user_id' => Session::get('userData.login')['id']
         ]);
         $request->session()->flash('alert-primary', 'Visualização Alterada.');
+    }
+
+    public function read($id)
+    {
+        $article = Article::find($id);
+        $breadcrumb = [
+            ["title" => "Home", "route" => route('home')],
+            ["title" => "Artigos", "route" => route('allArticles')],
+            ["title" => $article->title, "route" => ""],
+        ];
+
+        $active = $article->title;
+        $typeArticles = TypeArticle::all();
+        $imagesInstagram = InstagramImage::where('visibility', 'S')->get();
+        $userData = UserData::find($article->user_data_id);
+        return view('singleArticle', compact('breadcrumb', 'article', 'typeArticles', 'userData', 'imagesInstagram', 'active'));
     }
 
     protected function validator(array $data)
