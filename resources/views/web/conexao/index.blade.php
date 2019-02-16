@@ -35,18 +35,18 @@
     <section class="categories_area clearfix" id="about">
         <div class="container">
             <div class="row">
-                @foreach ($typeArticles as $type)
+                @for ($i = 3; $i > 0; $i--)
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="single_catagory wow fadeInUp" data-wow-delay=".3s">
-                        <img src="{{Storage::url('images/articles/type/'.$type->img_type_article)}}" alt="">
+                        <img src="{{Storage::url('images/articles/type/'.$typeArticles[$i]->img_type_article)}}" alt="">
                         <div class="catagory-title">
-                            <a href="{{route('articlesForType', $type->id) }}">
-                                <h5>{{$type->desc_type_article}}</h5>
+                            <a href="{{route('articlesForType', $typeArticles[$i]->id) }}">
+                                <h5>{{$typeArticles[$i]->desc_type_article}}</h5>
                             </a>
                         </div>
                     </div>
                 </div>
-                @endforeach
+                @endfor
             </div>
         </div>
     </section>

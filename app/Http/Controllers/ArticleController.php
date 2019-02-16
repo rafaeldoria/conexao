@@ -255,7 +255,32 @@ class ArticleController extends Controller
         $typeArticles = TypeArticle::all();
         $imagesInstagram = InstagramImage::where('visibility', 'S')->get();
         $userData = UserData::find($article->user_data_id);
-        return view('singleArticle', compact('breadcrumb', 'article', 'typeArticles', 'userData', 'imagesInstagram', 'active'));
+        return view('web.articles.singleArticle', compact('breadcrumb', 'article', 'typeArticles', 'userData', 'imagesInstagram', 'active'));
+    }
+
+    public function showForType($id)
+    {
+        $articles = Article::where([
+                ['type_article_id', $id],
+                ['visibility', 'S']
+            ])
+            ->orderBy('created_at', 'desc')
+            ->get();
+        $typeArticles = TypeArticle::where('status_type_article', 'A')->get();
+        $imagesInstagram = InstagramImage::where('visibility', 'S')->get();
+        $active = 'articleForMenu';
+        return view('web.articles.articles', compact('articles', 'typeArticles', 'imagesInstagram', 'active'));
+    }
+
+    public function allView()
+    {
+        $articles = Article::where('visibility', 'S')
+            ->orderBy('created_at', 'desc')
+            ->get();
+        $typeArticles = TypeArticle::where('status_type_article', 'A')->get();
+        $imagesInstagram = InstagramImage::where('visibility', 'S')->get();
+        $active = 'allArticles';
+        return view('web.articles.articles', compact('articles', 'typeArticles', 'imagesInstagram', 'active'));
     }
 
     protected function validator(array $data)

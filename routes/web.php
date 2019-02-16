@@ -6,8 +6,8 @@
 Auth::routes();
 
 Route::get('artigo/{id}', 'ArticleController@read')->name('readArticle');
-Route::get('artigosGeral', 'ArticleController@view')->name('allArticles');
-Route::get('/artigos_menu/{id}', 'ArtiogosController@showForType')->name('articlesForType');
+Route::get('artigosGeral', 'ArticleController@allView')->name('allArticles');
+Route::get('/artigosMenu/{id}', 'ArticleController@showForType')->name('articlesForType');
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/menus', 'TypeArticleController@index')->name('typesArticle');
 Route::get('/menus/{id}', 'TypeArticleController@show')->name('getTypeArticle');

@@ -31,24 +31,24 @@ class HomeController extends Controller
     {   
         $articles = Article::where('visibility', 'S')->get();
         $typeArticles = TypeArticle::where('status_type_article', 'A')->get();
-        $fourArticles = Article::where('visibility', 'S')->orderBy('created_at', 'desc')->limit(3)->get();
+        $fourArticles = Article::where('visibility', 'S')->orderBy('created_at', 'desc')->limit(4)->get();
         $imagesInstagram = InstagramImage::where('visibility', 'S')->get();
         $active = 'home';
-        return view('index', compact('articles', 'typeArticles', 'fourArticles', 'imagesInstagram', 'active'));
+        return view('web.conexao.index', compact('articles', 'typeArticles', 'fourArticles', 'imagesInstagram', 'active'));
     }
 
     public function contact()
     {
         $typeArticles = TypeArticle::where('status_type_article', 'A')->get();
         $active = 'contact';
-        return view('contact', compact('typeArticles', 'active'));
+        return view('web.conexao.contact', compact('typeArticles', 'active'));
     }
 
     public function about()
     {
         $typeArticles = TypeArticle::where('status_type_article', 'A')->get();
         $active = 'about';
-        return view('about', compact('typeArticles', 'active'));
+        return view('web.conexao.about', compact('typeArticles', 'active'));
     }
 
     public function sendContactNotification(Request $request)
