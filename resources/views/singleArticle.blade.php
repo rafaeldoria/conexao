@@ -64,7 +64,7 @@
                                     <div class="post-meta d-flex">
                                         <div class="post-author-date-area d-flex">
                                             <div class="post-date">
-                                                <a href="#">{{$article->created_at->format('d/m/Y')}}</a>
+                                                <a href="#">{{$article->created_at->format('d M Y H:i')}}</a>
                                             </div>
                                         </div>
                                     </div>

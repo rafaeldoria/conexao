@@ -30,7 +30,7 @@
                                     @endif
                                 @endforeach
                             </div>
-                            <img class="topo-img" src="{{Storage::url('/images/profiles/').Session::get('userData.data')['img_user_link']}}" alt="" class="img-rounded img-responsive" />
+                            <img class="topo-img" src="{{url('storage/images/profiles').'/'.Session::get('userData.data')['img_user_link']}}" alt="" class="img-rounded img-responsive" />
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->username }}

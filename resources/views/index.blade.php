@@ -21,10 +21,10 @@
             <img src="{{Storage::url('images/articles/'.$article->img_carousel_article)}}" alt="">
             <div class="project_title">
                 <div class="post-date-commnents d-flex">
-                    <a href="#">{{$article->created_at->format('d/m/Y')}}</a>
+                    <a href="{{route('readArticle', ['id' => $article->id]) }}">{{$article->created_at->format('d/m/Y')}}</a>
                     <a href="#">{{$article->userData->name}}</a>
                 </div>
-                <a href="#">
+                <a href="{{route('readArticle', ['id' => $article->id]) }}">
                     <h5>{{$article->title}}</h5>
                 </a>
             </div>
@@ -93,7 +93,7 @@
                                         <h4 class="post-headline">{{$article->title}}</h4>
                                     </a>
                                     <p>{{$article->summary}}</p>
-                                    <a href="#" class="read-more">Continue Lendo..</a>
+                                    <a href="{{route('readArticle', ['id' => $article->id]) }}" class="read-more">Continue Lendo..</a>
                                 </div>
                             </div>
                         </div>

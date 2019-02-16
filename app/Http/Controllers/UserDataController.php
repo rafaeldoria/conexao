@@ -95,7 +95,7 @@ class UserDataController extends Controller
                 $extension = $request->imageDataEdit->extension();
                 $filename = "{$filename}.{$extension}";
             }
-            $upload = $request->imageDataEdit->storeAs('/images/profiles/', $filename);
+            $upload = $request->imageDataEdit->storeAs('images/profiles/', $filename);
             if(!$upload){
                 redirect()->back->with('error', 'Falha ao realizar upload de imagem.');
             }

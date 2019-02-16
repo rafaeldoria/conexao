@@ -200,7 +200,7 @@ class ArticleController extends Controller
     {
         $article = Article::find($id);
         $breadcrumb = [
-            ["title" => "Home", "route" => route('conexao')],
+            ["title" => "Home", "route" => route('home')],
             ["title" => "Artigos", "route" => route('allArticles')],
             ["title" => $article->title, "route" => ""],
         ];
@@ -209,7 +209,6 @@ class ArticleController extends Controller
         $typeArticles = TypeArticle::all();
         $imagesInstagram = InstagramImage::where('visibility', 'S')->get();
         $userData = UserData::find($article->user_data_id);
-        // dd($userData, $article);
         return view('singleArticle', compact('breadcrumb', 'article', 'typeArticles', 'userData', 'imagesInstagram', 'active'));
     }
 
