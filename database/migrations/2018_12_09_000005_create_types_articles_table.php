@@ -17,7 +17,7 @@ class CreateTypesArticlesTable extends Migration
             $table->increments('id');
             $table->string('desc_type_article');
             $table->char('status_type_article');
-            $table->string('img_type_article');
+            $table->string('img_type_article')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

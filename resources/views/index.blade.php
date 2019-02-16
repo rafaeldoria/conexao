@@ -38,7 +38,7 @@
                 @foreach ($typeArticles as $type)
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="single_catagory wow fadeInUp" data-wow-delay=".3s">
-                        <img src="{{Storage::url('images/type_articles/'.$type->img_type_article)}}" alt="">
+                        <img src="{{Storage::url('images/articles/type/'.$type->img_type_article)}}" alt="">
                         <div class="catagory-title">
                             <a href="{{route('articlesForType', $type->id) }}">
                                 <h5>{{$type->desc_type_article}}</h5>
