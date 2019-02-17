@@ -153,6 +153,6 @@ class UserController extends Controller
         $user = $this->showComplete(Auth::user()->id);
         $typeArticles = TypeArticle::where('status_type_article', 'A')->get();
         $active = '';
-        return view('profile', compact('breadcrumb','user','typeArticles','active'));
+        return view('web.user.profile', compact('breadcrumb','user','typeArticles','active'));
     }
 }
