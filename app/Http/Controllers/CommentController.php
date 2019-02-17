@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Comment;
+use Session;
 
 class CommentController extends Controller
 {
@@ -43,6 +44,13 @@ class CommentController extends Controller
     public function store(Request $request)
     {
         $this->validator($request->all())->validate();
+        $id_article = Session::get('userData.article');
+        Comment::create([
+            'txt_message' => $request->txt_message,
+            'article_id' => $id_article,
+            'user_id' => Session::get('userData.data')["id"]
+        ]);
+        return redirect()->route('readArticle', ['id' => $id_article]);
     }
 
     /**
@@ -110,7 +118,7 @@ class CommentController extends Controller
     }
 
     protected function validator(array $data)
-    {
+    {   
         return Validator::make($data, [
             'txt_message' => 'required|string|max:255',
         ]);
