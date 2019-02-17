@@ -37,7 +37,6 @@ Route::middleware(['auth'])->prefix('admin')->group(function(){
     Route::get('comentario/{id}', 'CommentController@view')->middleware('can:administrator');
     Route::get('comentarios', 'CommentController@index')->name('comments');
     Route::get('comentario/novo', 'CommentController@create');
-    Route::post('comentario/salvar', 'CommentController@store');
     Route::get('comentario/{id}/editar', 'CommentController@edit');
     Route::patch('comentario/{id}/alterar', 'CommentController@update')->middleware('can:administrator')->name('EditComments');
     Route::delete('comentario/{id}/excluir', 'CommentController@destroy');
@@ -68,4 +67,5 @@ Route::middleware(['auth'])->group(function(){
     Route::delete('dados/{id}/excluir', 'UserDataController@destroy')->middleware('can:administrator');
     Route::get('dados/completos/{id}', 'UserController@showComplete');
     Route::get('dados_usuario', 'UserController@view')->name('profile');
+    Route::post('comentario/salvar', 'CommentController@store')->name('newComment');
 });

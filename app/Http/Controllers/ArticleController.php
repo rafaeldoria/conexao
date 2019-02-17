@@ -9,6 +9,7 @@ use App\Models\TypeArticle;
 use App\Models\InstagramImage;
 use App\Models\Log;
 use App\Models\UserData;
+use App\Models\Comment;
 use App\Http\Resources\ArticleTransformer;
 use Session;
 
@@ -255,7 +256,23 @@ class ArticleController extends Controller
         $typeArticles = TypeArticle::all();
         $imagesInstagram = InstagramImage::where('visibility', 'S')->get();
         $userData = UserData::find($article->user_data_id);
-        return view('web.articles.singleArticle', compact('breadcrumb', 'article', 'typeArticles', 'userData', 'imagesInstagram', 'active'));
+        $comments = Comment::where('article_id', $id)->get();
+        if(!$comments->isEmpty())
+        {
+            $comments = $this->getUserDataComment($comments);
+        }
+        Session::put('userData.article', $id);
+        return view('web.articles.singleArticle', compact('breadcrumb', 'article', 'typeArticles', 'userData', 'comments','imagesInstagram', 'active'));
+    }
+
+    private function getUserDataComment($comments)
+    {   
+        foreach ($comments as $key => $value) {
+            $commentUserData = UserData::find($value->user_id);
+            $value->name = $commentUserData->name;
+            $value->img_user_link = $commentUserData->img_user_link;
+        }
+        return $comments;
     }
 
     public function showForType($id)

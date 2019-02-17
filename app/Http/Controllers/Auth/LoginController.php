@@ -91,7 +91,10 @@ class LoginController extends Controller
             'type_log_id' => 1,
             'user_id' => $user['id']
         ]);
-
+        if($id = Session::get('userData.article'))
+        {   
+            return redirect()->route('readArticle', ['id' => $id]);
+        }
     }
 
     protected function sendFailedLoginResponse(Request $request)

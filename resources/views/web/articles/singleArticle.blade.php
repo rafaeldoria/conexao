@@ -106,11 +106,10 @@
                         </div>
                     </div>
                 </div>
-
             </div>
+            @include('web.articles.comment')
         </div>
     </section>
-    
 
     <div class="instargram_area owl-carousel section_padding_100_0 clearfix" id="portfolio">
         @foreach ($imagesInstagram as $image)
