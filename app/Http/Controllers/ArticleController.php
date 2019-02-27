@@ -275,7 +275,7 @@ class ArticleController extends Controller
         return $comments;
     }
 
-    public function showForType($id)
+    public function showForType($id, Request $request)
     {
         $articles = Article::where([
                 ['type_article_id', $id],
@@ -286,6 +286,7 @@ class ArticleController extends Controller
         $typeArticles = TypeArticle::where('status_type_article', 'A')->get();
         $imagesInstagram = InstagramImage::where('visibility', 'S')->get();
         $active = 'articleForMenu';
+        $request->session()->forget('alert-hollow');
         return view('web.articles.articles', compact('articles', 'typeArticles', 'imagesInstagram', 'active'));
     }
 
@@ -297,6 +298,29 @@ class ArticleController extends Controller
         $typeArticles = TypeArticle::where('status_type_article', 'A')->get();
         $imagesInstagram = InstagramImage::where('visibility', 'S')->get();
         $active = 'allArticles';
+        $request->session()->forget('alert-hollow');
+        return view('web.articles.articles', compact('articles', 'typeArticles', 'imagesInstagram', 'active'));
+    }
+
+    public function search(Request $request)
+    {   
+        $user_id = UserData::where('name', 'like', '%'.$request->search.'%')->first();
+        $user_id = isset($user_id) ? $user_id['id'] : 0;
+        $articles = Article::where('visibility', 'S')
+            ->where('title', 'like', '%'.$request->search.'%')
+            ->orWhere('summary', 'like', '%'.$request->search.'%')
+            ->orWhere('details_article', 'like', '%'.$request->search.'%')
+            ->orWhere('user_data_id', $user_id)
+            ->orderBy('created_at', 'desc')
+            ->get();
+        $typeArticles = TypeArticle::where('status_type_article', 'A')->get();
+        $imagesInstagram = InstagramImage::where('visibility', 'S')->get();
+        $active = 'allArticles';
+        if(!count($articles)){
+            $request->session()->flash('alert-hollow', 'Nenhum resultado encontrado.');
+        }else{
+            $request->session()->forget('alert-hollow');
+        }
         return view('web.articles.articles', compact('articles', 'typeArticles', 'imagesInstagram', 'active'));
     }
 
