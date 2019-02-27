@@ -17,6 +17,15 @@
 
     <section class="blog_area section_padding_0_80">
         <div class="container">
+            <div class="row offset-1">
+                @foreach (['danger','hollow','warning'] as $msg)
+                @if(Session::has('alert-' . $msg))
+                    <div class="alert alert-info col-md-4">
+                        <h5>{{ Session::get('alert-' . $msg) }}</h5> <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    </div>
+                    @endif
+                @endforeach
+            </div>
             <div class="row justify-content-center">
                 <div class="col-12 col-lg-8">
                     <div class="row">
