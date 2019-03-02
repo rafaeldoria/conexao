@@ -17,8 +17,8 @@ class CreateInstagramImagesTable extends Migration
             $table->increments('id');
             $table->string('desc_image');
             $table->char('visibility', 1);
-            $table->string('img_instagram');
-            $table->string('link_instagram');
+            $table->string('img_instagram')->nullable();
+            $table->string('link_instagram')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

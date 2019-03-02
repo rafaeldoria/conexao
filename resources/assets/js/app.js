@@ -199,4 +199,25 @@ $(document).ready(function () {
         $('.deleteTypeArticleModal').find("#deleteTypeArticle").attr('action', '/admin/menu/artigo/' + id + '/excluir');
     });
 
+    $('.edit_instagram').click(function () {
+        id = this.id;
+        $.ajax({
+            url: '/admin/imageI/' + id,
+            type: 'GET',
+            success: function (data) {
+                imageI = JSON.parse(data);
+                $('.editImageIModal').modal('show');
+                $('.editImageIModal').find('#desc_image').val(imageI.desc_image);
+                $('.editImageIModal').find('#visibility').val(imageI.visibility);
+                $('.editImageIModal').find("#editImageI").attr('action', '/admin/imageI/' + imageI.id + '/alterar');
+            }
+        });
+    });
+
+    $('.delete_instagram').click(function () {
+        id = this.id;
+        $('.deleteImageIModal').modal('show');
+        $('.deleteImageIModal').find("#deleteImageI").attr('action', '/admin/imageI/' + id + '/excluir');
+    });
+
 });

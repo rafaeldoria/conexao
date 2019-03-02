@@ -47,6 +47,9 @@
 						<div class="card-body col-md-3">
 							<a href="{{route('logs')}}" class="btn btn-danger"><i class="fas fa-list-alt"></i>Logs</a>
 						</div>
+						<div class="card-body col-md-3">
+							<a href="{{route('instagram')}}" class="btn btn-info"><i class="fab fa-instagram"></i>Imagens Intagram</a>
+						</div>
 					</div>
 				</div>
             </div>

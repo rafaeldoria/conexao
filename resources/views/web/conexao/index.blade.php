@@ -119,7 +119,7 @@
                 <div class="yummy-table">
                     <div class="yummy-table-cell">
                         <div class="follow-me text-center">
-                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i> Siga-nos</a>
+                            <a href="{{$image->link_instagram}}" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i> Siga-nos</a>
                         </div>
                     </div>
                 </div>

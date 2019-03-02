@@ -1,8 +1,8 @@
-<div class="modal fade editArticleModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<div class="modal fade editImageIModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="editArticleModal">Editar Artigo</h4>
+                <h4 class="modal-title" id="editImageIModal">Editar Artigo</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
@@ -12,32 +12,21 @@
                     <div class="col-md-8">
                         <div class="card">
                             <div class="card-body">
-                                <form id="editArticle" method="POST" action="" enctype="multipart/form-data" aria-label="{{ __('EditArticles') }}">
+                                <form id="editImageI" method="POST" action="" enctype="multipart/form-data" aria-label="{{ __('EditImageInstagram') }}">
                                     @method('PATCH')
                                     @csrf
 
                                     <div class="form-group row">
-                                        <label for="title" class="col-md-4 col-form-label text-md-right">{{ __('Título') }}</label>
+                                        <label for="desc_image" class="col-md-4 col-form-label text-md-right">{{ __('Descrição') }}</label>
 
                                         <div class="col-md-6">
-                                            <input id="title" type="text" class="form-control{{ $errors->has('title') ? ' is-invalid' : '' }}" name="title" value="{{ old('title') }}" required autofocus>
+                                            <input id="desc_image" type="text" class="form-control{{ $errors->has('desc_image') ? ' is-invalid' : '' }}" name="desc_image" value="{{ old('desc_image') }}" required autofocus>
 
-                                            @if ($errors->has('title'))
+                                            @if ($errors->has('desc_image'))
                                                 <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $errors->first('username') }}</strong>
+                                                    <strong>{{ $errors->first('desc_image') }}</strong>
                                                 </span>
                                             @endif
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group row">
-                                        <label for="type_articleEdit" class="col-md-4 col-form-label text-md-right">{{ __('Menu') }}</label>
-                                        <div class="col-md-6">
-                                            <select name="type_articleEdit" id="type_articleEdit" class="form-control">
-                                                @foreach ($typeArticle as $value)
-                                                    <option value="{{$value->id}}">{{$value->desc_type_article}}</option>
-                                                @endforeach
-                                            </select>
                                         </div>
                                     </div>
 
@@ -52,18 +41,24 @@
                                     </div>
 
                                     <div class="form-group row">
-                                        <label for="imageCape" class="col-md-4 col-form-label text-md-right">{{ __('Imagem Capa') }}</label>
+                                        <label for="img_instagram" class="col-md-4 col-form-label text-md-right">{{ __('Imagem Instagram') }}</label>
 
                                         <div class="col-md-6">
-                                            <input id="imageCape" type="file" class="form-control{{ $errors->has('imageCape') ? ' is-invalid' : '' }} filestyle" data-input="false" name="imageCape" value="{{ old('imageCape') }}" data-text="Adicionar Imagem (1100x733)" data-btnClass="btn-success" autofocus>
+                                            <input id="img_instagram" type="file" class="form-control{{ $errors->has('img_instagram') ? ' is-invalid' : '' }} filestyle" data-input="false" name="img_instagram" value="{{ old('img_instagram') }}" data-text="Adicionar Imagem" data-btnClass="btn-success" autofocus>
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
-                                        <label for="imageCarousel" class="col-md-4 col-form-label text-md-right">{{ __('Imagem Carousel') }}</label>
+                                        <label for="link_instagram" class="col-md-4 col-form-label text-md-right">{{ __('Link da Imagem') }}</label>
 
                                         <div class="col-md-6">
-                                            <input id="imageCarousel" type="file" class="form-control{{ $errors->has('imageCarousel') ? ' is-invalid' : '' }} filestyle" data-input="false" name="imageCarousel" value="{{ old('imageCarousel') }}" data-text="Adicionar Imagem (405x600)" data-btnClass="btn-success" autofocus>
+                                            <input id="link_instagram" type="text" class="form-control{{ $errors->has('link_instagram') ? ' is-invalid' : '' }}" name="link_instagram" value="{{ old('link_instagram') }}" required autofocus>
+
+                                            @if ($errors->has('link_instagram'))
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $errors->first('link_instagram') }}</strong>
+                                                </span>
+                                            @endif
                                         </div>
                                     </div>
 

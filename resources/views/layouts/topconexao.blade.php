@@ -63,7 +63,6 @@
                         @endguest
                     </div>
                 </div>
-                @include('layouts.search')
             </div>
         </div>
     </div>

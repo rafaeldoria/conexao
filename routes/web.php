@@ -53,6 +53,11 @@ Route::middleware(['auth'])->prefix('admin')->group(function(){
     Route::get('menu/artigo/{id}', 'TypeArticleController@show')->middleware('can:author');
     Route::patch('menu/artigo/{id}/alterar', 'TypeArticleController@update')->middleware('can:author')->name('editTypeArticle');
     Route::delete('menu/artigo/{id}/excluir', 'TypeArticleController@destroy')->middleware('can:author')->name('deleteArticles');
+    Route::get('instagram', 'InstagramImageController@index')->middleware('can:administrator')->name('instagram');
+    Route::get('imageI/{id}', 'InstagramImageController@show')->middleware('can:administrator');
+    Route::post('imageI/salvar', 'InstagramImageController@store')->middleware('can:administrator')->name('saveImageI');
+    Route::patch('imageI/{id}/alterar', 'InstagramImageController@update')->middleware('can:administrator')->name('editImageI');
+    Route::delete('imageI/{id}/excluir', 'InstagramImageController@destroy')->middleware('can:administrator')->name('deleteImageI');
 });
 
 Route::middleware(['auth'])->group(function(){
