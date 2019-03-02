@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\TypeUser;
 use App\Models\TypeArticle;
+use App\Models\Log;
 use App\Http\Resources\UserTransformer;
 
 class UserController extends Controller
@@ -53,6 +54,11 @@ class UserController extends Controller
             'password' => Hash::make($request['password']),
             'type_user_id' => $request->type_user,
         ]);
+        Log::create([
+            'desc_log' => 'Novo usuário adicionado via admin',
+            'type_log_id' => 3,
+            'user_id' => Session::get('userData.login')['id']
+        ]);
         $request->session()->flash('alert-primary', 'Usuário adicionado');
         return true;
     }
@@ -95,6 +101,11 @@ class UserController extends Controller
                 'email' => $request['emailEdit'],
                 'type_user_id' => $request['type_userEdit'],
             ]);
+        Log::create([
+            'desc_log' => 'Usuário '.$id.' alterado via admin,',
+            'type_log_id' => 3,
+            'user_id' => Session::get('userData.login')['id']
+        ]);    
         $request->session()->flash('alert-primary', 'Alteração Efetuada.');
         return redirect()->route('users');
     }
@@ -109,6 +120,11 @@ class UserController extends Controller
     {
         $user = User::find($id);
         $user->delete();
+        Log::create([
+            'desc_log' => 'Usuário '.$id.' deletado via admin.',
+            'type_log_id' => 3,
+            'user_id' => Session::get('userData.login')['id']
+        ]); 
         $request->session()->flash('alert-warning', 'Usuário Deletado.');
         return redirect()->route('users');
     }

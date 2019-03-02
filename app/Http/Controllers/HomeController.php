@@ -8,6 +8,7 @@ use App\Models\Article;
 use App\Models\TypeArticle;
 use App\Models\InstagramImage;
 use App\Mail\SendMailContact;
+use App\Models\Log;
 use Session;
 
 class HomeController extends Controller
@@ -54,6 +55,11 @@ class HomeController extends Controller
     public function sendContactNotification(Request $request)
     {   
         Mail::to('conexa@conexaonerd.com.br')->send(new SendMailContact($request));
+        Log::create([
+            'desc_log' => 'Email enviado.',
+            'type_log_id' => 5,
+            'user_id' => 0
+        ]); 
         $request->session()->flash('email-success', 'Email enviado com sucesso');
         return redirect()->route('contact');
     }

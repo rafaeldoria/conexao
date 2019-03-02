@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Comment;
+use App\Models\Log;
 use Session;
 
 class CommentController extends Controller
@@ -50,6 +51,11 @@ class CommentController extends Controller
             'article_id' => $id_article,
             'user_id' => Session::get('userData.data')["id"]
         ]);
+        Log::create([
+            'desc_log' => 'Comentário adicionado no artigo '.$id_article,
+            'type_log_id' => 4,
+            'user_id' => Session::get('userData.login')['id']
+        ]); 
         return redirect()->route('readArticle', ['id' => $id_article]);
     }
 
@@ -90,6 +96,11 @@ class CommentController extends Controller
             ->update([
                 'txt_message' => $request['txt_mensagemEdit'],
             ]);
+        Log::create([
+            'desc_log' => 'Alteração no comentário '.$id.' via admin.',
+            'type_log_id' => 4,
+            'user_id' => Session::get('userData.login')['id']
+        ]); 
         $request->session()->flash('alert-primary', 'Alteração Efetuada.');
         return redirect()->route('comments');
     }
@@ -104,6 +115,11 @@ class CommentController extends Controller
     {
         $comment = Comment::find($id);
         $comment->delete();
+        Log::create([
+            'desc_log' => 'Comentário '.$id.' deletado via admin.',
+            'type_log_id' => 4,
+            'user_id' => Session::get('userData.login')['id']
+        ]); 
         $request->session()->flash('alert-warning', 'Comentário Deletado.');
         return redirect()->route('comments');
     }
