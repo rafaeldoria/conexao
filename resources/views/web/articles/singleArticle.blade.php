@@ -92,19 +92,10 @@
                             <h4 class="font-shadow-into-light">{{$userData->name}}</h4>
                             <p>{{$userData->desc_user}}</p>
                         </div>
-                        <div class="single-widget-area newsletter-widget">
-                            <div class="widget-title text-center">
-                                <h6>Newsletter</h6>
-                            </div>
-                            <p>Faça essa Conexão para receber notificações sobre novas atualizações, discussões, novos post, etc.</p>
-                            <div class="newsletter-form">
-                                <form action="#" method="post">
-                                    <input type="email" name="newsletter-email" id="email" placeholder="Seu email">
-                                    <button type="submit"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
-                                </form>
-                            </div>
-                        </div>
                     </div>
+
+                    @include('layouts.newsletter')
+                    
                 </div>
             </div>
             @include('web.articles.comment')

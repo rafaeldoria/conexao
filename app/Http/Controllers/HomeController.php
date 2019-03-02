@@ -35,6 +35,7 @@ class HomeController extends Controller
         $fourArticles = Article::where('visibility', 'S')->orderBy('created_at', 'desc')->limit(4)->get();
         $imagesInstagram = InstagramImage::where('visibility', 'S')->get();
         $active = 'home';
+        Session::put('userData.article', '/');
         return view('web.conexao.index', compact('articles', 'typeArticles', 'fourArticles', 'imagesInstagram', 'active'));
     }
 
