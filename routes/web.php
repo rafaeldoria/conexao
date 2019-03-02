@@ -15,6 +15,7 @@ Route::get('/menus/{id}', 'TypeArticleController@show')->name('getTypeArticle');
 Route::get('/contato', 'HomeController@contact')->name('contact');
 Route::post('/enviarMensagem', 'HomeController@sendContactNotification')->name('sendContact');
 Route::get('/sobre', 'HomeController@about')->name('about');
+Route::post('/newsletter', 'NewsletterController@addNewsletter')->name('addNewsletter');
 
 Route::middleware(['auth'])->prefix('admin')->group(function(){
     Route::get('/conexao', 'ConexaoController@index')->name('conexao');
