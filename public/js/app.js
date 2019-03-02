@@ -13847,7 +13847,6 @@ $(document).ready(function () {
             url: '/admin/comentario/' + id,
             type: 'GET',
             success: function success(data) {
-                console.log(data);
                 comment = JSON.parse(data);
                 $('.viewCommentModal').modal('show');
                 $('.viewCommentModal').find('#title').text(comment.article_title);
@@ -13881,9 +13880,7 @@ $(document).ready(function () {
             url: 'dados/completos/' + id,
             type: 'GET',
             success: function success(data) {
-                console.log(data);
                 $('.editUserDataModal').modal('show');
-                // $('.editUserDataModal').find('#imageDataEdit').val(data.img_user_link);
                 $('.editUserDataModal').find('#usernameDataEdit').val(data.username);
                 $('.editUserDataModal').find('#nameDataEdit').val(data.name);
                 $('.editUserDataModal').find('#emailDataEdit').val(data.email);
@@ -13896,6 +13893,69 @@ $(document).ready(function () {
 
     $('#refresh').click(function () {
         location.reload();
+    });
+
+    $('.edit_type_user').click(function () {
+        id = this.id;
+        $.ajax({
+            url: '/admin/tipo/usuario/' + id,
+            type: 'GET',
+            success: function success(data) {
+                typeuser = JSON.parse(data);
+                $('.editTypeUserModal').modal('show');
+                $('.editTypeUserModal').find('#desc_type').val(typeuser.desc_type_user);
+                $('.editTypeUserModal').find('#status_type').val(typeuser.status_type_user);
+                $('.editTypeUserModal').find("#editTypeUser").attr('action', '/admin/tipo/usuario/' + typeuser.id + '/alterar');
+            }
+        });
+    });
+
+    $('.delete_type_user').click(function () {
+        id = this.id;
+        $('.deleteTypeUserModal').modal('show');
+        $('.deleteTypeUserModal').find("#deleteTypeUser").attr('action', '/admin/tipo/usuario/' + id + '/excluir');
+    });
+
+    $('.edit_type_article').click(function () {
+        id = this.id;
+        $.ajax({
+            url: '/admin/menu/artigo/' + id,
+            type: 'GET',
+            success: function success(data) {
+                typearticle = JSON.parse(data);
+                $('.editTypeArticleModal').modal('show');
+                $('.editTypeArticleModal').find('#desc_type').val(typearticle.desc_type_article);
+                $('.editTypeArticleModal').find('#status_type').val(typearticle.status_type_article);
+                $('.editTypeArticleModal').find("#editTypeArticle").attr('action', '/admin/menu/artigo/' + typearticle.id + '/alterar');
+            }
+        });
+    });
+
+    $('.delete_type_article').click(function () {
+        id = this.id;
+        $('.deleteTypeArticleModal').modal('show');
+        $('.deleteTypeArticleModal').find("#deleteTypeArticle").attr('action', '/admin/menu/artigo/' + id + '/excluir');
+    });
+
+    $('.edit_instagram').click(function () {
+        id = this.id;
+        $.ajax({
+            url: '/admin/imageI/' + id,
+            type: 'GET',
+            success: function success(data) {
+                imageI = JSON.parse(data);
+                $('.editImageIModal').modal('show');
+                $('.editImageIModal').find('#desc_image').val(imageI.desc_image);
+                $('.editImageIModal').find('#visibility').val(imageI.visibility);
+                $('.editImageIModal').find("#editImageI").attr('action', '/admin/imageI/' + imageI.id + '/alterar');
+            }
+        });
+    });
+
+    $('.delete_instagram').click(function () {
+        id = this.id;
+        $('.deleteImageIModal').modal('show');
+        $('.deleteImageIModal').find("#deleteImageI").attr('action', '/admin/imageI/' + id + '/excluir');
     });
 });
 

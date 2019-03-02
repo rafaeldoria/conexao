@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\InstagramImage;
 use App\Models\Log;
+use Session;
 
 class InstagramImageController extends Controller
 {
@@ -15,8 +16,12 @@ class InstagramImageController extends Controller
      */
     public function index()
     {
-        $images = InstagramImage::all();
-        return $images;
+        $breadcrumb = [
+            ["title" => "Home", "route" => route('conexao')],
+            ["title" => "Instagram Detalhes", "route" => ""]
+        ];
+        $instagrams = InstagramImage::all();
+        return view('admin.instagram', compact('breadcrumb', 'instagrams'));
     }
 
     /**
@@ -38,11 +43,17 @@ class InstagramImageController extends Controller
     public function store(Request $request)
     {
         //
+        InstagramImage::create([
+            'desc_image' => $request->desc_image,
+            'visibility' => $request->visibility,
+        ]);
+        $request->session()->flash('alert-primary', 'Imagem Instagram adicionado');
         Log::create([
             'desc_log' => 'Imagem instagram adicionada.',
             'type_log_id' => 6,
             'user_id' => Session::get('userData.login')['id']
-        ]); 
+            ]); 
+        return redirect()->route('instagram');
     }
 
     /**
@@ -53,7 +64,8 @@ class InstagramImageController extends Controller
      */
     public function show($id)
     {
-        //
+        $InstagramImage = InstagramImage::find($id);
+        return $InstagramImage->toJson();
     }
 
     /**
@@ -76,12 +88,42 @@ class InstagramImageController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->saveImageI($request, $id);
+        InstagramImage::where('id', $id)
+            ->update([
+                'desc_image' => $request->desc_image,
+                'visibility' => $request->visibility,
+                'link_instagram' => $request->link_instagram,
+            ]);
+        $request->session()->flash('alert-primary', 'Alteração Efetuada.');
         Log::create([
             'desc_log' => 'Imagem instagram alterada '.$id.'.',
             'type_log_id' => 6,
             'user_id' => Session::get('userData.login')['id']
         ]); 
+        return redirect()->route('instagram');
+    }
+
+    private function saveImageI($request, $id)
+    {
+        if($request->hasFile('img_instagram') && $request->file('img_instagram')->isValid()){
+            $imageI = InstagramImage::find($id);
+            if($imageI->img_instagram){
+                $filename = $imageI->img_instagram;
+            }else{
+                $filename = 'imagei-'.kebab_case($request->desc_image).'-'.$id;
+                $extension = $request->img_instagram->extension();
+                $filename = "{$filename}.{$extension}";
+            }
+            $upload = $request->img_instagram->storeAs('images/instagram/', $filename);
+            if(!$upload){
+                redirect()->back->with('error', 'Falha ao realizar upload de imagem.');
+            }
+            InstagramImage::where('id', $id)
+                ->update([
+                    'img_instagram' => $filename
+                ]);
+        }
     }
 
     /**
@@ -90,13 +132,16 @@ class InstagramImageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+        $imageI = InstagramImage::find($id);
+        $imageI->delete();
+        $request->session()->flash('alert-warning', 'Imagem Instagram Deletada.');
         Log::create([
             'desc_log' => 'Imagem instagram deletada '.$id.'.',
             'type_log_id' => 6,
             'user_id' => Session::get('userData.login')['id']
         ]);
+        return redirect()->route('instagram');
     }
 }

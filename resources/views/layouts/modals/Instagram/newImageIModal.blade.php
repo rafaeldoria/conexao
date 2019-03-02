@@ -1,8 +1,8 @@
-<div class="modal fade newArticleModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<div class="modal fade newImageIModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="newArticleModal">Novo Article</h4>
+                <h4 class="modal-title" id="newImageIModal">Novo Article</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
@@ -12,30 +12,29 @@
                     <div class="col-md-8">
                         <div class="card">
                             <div class="card-body">
-                                <form method="POST" action="{{ route('newArticles') }}" aria-label="{{ __('NewArticles') }}">
+                                <form method="POST" action="{{ route('saveImageI') }}" aria-label="{{ __('saveImageI') }}">
                                     @csrf
 
                                     <div class="form-group row">
-                                        <label for="title" class="col-md-4 col-form-label text-md-right">{{ __('Título') }}</label>
+                                        <label for="desc_image" class="col-md-4 col-form-label text-md-right">{{ __('Descrição') }}</label>
 
                                         <div class="col-md-6">
-                                            <input id="title" type="text" class="form-control{{ $errors->has('title') ? ' is-invalid' : '' }}" name="title" value="{{ old('title') }}" required autofocus>
+                                            <input id="desc_image" type="text" class="form-control{{ $errors->has('desc_image') ? ' is-invalid' : '' }}" name="desc_image" value="{{ old('desc_image') }}" required autofocus>
 
-                                            @if ($errors->has('title'))
+                                            @if ($errors->has('desc_image'))
                                                 <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $errors->first('title') }}</strong>
+                                                    <strong>{{ $errors->first('desc_image') }}</strong>
                                                 </span>
                                             @endif
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
-                                        <label for="type_article" class="col-md-4 col-form-label text-md-right">{{ __('Menu') }}</label>
+                                        <label for="visibility" class="col-md-4 col-form-label text-md-right">{{ __('Visibilidade') }}</label>
                                         <div class="col-md-6">
-                                            <select name="type_article" id="type_article" class="form-control">
-                                                @foreach ($typeArticle as $value)
-                                                    <option value="{{$value->id}}">{{$value->desc_type_article}}</option>
-                                                @endforeach
+                                            <select name="visibility" id="visibility" class="form-control">
+                                                <option value="N">Não</option>
+                                                <option value="S">Sim</option>
                                             </select>
                                         </div>
                                     </div>
