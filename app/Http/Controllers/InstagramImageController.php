@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\InstagramImage;
+use App\Models\Log;
 
 class InstagramImageController extends Controller
 {
@@ -37,6 +38,11 @@ class InstagramImageController extends Controller
     public function store(Request $request)
     {
         //
+        Log::create([
+            'desc_log' => 'Imagem instagram adicionada.',
+            'type_log_id' => 6,
+            'user_id' => Session::get('userData.login')['id']
+        ]); 
     }
 
     /**
@@ -71,6 +77,11 @@ class InstagramImageController extends Controller
     public function update(Request $request, $id)
     {
         //
+        Log::create([
+            'desc_log' => 'Imagem instagram alterada '.$id.'.',
+            'type_log_id' => 6,
+            'user_id' => Session::get('userData.login')['id']
+        ]); 
     }
 
     /**
@@ -82,5 +93,10 @@ class InstagramImageController extends Controller
     public function destroy($id)
     {
         //
+        Log::create([
+            'desc_log' => 'Imagem instagram deletada '.$id.'.',
+            'type_log_id' => 6,
+            'user_id' => Session::get('userData.login')['id']
+        ]);
     }
 }

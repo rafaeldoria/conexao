@@ -251,7 +251,7 @@ class ArticleController extends Controller
             ["title" => "Artigos", "route" => route('allArticles')],
             ["title" => $article->title, "route" => ""],
         ];
-
+        $this->addHits($id);
         $active = $article->title;
         $typeArticles = TypeArticle::all();
         $imagesInstagram = InstagramImage::where('visibility', 'S')->get();
@@ -322,6 +322,18 @@ class ArticleController extends Controller
             $request->session()->forget('alert-hollow');
         }
         return view('web.articles.articles', compact('articles', 'typeArticles', 'imagesInstagram', 'active'));
+    }
+
+    private function addHits($id)
+    {
+        $totalHits = Article::select('total_hits')
+                        ->where('id', $id)
+                        ->first();
+        Article::where('id', $id)
+            ->update([
+                'total_hits' => $totalHits->total_hits + 1,
+            ]);   
+        return true;
     }
 
     protected function validator(array $data)

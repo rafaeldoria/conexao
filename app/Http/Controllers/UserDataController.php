@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\File;
 use App\Models\UserData;
+use App\Models\Log;
 use App\Http\Resources\UserDataTransformer;
 use Session;
 
@@ -116,6 +117,11 @@ class UserDataController extends Controller
         $user->update([
             'username' => $request->usernameDataEdit,
             'email' => $request->emailDataEdit,
+        ]);
+        Log::create([
+            'desc_log' => 'Profile alterado '.$id.'.',
+            'type_log_id' => 3,
+            'user_id' => Session::get('userData.login')['id']
         ]);
         $request->session()->flash('alert-primary', 'Alteração Efetuada.');
         return redirect()->route('profile');
