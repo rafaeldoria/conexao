@@ -291,7 +291,7 @@ class ArticleController extends Controller
         return view('web.articles.articles', compact('articles', 'typeArticles', 'imagesInstagram', 'active'));
     }
 
-    public function allView()
+    public function allView(Request $request)
     {
         $articles = Article::where('visibility', 'S')
             ->orderBy('created_at', 'desc')
