@@ -37,7 +37,8 @@ class ConexaoController extends Controller
             $userData = (new UserDataTransformer)->toArray($userData);
             Session::put('userData.data', $userData);
         }
-        return view('admin.conexao');
+        $menus = $this->getMenus();
+        return view('admin.conexao', compact('menus'));
     }
 
 }

@@ -20,7 +20,8 @@ class TypeArticleController extends Controller
         ];
 
         $typeArticle = TypeArticle::all();
-        return view('admin.typesarticle', compact('breadcrumb', 'typeArticle'));
+        $menus = $this->getMenus();
+        return view('admin.typesarticle', compact('breadcrumb', 'typeArticle', 'menus'));
     }
 
     /**

@@ -10,6 +10,7 @@ use App\Models\TypeUser;
 use App\Models\TypeArticle;
 use App\Models\Log;
 use App\Http\Resources\UserTransformer;
+use Session;
 
 class UserController extends Controller
 {
@@ -27,7 +28,8 @@ class UserController extends Controller
 
         $users = User::all();
         $typeUser = TypeUser::all();
-        return view('admin.user', compact('breadcrumb', 'users', 'typeUser'));
+        $menus = $this->getMenus();
+        return view('admin.user', compact('breadcrumb', 'users', 'typeUser', 'menus'));
     }
 
     /**

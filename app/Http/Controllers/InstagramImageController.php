@@ -21,7 +21,8 @@ class InstagramImageController extends Controller
             ["title" => "Instagram Detalhes", "route" => ""]
         ];
         $instagrams = InstagramImage::all();
-        return view('admin.instagram', compact('breadcrumb', 'instagrams'));
+        $menus = $this->getMenus();
+        return view('admin.instagram', compact('breadcrumb', 'instagrams', 'menus'));
     }
 
     /**

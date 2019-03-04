@@ -23,7 +23,8 @@ class CommentController extends Controller
         ];
 
         $comments = Comment::all();
-        return view('admin.comment', compact('breadcrumb', 'comments'));
+        $menus = $this->getMenus();
+        return view('admin.comment', compact('breadcrumb', 'comments' ,'menus'));
     }
 
     /**
@@ -91,7 +92,6 @@ class CommentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validator($request->all())->validate();
         Comment::where('id', $id)
             ->update([
                 'txt_message' => $request['txt_mensagemEdit'],

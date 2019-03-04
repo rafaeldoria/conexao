@@ -4,7 +4,7 @@
 <link href="{{ asset('css/adminLte.min.css') }}" rel="stylesheet">
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-10">
+        <div class="col-md-10 offset-2">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     @foreach ($breadcrumb as $value)
@@ -18,8 +18,8 @@
         </div>
     </div>
     
-    <div class="row offset-1">
-        @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+    <div class="row offset-2">
+        @foreach (['danger', 'warning', 'success', 'info', 'primary'] as $msg)
         @if(Session::has('alert-' . $msg))
             <div class="alert alert-{{ $msg }} col-md-4">
 
@@ -29,6 +29,7 @@
         @endforeach
     </div>
     <div class="row justify-content-center">
+        @include('layouts.menu')
         <div class="col-md-10">
           <div class="box">
             <div class="box-header with-border">
