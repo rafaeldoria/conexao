@@ -22,7 +22,8 @@ class LogController extends Controller
 
         $logs = Log::all();
         $typeLog = TypeLog::all();
-        return view('admin.log', compact('breadcrumb', 'logs', 'typeLog'));
+        $menus = $this->getMenus();
+        return view('admin.log', compact('breadcrumb', 'logs', 'typeLog', 'menus'));
     }
 
     /**

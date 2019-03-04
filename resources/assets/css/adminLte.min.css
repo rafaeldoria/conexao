@@ -478,9 +478,9 @@ a:focus {
   position: absolute;
   top: 0;
   left: 0;
-  padding-top: 50px;
+  padding-top: 10px;
   min-height: 100%;
-  width: 230px;
+  width: 150px;
   z-index: 810;
   -webkit-transition: -webkit-transform 0.3s ease-in-out, width 0.3s ease-in-out;
   -webkit-transition: width 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
@@ -606,7 +606,7 @@ a:focus {
 
 .sidebar-menu li.header {
   padding: 10px 25px 10px 15px;
-  font-size: 12px;
+  font-size: 15px;
 }
 
 .sidebar-menu li > a > .fa-angle-left,
@@ -6106,4 +6106,44 @@ table.text-center th {
 
 .offset-11 {
   margin-left: 91.66666667%;
+}
+
+.main-sidebar {
+  background-color: #e9ecef;
+}
+
+.sidebar {
+  padding-bottom: 10px;
+}
+
+.sidebar a {
+  color: #4e585d;
+}
+
+.sidebar-menu>li>a {
+  padding: 12px 5px 12px 15px;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+}
+
+.sidebar a:hover {
+  text-decoration: none;
+  color: #269434;
+  background-color: #222d32;
+}
+
+.sidebar-menu:hover {
+  overflow: visible;
+}
+
+.sidebar-menu {
+  color: #269434;
+}
+
+.sidebar-menu>li.header {
+  color: #4b646f;
+  background: #1a2226;
 }

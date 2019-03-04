@@ -20,7 +20,8 @@ class TypeUserController extends Controller
         ];
 
         $typeUser = TypeUser::all();
-        return view('admin.typesuser', compact('breadcrumb', 'typeUser'));
+        $menus = $this->getMenus();
+        return view('admin.typesuser', compact('breadcrumb', 'typeUser', 'menus'));
     }
 
     /**

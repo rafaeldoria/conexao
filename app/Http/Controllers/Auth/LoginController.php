@@ -91,9 +91,12 @@ class LoginController extends Controller
             'type_log_id' => 1,
             'user_id' => $user['id']
         ]);
-        if($id = Session::get('userData.article'))
-        {   
-            return redirect()->route('readArticle', ['id' => $id]);
+        if($id_article = Session::get('userData.article'))
+        {  
+            if($id_article == '/'){
+                return redirect('/');
+            } 
+            return redirect()->route('readArticle', ['id' => $id_article]);
         }
     }
 

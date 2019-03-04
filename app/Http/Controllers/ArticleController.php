@@ -29,7 +29,8 @@ class ArticleController extends Controller
 
         $articles = Article::all();
         $typeArticle = TypeArticle::all();
-        return view('admin.article', compact('breadcrumb', 'articles', 'typeArticle'));
+        $menus = $this->getMenus();
+        return view('admin.article', compact('breadcrumb', 'articles', 'typeArticle', 'menus'));
     }
 
     public function view()

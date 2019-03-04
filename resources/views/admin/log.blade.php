@@ -5,7 +5,7 @@
 
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-10">
+        <div class="col-md-10 offset-2">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     @foreach ($breadcrumb as $value)
@@ -20,6 +20,7 @@
     </div>
 
     <div class="row justify-content-center">
+        @include('layouts.menu')
         <div class="col-md-10">
           <div class="box">
             <div class="box-header with-border">
