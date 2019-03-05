@@ -19,7 +19,7 @@ class TypeUserController extends Controller
             ["title" => "Tipos de Usuários", "route" => ""]
         ];
 
-        $typeUser = TypeUser::all();
+        $typeUser = TypeUser::paginate(10);
         $menus = $this->getMenus();
         return view('admin.typesuser', compact('breadcrumb', 'typeUser', 'menus'));
     }

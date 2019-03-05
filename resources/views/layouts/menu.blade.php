@@ -1,4 +1,4 @@
-<div class="col-md-2">
+<div class="menu-height col-md-2">
     <aside class="main-sidebar">
         <section class="sidebar">
             <ul class="sidebar-menu" data-widget="tree">

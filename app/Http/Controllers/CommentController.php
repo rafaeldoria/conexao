@@ -22,7 +22,7 @@ class CommentController extends Controller
             ["title" => "Comentários", "route" => ""]
         ];
 
-        $comments = Comment::all();
+        $comments = Comment::paginate(10);
         $menus = $this->getMenus();
         return view('admin.comment', compact('breadcrumb', 'comments' ,'menus'));
     }

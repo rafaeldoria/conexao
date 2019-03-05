@@ -27,7 +27,7 @@ class ArticleController extends Controller
             ["title" => "Lista de Artigos", "route" => ""]
         ];
 
-        $articles = Article::all();
+        $articles = Article::paginate(10);
         $typeArticle = TypeArticle::all();
         $menus = $this->getMenus();
         return view('admin.article', compact('breadcrumb', 'articles', 'typeArticle', 'menus'));
@@ -295,7 +295,7 @@ class ArticleController extends Controller
     {
         $articles = Article::where('visibility', 'S')
             ->orderBy('created_at', 'desc')
-            ->get();
+            ->paginate(5);
         $typeArticles = TypeArticle::where('status_type_article', 'A')->get();
         $imagesInstagram = InstagramImage::where('visibility', 'S')->get();
         $active = 'allArticles';

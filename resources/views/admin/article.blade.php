@@ -63,7 +63,6 @@
                         </td> 
                         <td>{{$article->created_at->format('d/m/Y')}}</td>
                         <td>
-                            <button class="btn btn-success btn-xs view_article" id="{{$article->id}}" title="Visualizar"><i class="far fa-eye"></i></button>
                             <button class="btn btn-warning btn-xs edit_article" id="{{$article->id}}" title="Editar"><i class="far fa-edit"></i></button>
                             <button class="btn btn-danger btn-xs delete_article" id="{{$article->id}}" title="Excluir"><i class="far fa-trash-alt"></i></button>
                             <button class="btn btn-info btn-xs write_article" id="{{$article->id}}" title="Escrever"><i class="fas fa-pencil-alt"></i></button>
@@ -76,15 +75,7 @@
             <div class="box-footer clearfix">
                   <nav aria-label="Page navigation example">
                     <ul class="pagination justify-content-end">
-                        <li class="page-item disabled">
-                        <a class="page-link" href="#" tabindex="-1">&laquo;</a>
-                        </li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item">
-                        <a class="page-link" href="#">&raquo;</a>
-                        </li>
+                        {{ $articles->links() }}
                     </ul>
                 </nav>
             </div>
@@ -93,7 +84,6 @@
 </div>	
     
 @include('layouts.modals.Article.newArticleModal')
-{{-- @include('layouts.modals.Article.viewArticleModal') --}}
 @include('layouts.modals.Article.editArticleModal')
 @include('layouts.modals.Article.deleteArticleModal')
 

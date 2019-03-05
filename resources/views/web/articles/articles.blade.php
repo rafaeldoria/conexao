@@ -73,7 +73,14 @@
                 <div class="col-12 col-sm-8 col-md-6 col-lg-4">
                     @include('layouts.newsletter')
                 </div>
-                
+
+                <div class="box-footer clearfix">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination justify-content-end">
+                            {{ $articles->links() }}
+                        </ul>
+                    </nav>
+                </div>
             </div>
         </div>
     </section>

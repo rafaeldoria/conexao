@@ -209,6 +209,7 @@ $(document).ready(function () {
                 $('.editImageIModal').modal('show');
                 $('.editImageIModal').find('#desc_image').val(imageI.desc_image);
                 $('.editImageIModal').find('#visibility').val(imageI.visibility);
+                $('.editImageIModal').find('#link_instagram').val(imageI.link_instagram);
                 $('.editImageIModal').find("#editImageI").attr('action', '/admin/imageI/' + imageI.id + '/alterar');
             }
         });

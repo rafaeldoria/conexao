@@ -26,7 +26,7 @@ class UserController extends Controller
             ["title" => "Lista de Usuários", "route" => ""]
         ];
 
-        $users = User::all();
+        $users = User::paginate(10);
         $typeUser = TypeUser::all();
         $menus = $this->getMenus();
         return view('admin.user', compact('breadcrumb', 'users', 'typeUser', 'menus'));
