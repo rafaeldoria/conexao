@@ -19,7 +19,7 @@ class TypeArticleController extends Controller
             ["title" => "Menus Artigos", "route" => ""]
         ];
 
-        $typeArticle = TypeArticle::all();
+        $typeArticle = TypeArticle::paginate(10);
         $menus = $this->getMenus();
         return view('admin.typesarticle', compact('breadcrumb', 'typeArticle', 'menus'));
     }

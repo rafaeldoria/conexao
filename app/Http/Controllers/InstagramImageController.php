@@ -20,7 +20,7 @@ class InstagramImageController extends Controller
             ["title" => "Home", "route" => route('conexao')],
             ["title" => "Instagram Detalhes", "route" => ""]
         ];
-        $instagrams = InstagramImage::all();
+        $instagrams = InstagramImage::paginate(10);
         $menus = $this->getMenus();
         return view('admin.instagram', compact('breadcrumb', 'instagrams', 'menus'));
     }

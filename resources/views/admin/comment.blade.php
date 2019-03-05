@@ -48,7 +48,7 @@
                 @foreach ($comments as $comment)
                     <tr>
                         <td>{{$comment->id}}</td>
-                        <td style=overflow:hidden">{{$comment->txt_message}} ...</td>
+                        <td style=overflow:hidden>{{$comment->txt_message}} ...</td>
                         <td>{{$comment->article->title}}</td>
                         <td>{{$comment->user->username}}</td>
                         <td>{{$comment->created_at->format('d/m/Y')}}</td>
@@ -64,15 +64,7 @@
             <div class="box-footer clearfix">
                   <nav aria-label="Page navigation example">
                     <ul class="pagination justify-content-end">
-                        <li class="page-item disabled">
-                        <a class="page-link" href="#" tabindex="-1">&laquo;</a>
-                        </li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item">
-                        <a class="page-link" href="#">&raquo;</a>
-                        </li>
+                        {{ $comments->links() }}
                     </ul>
                 </nav>
             </div>

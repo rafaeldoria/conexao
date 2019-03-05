@@ -20,7 +20,7 @@ class LogController extends Controller
             ["title" => "Logs", "route" => ""]
         ];
 
-        $logs = Log::all();
+        $logs = Log::paginate(10);
         $typeLog = TypeLog::all();
         $menus = $this->getMenus();
         return view('admin.log', compact('breadcrumb', 'logs', 'typeLog', 'menus'));
