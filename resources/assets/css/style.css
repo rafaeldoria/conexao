@@ -29,13 +29,13 @@
 
 /* ***** Import CSS ***** */
 
-@import 'bootstrap/bootstrap.min.css';
-@import 'others/animate.css';
+/* @import 'bootstrap/bootstrap.min.css';
+@import 'others/animate.min.css';
 @import 'others/magnific-popup.css';
 @import 'others/meanmenu.min.css';
 @import 'others/owl.carousel.min.css';
 @import 'others/font-awesome.min.css';
-@import 'others/pe-icon-7-stroke.css';
+@import 'others/pe-icon-7-stroke.css'; */
 
 /* --------------------
 :: 1.0 Base CSS
@@ -598,7 +598,6 @@ li {
     height: 100%;
     top: 0;
     left: 0;
-    cursor: url(img/core-img/back.png), auto !important;
     z-index: 9;
 }
 
@@ -609,7 +608,6 @@ li {
     height: 100%;
     top: 0;
     right: 0;
-    cursor: url(img/core-img/next.png), auto !important;
 }
 
 /* --------------------
@@ -839,7 +837,6 @@ li {
     height: 100%;
     top: 0;
     left: 0;
-    cursor: url(img/core-img/back.png), auto !important;
     z-index: 9;
 }
 
@@ -850,7 +847,6 @@ li {
     height: 100%;
     top: 0;
     right: 0;
-    cursor: url(img/core-img/next.png), auto !important;
 }
 
 

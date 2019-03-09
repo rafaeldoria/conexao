@@ -16,8 +16,8 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script> 
     <script src="{{ asset('js/popper.min.js') }}" defer></script>
     <script src="{{ asset('js/bootstrap.min.js') }}" defer></script>
-    <script src="{{ asset('js/plugins.js') }}" defer></script>
-    <script src="{{ asset('js/active.js') }}" defer></script>
+    <script src="{{ asset('js/plugins.min.js') }}" defer></script>
+    <script src="{{ asset('js/active.min.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
@@ -25,7 +25,14 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 
     <!-- Styles -->
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/responsive.css') }}" rel="stylesheet">
-</head>
+    <link href="{{ asset('css/bootstrap/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/others/animate.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/others/magnific-popup.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/others/meanmenu.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/others/owl.carousel.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/others/font-awesome.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/others/pe-icon-7-stroke.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/responsive.min.css') }}" rel="stylesheet">
+
 @yield('body')

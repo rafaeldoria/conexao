@@ -283,7 +283,7 @@ class ArticleController extends Controller
                 ['visibility', 'S']
             ])
             ->orderBy('created_at', 'desc')
-            ->get();
+            ->paginate(10);
         $typeArticles = TypeArticle::where('status_type_article', 'A')->get();
         $imagesInstagram = InstagramImage::where('visibility', 'S')->get();
         $active = 'articleForMenu';
@@ -313,7 +313,7 @@ class ArticleController extends Controller
             ->orWhere('details_article', 'like', '%'.$request->search.'%')
             ->orWhere('user_data_id', $user_id)
             ->orderBy('created_at', 'desc')
-            ->get();
+            ->paginate(5);
         $typeArticles = TypeArticle::where('status_type_article', 'A')->get();
         $imagesInstagram = InstagramImage::where('visibility', 'S')->get();
         $active = 'allArticles';

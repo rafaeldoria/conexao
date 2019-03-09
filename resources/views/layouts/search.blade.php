@@ -1,4 +1,4 @@
-<div class="signup-search-area d-flex align-items-center justify-content-end">
+<div class="signup-search-area d-flex align-items-center justify-content-end" style="margin-right: 180px;">
     <div class="search_button">
         <a class="searchBtn" href="#"><i class="fa fa-search" aria-hidden="true"></i></a>
     </div>

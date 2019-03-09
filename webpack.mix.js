@@ -21,14 +21,14 @@ mix.webpackConfig({
     ],
 });
 
-mix.js('resources/assets/js/app.js', 'public/js/app.js')
+mix.js('resources/assets/js/app.js', 'public/js/app.min.js')
     .sass('resources/assets/sass/app.scss', 'public/css')
     mix.minify('resources/assets/css/adminLte.css')
     .styles('resources/assets/css/adminLte.min.css', 'public/css/adminLte.min.css')
-    .styles('resources/assets/css/style.css', 'public/css/style.css')
-    .styles('resources/assets/css/responsive.css', 'public/css/responsive.css')
+    .styles('resources/assets/css/style.css', 'public/css/style.min.css')
+    .styles('resources/assets/css/responsive.css', 'public/css/responsive.min.css')
     .styles('resources/assets/css/bootstrap/bootstrap.min.css', 'public/css/bootstrap/bootstrap.min.css')
-    .styles('resources/assets/css/others/animate.css', 'public/css/others/animate.css')
+    .styles('resources/assets/css/others/animate.css', 'public/css/others/animate.min.css')
     .styles('resources/assets/css/others/font-awesome.min.css', 'public/css/others/font-awesome.min.css')
     .styles('resources/assets/css/others/magnific-popup.css', 'public/css/others/magnific-popup.css')
     .styles('resources/assets/css/others/meanmenu.min.css', 'public/css/others/meanmenu.min.css')
@@ -38,7 +38,6 @@ mix.js('resources/assets/js/app.js', 'public/js/app.js')
     .styles('resources/assets/css/profile.css', 'public/css/profile.css')
     .copyDirectory('resources/assets/js/bootstrap/popper.min.js', 'public/js/popper.min.js')
     .js('resources/assets/js/bootstrap/bootstrap.min.js', 'public/js/bootstrap.min.js')
-    .js('resources/assets/js/others/plugins.js', 'public/js/plugins.js')
+    .js('resources/assets/js/others/plugins.js', 'public/js/plugins.min.js')
     .js('resources/assets/js/bootstrap-filestyle.min.js', 'public/js/bootstrap-filestyle.min.js')
-    .js('resources/assets/js/others/active.js', 'public/js/active.js');
-
+    .js('resources/assets/js/others/active.js', 'public/js/active.min.js');
