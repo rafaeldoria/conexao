@@ -11,20 +11,27 @@ let mix = require('laravel-mix');
  |
  */
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+let ImageminPlugin = require('imagemin-webpack-plugin').default;
 
 mix.webpackConfig({
     plugins: [
         new CleanWebpackPlugin([
             'public/css',
             'public/js',
-        ], { verbose: false })
+        ], { verbose: false }),
+        new ImageminPlugin({
+            //            disable: process.env.NODE_ENV !== 'production', // Disable during development
+            pngquant: {
+                quality: '50',
+            },
+            test: /\.(jpe?g|png|gif|svg)$/i,
+        }),
     ],
 });
 
 mix.js('resources/assets/js/app.js', 'public/js/app.min.js')
     .sass('resources/assets/sass/app.scss', 'public/css')
-    mix.minify('resources/assets/css/adminLte.css')
-    .styles('resources/assets/css/adminLte.min.css', 'public/css/adminLte.min.css')
+    .styles('resources/assets/css/adminLte.css', 'public/css/adminLte.min.css')
     .styles('resources/assets/css/style.css', 'public/css/style.min.css')
     .styles('resources/assets/css/responsive.css', 'public/css/responsive.min.css')
     .styles('resources/assets/css/bootstrap/bootstrap.min.css', 'public/css/bootstrap/bootstrap.min.css')
