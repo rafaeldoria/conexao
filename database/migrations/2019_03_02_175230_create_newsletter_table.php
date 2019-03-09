@@ -15,8 +15,8 @@ class CreateNewsletterTable extends Migration
     {
         Schema::create('newsletter', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('email')->unique();
-            $table->char('subscription', 1);
+            $table->string('email', 255)->unique();
+            $table->char('subscription', 1)->comment('S(im) - (N)ão');
             $table->softDeletes();
             $table->timestamps();
         });
