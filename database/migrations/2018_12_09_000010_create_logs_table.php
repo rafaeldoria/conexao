@@ -15,7 +15,7 @@ class CreateLogsTable extends Migration
     {
         Schema::create('logs', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('desc_log');
+            $table->string('desc_log', 255);
             $table->unsignedInteger('type_log_id');
             $table->foreign('type_log_id')
             ->references('id')->on('types_logs')

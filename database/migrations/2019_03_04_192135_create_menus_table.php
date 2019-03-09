@@ -15,10 +15,10 @@ class CreateMenusTable extends Migration
     {
         Schema::create('menus', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title');
-            $table->string('route');
-            $table->string('class');
-            $table->char('visibility', 1);
+            $table->string('title', 255);
+            $table->string('route', 255);
+            $table->string('class', 255);
+            $table->char('visibility', 1)->comment('(S)im - (N)ao');
             $table->softDeletes();
             $table->timestamps();
         });

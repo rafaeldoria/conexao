@@ -15,9 +15,9 @@ class CreateTypesArticlesTable extends Migration
     {
         Schema::create('types_articles', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('desc_type_article');
-            $table->char('status_type_article');
-            $table->string('img_type_article')->nullable();
+            $table->string('desc_type_article', 255);
+            $table->char('status_type_article', 255);
+            $table->string('img_type_article', 255)->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

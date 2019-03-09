@@ -15,7 +15,7 @@ class CreateTypesLogsTable extends Migration
     {
         Schema::create('types_logs', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('desc_type_logs');
+            $table->string('desc_type_logs', 255);
             $table->softDeletes();
             $table->timestamps();
         });

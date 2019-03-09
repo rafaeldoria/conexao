@@ -74,6 +74,8 @@ class ArticleController extends Controller
             'user_data_id' => $user_data_id,
             'visibility' => 'N'
         ]);
+        addArticleAuthor($user_data_id);
+        
         $request->session()->flash('alert-primary', 'Artigo adicionado');
         Log::create([
             'desc_log' => 'Adicionou novo artigo',
@@ -81,6 +83,18 @@ class ArticleController extends Controller
             'user_id' => Session::get('userData.login')['id']
         ]);
         return redirect()->route('articles');
+    }
+
+    private function addArticleAuthor($id)
+    {
+        $totalArticles = UserData::select('total_articles')
+                        ->where('id', $id)
+                        ->first();
+        UserData::where('id', $id)
+            ->update([
+                'total_articles' => $totalArticles->total_articles + 1,
+            ]);   
+        return true;
     }
 
     /**
