@@ -74,7 +74,7 @@ class ArticleController extends Controller
             'user_data_id' => $user_data_id,
             'visibility' => 'N'
         ]);
-        addArticleAuthor($user_data_id);
+        $this->addArticleAuthor($user_data_id);
         
         $request->session()->flash('alert-primary', 'Artigo adicionado');
         Log::create([
@@ -299,10 +299,11 @@ class ArticleController extends Controller
             ->orderBy('created_at', 'desc')
             ->paginate(10);
         $typeArticles = TypeArticle::where('status_type_article', 'A')->get();
+        $totalTypes = count($typeArticles) > 3 ? 3 : count($typeArticles);
         $imagesInstagram = InstagramImage::where('visibility', 'S')->get();
         $active = 'articleForMenu';
         $request->session()->forget('alert-hollow');
-        return view('web.articles.articles', compact('articles', 'typeArticles', 'imagesInstagram', 'active'));
+        return view('web.articles.articles', compact('articles', 'typeArticles', 'totalTypes', 'imagesInstagram', 'active'));
     }
 
     public function allView(Request $request)
@@ -311,10 +312,11 @@ class ArticleController extends Controller
             ->orderBy('created_at', 'desc')
             ->paginate(5);
         $typeArticles = TypeArticle::where('status_type_article', 'A')->get();
+        $totalTypes = count($typeArticles) > 3 ? 3 : count($typeArticles);
         $imagesInstagram = InstagramImage::where('visibility', 'S')->get();
         $active = 'allArticles';
         $request->session()->forget('alert-hollow');
-        return view('web.articles.articles', compact('articles', 'typeArticles', 'imagesInstagram', 'active'));
+        return view('web.articles.articles', compact('articles', 'typeArticles', 'totalTypes', 'imagesInstagram', 'active'));
     }
 
     public function search(Request $request)
@@ -329,6 +331,7 @@ class ArticleController extends Controller
             ->orderBy('created_at', 'desc')
             ->paginate(5);
         $typeArticles = TypeArticle::where('status_type_article', 'A')->get();
+        $totalTypes = count($typeArticles) > 3 ? 3 : count($typeArticles);
         $imagesInstagram = InstagramImage::where('visibility', 'S')->get();
         $active = 'allArticles';
         if(!count($articles)){
@@ -336,7 +339,7 @@ class ArticleController extends Controller
         }else{
             $request->session()->forget('alert-hollow');
         }
-        return view('web.articles.articles', compact('articles', 'typeArticles', 'imagesInstagram', 'active'));
+        return view('web.articles.articles', compact('articles', 'typeArticles', 'totalTypes', 'imagesInstagram', 'active'));
     }
 
     private function addHits($id)

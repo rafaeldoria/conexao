@@ -1,6 +1,6 @@
 @extends('layouts.layoutconexao')
 <link href="{{ asset('css/profile.css') }}" rel="stylesheet">
-<script src="{{ asset('js/app.js') }}" defer></script>
+<script src="{{ asset('js/app.min.js') }}" defer></script>
 @section('body')
     @section('sidebar')
         @include('layouts.topconexao')
@@ -12,11 +12,11 @@
         <div id="preloader">
             <div class="yummy-load"></div>
         </div>
-
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="well well-sm">
-                <div class="row">
+        <div class="container">
+            <div class="row justify-content-center">
+                @if(isset($user['img_user_link']))
+                <div class="well well-sm">
+                    <div class="row">
                     <div class="col-sm-6 col-md-4">
                         <img class="profile-user-img img-responsive img-circle" src="{{Storage::url('images/profiles').'/'.$user['img_user_link']}}" alt="" class="img-rounded img-responsive" />
                     </div>
@@ -35,6 +35,7 @@
                     </div>
                 </div>
             </div>
+            @endif
         </div>
     </div>
     <div class="container">
@@ -44,11 +45,13 @@
                     <div class="box-header with-border">
                         <h3 class="box-title">Sobre mim</h3>
                     </div>
+                    @if(isset($user['desc_user']))
                     <div class="box-header with-border">
                         <p class="box-title">{{$user['desc_user']}}</p>
                     </div>
+                    @endif
                 </div>
-            <button class="btn btn-warning btn-xs edit_data_user right" id="{{$user['id']}}" title="Editar"><i class="far fa-edit"></i></button>
+                <button class="btn btn-warning btn-xs edit_data_user right" id="{{$user['id']}}" title="Editar"><i class="far fa-edit"></i></button>
             </div>
         </div>
     </div>

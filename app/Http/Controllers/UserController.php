@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\UserData;
 use App\Models\TypeUser;
 use App\Models\TypeArticle;
 use App\Models\Log;
@@ -148,7 +149,7 @@ class UserController extends Controller
                 ->where('id', $user["type_user_id"])
                 ->first()->getOriginal();
             $user["desc_type_user"] = $typeUser["desc_type_user"];
-            $user["created_at"] = formatDateAndTimeformatDateAndTime($user["created_at"]->toDateString(), 'd/m/Y');
+            $user["created_at"] = formatDateAndTime($user["created_at"]->toDateString(), 'd/m/Y');
             return $user;
         }
         $user = $user->getOriginal();

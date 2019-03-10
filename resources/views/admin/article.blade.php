@@ -20,7 +20,7 @@
     </div>
     
     <div class="row offset-2">
-        @foreach (['danger', 'warning', 'success', 'info', 'primary', 'primary'] as $msg)
+        @foreach (['danger', 'warning', 'success', 'info', 'primary'] as $msg)
         @if(Session::has('alert-' . $msg))
             <div class="alert alert-{{ $msg }} col-md-4">
 

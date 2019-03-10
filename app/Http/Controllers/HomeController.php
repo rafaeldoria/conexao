@@ -32,11 +32,12 @@ class HomeController extends Controller
     {   
         $articles = Article::where('visibility', 'S')->get();
         $typeArticles = TypeArticle::where('status_type_article', 'A')->get();
+        $totalTypes = count($typeArticles) > 3 ? 3 : count($typeArticles);
         $fourArticles = Article::where('visibility', 'S')->orderBy('created_at', 'desc')->limit(4)->get();
         $imagesInstagram = InstagramImage::where('visibility', 'S')->get();
         $active = 'home';
         Session::put('userData.article', '/');
-        return view('web.conexao.index', compact('articles', 'typeArticles', 'fourArticles', 'imagesInstagram', 'active'));
+        return view('web.conexao.index', compact('articles', 'typeArticles', 'totalTypes', 'fourArticles', 'imagesInstagram', 'active'));
     }
 
     public function contact()
