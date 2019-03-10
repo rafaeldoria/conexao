@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\File;
 use App\Models\UserData;
+use App\Models\User;
 use App\Models\Log;
 use App\Http\Resources\UserDataTransformer;
 use Session;
@@ -29,21 +30,16 @@ class UserDataController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($request, $id)
     {
+        $date_birth= formatDateMysql($request->dt_birthDataEdit);
         $userData = [
-            'user_id' => Auth::user()->id,
-            'name' => 'Rafael Dória',
-            'dt_birth' => '2019-01-06',
-            'desc_user' => 'teste',
+            'user_id' => $id,
+            'name' => $request->nameDataEdit,
+            'dt_birth' => $date_birth,
+            'desc_user' => $request->desc_userDataEdit
         ];
-        UserData::create($userData);
-        $userData = UserData::where('user_id', Auth::user()->id)->first();
-        if(isset($userData)){
-            $userData = (new UserDataTransformer)->toArray($userData);
-            Session::put('userData.data', $userData);
-        }
-        dd(Session::get('userData'));
+        return UserData::create($userData);
     }
 
     /**
@@ -74,9 +70,55 @@ class UserDataController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
-        //
+        $user = User::where('id', $id)->first();
+        $userData = UserData::where('user_id', $user->id)->first();
+        if(!isset($userData))
+        {
+            $userData = $this->create($request, $id);
+        }else{
+            $this->update($request, $id);
+        }
+        $this->saveImageProfile($request, $userData->id);
+        User::where('id', $id)
+            ->update([
+                'username' => $request->usernameDataEdit,
+                'email' => $request->emailDataEdit,
+                'type_user_id' => $user->type_user_id,
+            ]);
+
+        Log::create([
+            'desc_log' => 'Profile alterado '.$id.'.',
+            'type_log_id' => 3,
+            'user_id' => $id
+        ]);
+
+        $this->updateSession($id);
+        
+        $request->session()->flash('alert-primary', 'Alteração Efetuada.');
+        return redirect()->route('profile');        
+    }
+
+    private function saveImageProfile($request, $userDataId)
+    {
+        if($request->hasFile('imageDataEdit') && $request->file('imageDataEdit')->isValid()){
+            if(Session::get('userData.data')['img_user_link']){
+                $filename = Session::get('userData.data')['img_user_link'];
+            }else{
+                $filename = 'perfil-'.kebab_case($request->usernameDataEdit).'-'.$userDataId;
+                $extension = $request->imageDataEdit->extension();
+                $filename = "{$filename}.{$extension}";
+            }
+            $upload = $request->imageDataEdit->storeAs('images/profiles', $filename);
+            if(!$upload){
+                redirect()->back->with('error', 'Falha ao realizar upload de imagem.');
+            }
+            UserData::where('id', $userDataId)
+                ->update([
+                    'img_user_link' => $filename
+                ]);
+        }
     }
 
     /**
@@ -86,45 +128,15 @@ class UserDataController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($request, $id)
     {   
-        if($request->hasFile('imageDataEdit') && $request->file('imageDataEdit')->isValid()){
-            if(Session::get('userData.data')['img_user_link']){
-                $filename = Session::get('userData.data')['img_user_link'];
-            }else{
-                $filename = 'perfil-'.kebab_case($request->name).'-'.$id;
-                $extension = $request->imageDataEdit->extension();
-                $filename = "{$filename}.{$extension}";
-            }
-            $upload = $request->imageDataEdit->storeAs('images/profiles/', $filename);
-            if(!$upload){
-                redirect()->back->with('error', 'Falha ao realizar upload de imagem.');
-            }
-            UserData::where('id', $id)
-                ->update([
-                    'img_user_link' => $filename
-                ]);
-        }
- 
         $date_birth= formatDateMysql($request->dt_birthDataEdit);
-        UserData::where('id', $id)
+        UserData::where('user_id', $id)
             ->update([
                 'name' => $request->nameDataEdit,
                 'dt_birth' => $date_birth,
                 'desc_user' => $request->desc_userDataEdit,
             ]);
-        $user = UserData::find($id)->user();
-        $user->update([
-            'username' => $request->usernameDataEdit,
-            'email' => $request->emailDataEdit,
-        ]);
-        Log::create([
-            'desc_log' => 'Profile alterado '.$id.'.',
-            'type_log_id' => 3,
-            'user_id' => Session::get('userData.login')['id']
-        ]);
-        $request->session()->flash('alert-primary', 'Alteração Efetuada.');
-        return redirect()->route('profile');
     }
 
     /**
@@ -136,6 +148,14 @@ class UserDataController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    private function updateSession($id)
+    {
+        $user = User::where('id', $id)->first();
+        Session::put('userData.login', $user);
+        $userData = UserData::where('user_id', $id)->first();
+        Session::put('userData.data', $userData);
     }
 
     protected function validator(array $data)

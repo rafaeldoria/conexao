@@ -16,7 +16,7 @@ class Controller extends BaseController
     
     public function getMenus()
     {
-        $this->menus = Menu::all()->where('visibility', 's');
+        $this->menus = Menu::where('visibility', 's')->get();
         return $this->menus;
     }
 

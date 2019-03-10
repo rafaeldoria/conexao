@@ -35,7 +35,8 @@
     <section class="categories_area clearfix" id="about">
         <div class="container">
             <div class="row">
-                @for ($i = 3; $i > 0; $i--)
+                @if(isset($typeArticles))
+                @for ($i = $totalTypes-1; $i >= 0; $i--)
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="single_catagory wow fadeInUp" data-wow-delay=".3s">
                         <img src="{{Storage::url('images/articles/type/'.$typeArticles[$i]->img_type_article)}}" alt="">
@@ -47,6 +48,7 @@
                     </div>
                 </div>
                 @endfor
+                @endif
             </div>
         </div>
     </section>
